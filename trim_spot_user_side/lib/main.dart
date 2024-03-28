@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trim_spot_user_side/reusable%20widgets/colors.dart';
 
 import 'screens/first_presentation_screen/first_introduction_page.dart';
 
@@ -13,6 +14,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.dark,
+    theme: ThemeData(bottomSheetTheme:BottomSheetThemeData(backgroundColor: introductionColor) ),
      home: FirstIntroductionPage(),
     );
   }
