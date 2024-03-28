@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_user_side/reusable%20widgets/colors.dart';
 
-import 'screens/first_presentation_screen/first_introduction_page.dart';
+import 'blocs/on boarding bloc/onboardind_bloc_bloc.dart';
+import 'screens/first_presentation_screen/introduction_page.dart';
 
 void main(List<String> args) {
-  runApp(App());
+  runApp(MultiBlocProvider(
+    providers: [
+      BlocProvider<OnboardindBloc>(create: (context) => OnboardindBloc())
+    ],
+    child: const App(),
+  ));
 }
+
 class App extends StatelessWidget {
   const App({super.key});
 
@@ -14,8 +22,10 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.dark,
-    theme: ThemeData(bottomSheetTheme:BottomSheetThemeData(backgroundColor: introductionColor) ),
-     home: FirstIntroductionPage(),
+      theme: ThemeData(
+          bottomSheetTheme:
+              BottomSheetThemeData(backgroundColor: introductionColor)),
+      home:  FirstIntroductionPage(),
     );
   }
 }

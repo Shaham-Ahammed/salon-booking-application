@@ -1,4 +1,4 @@
-import 'package:trim_spot_user_side/screens/first_presentation_screen/intoduction_info.dart';
+import 'package:trim_spot_user_side/screens/first_presentation_screen/modals/intoduction_info.dart';
 
 class InroductionItems {
   List<IntroductionInfo> items = [
