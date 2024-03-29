@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class CustomPageRoute extends PageRouteBuilder {
+class SlideTransitionPageRoute extends PageRouteBuilder {
   final Widget child;
   final AxisDirection direction;
-  CustomPageRoute({required this.child, this.direction = AxisDirection.left})
+  SlideTransitionPageRoute({required this.child, this.direction = AxisDirection.left})
       : super(
           transitionDuration: const Duration(milliseconds: 500),
           pageBuilder: (context, animation, secondaryAnimation) => child,
