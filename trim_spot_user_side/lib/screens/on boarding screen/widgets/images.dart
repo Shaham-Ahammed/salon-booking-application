@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:trim_spot_user_side/reusable%20widgets/mediaquery.dart';
-import 'package:trim_spot_user_side/screens/first_presentation_screen/modals/introduction_lists.dart';
+import 'package:trim_spot_user_side/screens/on%20boarding%20screen/modals/introduction_lists.dart';
 
 class BoardingScreenImages extends StatelessWidget {
   const BoardingScreenImages(

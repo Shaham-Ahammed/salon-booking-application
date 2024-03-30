@@ -8,3 +8,7 @@ final class OnboardindBlocInitial extends OnboardindBlocState {}
 final class NavigateToSecondOnBoardingPage extends OnboardindBlocState{}
 
 final class NavigateToLoginOrSignupPage extends OnboardindBlocState{} 
+
+final class NavigateToLogin extends OnboardindBlocState{}
+
+final class NavigateToSignUp extends OnboardindBlocState{}
