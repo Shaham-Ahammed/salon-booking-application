@@ -1,25 +1,37 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
 import 'package:trim_spot_user_side/reusable%20widgets/colors.dart';
 import 'package:trim_spot_user_side/reusable%20widgets/font.dart';
 import 'package:trim_spot_user_side/reusable%20widgets/mediaquery.dart';
 
-class EmailAndPasswordField extends StatelessWidget {
-  const EmailAndPasswordField({
-    super.key,
-    required this.hintText, required this.obscureText,
-  });
+class TextFormFieldCyan extends StatelessWidget {
+  const TextFormFieldCyan(
+      {super.key,
+      required this.hintText,
+      this.obscureText = false,
+      this.textInputType = TextInputType.text,
+      this.maxLenght,
+      this.filteringTextInputFormatter});
   final String hintText;
+  final TextInputType textInputType;
+  final FilteringTextInputFormatter? filteringTextInputFormatter;
   final bool obscureText;
+ final int? maxLenght;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: textInputType,
+      inputFormatters: filteringTextInputFormatter == null
+          ? null
+          : [filteringTextInputFormatter!],
+     maxLength:maxLenght??maxLenght ,
       style:
           TextStyle(fontFamily: balooChettan, color: greyColor2, fontSize: 18),
       obscureText: obscureText,
       cursorColor: cyanColor,
       decoration: InputDecoration(
-        
+        counterText: "",
         filled: true,
         fillColor: Colors.black54,
         focusedBorder: OutlineInputBorder(

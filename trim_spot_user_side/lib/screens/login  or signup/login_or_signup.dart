@@ -3,7 +3,6 @@ import 'package:trim_spot_user_side/blocs/on%20boarding%20bloc/onboardind_bloc_b
 import 'package:trim_spot_user_side/reusable%20widgets/colors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_user_side/reusable%20widgets/page%20transitions/fade_transition.dart';
-import 'package:trim_spot_user_side/reusable%20widgets/page%20transitions/slide_transition.dart';
 import 'package:trim_spot_user_side/screens/login%20%20or%20signup/widgets/background_image.dart';
 import 'package:trim_spot_user_side/screens/login%20%20or%20signup/widgets/login_signup_buttons.dart';
 import 'package:trim_spot_user_side/screens/login%20screen/login.dart';
@@ -23,7 +22,7 @@ class LoginOrSignup extends StatelessWidget {
           }
           if (state is NavigateToSignUp) {
             Navigator.of(context)
-                .push(SlideTransitionPageRoute(child: const SignUpScreen()));
+                .push(FadeTransitionPageRoute(child: const SignUpScreen()));
           }
         },
         child: Stack(

@@ -40,14 +40,14 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(
                     height: mediaqueryHeight(0.03, context),
                   ),
-                  const EmailAndPasswordField(
+                  const TextFormFieldCyan(
                     hintText: "Email",
-                    obscureText: false,
+                    textInputType: TextInputType.emailAddress,
                   ),
                   SizedBox(
                     height: mediaqueryHeight(0.03, context),
                   ),
-                  const EmailAndPasswordField(
+                  const TextFormFieldCyan(
                     hintText: "Password",
                     obscureText: true,
                   ),
