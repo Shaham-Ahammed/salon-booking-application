@@ -1,11 +1,11 @@
 part of 'service_selection_bloc_bloc.dart';
 
 @immutable
-sealed class ServiceSwitchState {}
+sealed class RegisterFormState {}
 
-final class ServiceSwitchInitial extends ServiceSwitchState {
+final class RegisterFormInitial extends RegisterFormState {
   final Map<String, bool> switches;
-
-  ServiceSwitchInitial({required this.switches});
+  List<String> holidays=[];
+  RegisterFormInitial({required this.switches,required this.holidays});
   
 }

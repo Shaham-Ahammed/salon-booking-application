@@ -9,8 +9,8 @@ void main(List<String> args) {
   runApp(MultiBlocProvider(
     providers: [
       BlocProvider<OnboardindBloc>(create: (context) => OnboardindBloc()),
-      BlocProvider<ServiceSwitchBloc>(
-        create: (context) => ServiceSwitchBloc(),
+      BlocProvider<RegisterFormBloc>(
+        create: (context) => RegisterFormBloc(),
       )
     ],
     child: const App(),

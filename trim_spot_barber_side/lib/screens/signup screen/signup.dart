@@ -22,7 +22,7 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   List<String> weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  bool enabled = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -146,22 +146,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               height: mediaqueryHeight(0.02, context),
                             ),
                             Expanded(
-
                               child: Padding(
-                                  padding: EdgeInsets.only(
+                                padding: EdgeInsets.only(
                                     left: mediaqueryHeight(0.02, context),
                                     right: mediaqueryHeight(0.02, context),
                                     bottom: mediaqueryHeight(0.04, context)),
                                 child: SizedBox(
                                   width: double.infinity,
                                   child: DottedBorder(
-                                     
                                       color: cyanColor,
-                                      child:Center(child: Icon(
-                                        Icons.document_scanner_outlined,
-                                        color: greyColor,
-                                        size: 30,
-                                      ),) ),
+                                      child: Center(
+                                        child: Icon(
+                                          Icons.document_scanner_outlined,
+                                          color: greyColor,
+                                          size: 30,
+                                        ),
+                                      )),
                                 ),
                               ),
                             )
@@ -286,9 +286,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       border: Border.all(color: cyanColor, width: 2)),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: BlocBuilder<ServiceSwitchBloc, ServiceSwitchState>(
+                    child: BlocBuilder<RegisterFormBloc, RegisterFormState>(
                       builder: (context, state) {
-                        if (state is ServiceSwitchInitial) {
+                        if (state is RegisterFormInitial) {
                           return Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -406,30 +406,51 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 const SizedBox(
                   height: 3,
                 ),
-                SizedBox(
-                  height: mediaqueryHeight(0.05, context),
-                  child: ListView.separated(
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) {
-                        return Container(
-                            height: mediaqueryHeight(0.02, context),
-                            width: mediaqueryWidth(0.27, context),
-                            decoration: BoxDecoration(
-                                border: Border.all(color: cyanColor, width: 2),
-                                borderRadius: BorderRadius.circular(90),
-                                color: blackColor),
-                            child: Center(
-                              child: myFont(weekDays[index],
-                                  fontFamily: balooChettan,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  fontColor: whiteColor),
-                            ));
-                      },
-                      separatorBuilder: (context, index) => SizedBox(
-                            width: mediaqueryWidth(0.04, context),
-                          ),
-                      itemCount: 7),
+                BlocBuilder<RegisterFormBloc, RegisterFormState>(
+                  builder: (context, state) {
+                    if (state is RegisterFormInitial) {
+                      return SizedBox(
+                        height: mediaqueryHeight(0.05, context),
+                        child: ListView.separated(
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              return GestureDetector(
+                                onTap: () => context
+                                    .read<RegisterFormBloc>()
+                                    .add(
+                                        HolidaysSelected(day: weekDays[index])),
+                                child: Container(
+                                    height: mediaqueryHeight(0.02, context),
+                                    width: mediaqueryWidth(0.27, context),
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: state.holidays
+                                                  .contains(weekDays[index])?cyanColor: greyColor,width: 2),
+                                        borderRadius: BorderRadius.circular(90),
+                                        color: state.holidays
+                                                .contains(weekDays[index])
+                                            ? cyanColor
+                                            : greyColor3),
+                                    child: Center(
+                                      child: myFont(weekDays[index],
+                                          fontFamily: balooChettan,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w600,
+                                          fontColor: state.holidays
+                                                  .contains(weekDays[index])
+                                              ? blackColor
+                                              : greyColor),
+                                    )),
+                              );
+                            },
+                            separatorBuilder: (context, index) => SizedBox(
+                                  width: mediaqueryWidth(0.04, context),
+                                ),
+                            itemCount: 7),
+                      );
+                    }
+                    return Container();
+                  },
                 ),
                 textFormFieldSizedBox(context),
                 Container(
@@ -519,7 +540,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 value: state,
                 onChanged: (value) {
                   context
-                      .read<ServiceSwitchBloc>()
+                      .read<RegisterFormBloc>()
                       .add(ServiceSwitchPressed(service: serviceName));
                 },
                 materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -585,18 +606,18 @@ class ServiceRateTextFormField extends StatelessWidget {
               focusedBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: cyanColor)),
               counterText: "",
-              hintStyle:
-                  TextStyle(color: enabled ? blackColor : Colors.black45,fontSize: 14),
+              hintStyle: TextStyle(    fontFamily: balooChettan,
+                  color: enabled ? blackColor : greyColor, fontSize: 14),
               border: const OutlineInputBorder(),
               filled: true,
-              fillColor: enabled ? whiteColor : greyColor2,
+              fillColor: enabled ? whiteColor : greyColor3,
               contentPadding: const EdgeInsets.symmetric(horizontal: 5),
               enabled: enabled,
-              disabledBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white70)),
+              disabledBorder:  OutlineInputBorder(
+                  borderSide: BorderSide(color: greyColor)),
               enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: cyanColor)),
-              hintText: "Rate"),
+              hintText: "rate"),
         ),
       ),
     );
@@ -622,17 +643,18 @@ class ServiceTimeTextFormField extends StatelessWidget {
           textAlign: TextAlign.center,
           decoration: InputDecoration(
               counterText: "",
-              hintStyle:
-                  TextStyle(color: enabled ? blackColor : Colors.black45,fontSize: 14),
+              hintStyle: TextStyle(
+                fontFamily: balooChettan,
+                  color: enabled ? blackColor : greyColor, fontSize: 14),
               border: const OutlineInputBorder(),
               filled: true,
-              fillColor: enabled ? whiteColor : greyColor2,
+              fillColor: enabled ? whiteColor : greyColor3,
               contentPadding: const EdgeInsets.symmetric(horizontal: 5),
               enabled: enabled,
               focusedBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: cyanColor)),
-              disabledBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white70)),
+              disabledBorder:  OutlineInputBorder(
+                  borderSide: BorderSide(color:greyColor)),
               enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: cyanColor)),
               hintText: "min"),
