@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:trim_spot_barber_side/reusable%20widgets/colors.dart';
-import 'package:trim_spot_barber_side/reusable%20widgets/font.dart';
-import 'package:trim_spot_barber_side/reusable%20widgets/mediaquery.dart';
+import 'package:trim_spot_barber_side/reusable_widgets/colors.dart';
+import 'package:trim_spot_barber_side/reusable_widgets/font.dart';
+import 'package:trim_spot_barber_side/reusable_widgets/mediaquery.dart';
+import 'package:trim_spot_barber_side/reusable_widgets/page_transitions/fade_transition.dart';
+import 'package:trim_spot_barber_side/screens/signup%20screen/widgets/map.dart';
 
-
-class LocationPicker extends StatelessWidget {
+class LocationPicker extends StatefulWidget {
   const LocationPicker({
     super.key,
   });
 
+  @override
+  State<LocationPicker> createState() => _LocationPickerState();
+}
+
+class _LocationPickerState extends State<LocationPicker> {
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -16,7 +22,12 @@ class LocationPicker extends StatelessWidget {
       color: greyColor,
       child: InkWell(
         borderRadius: BorderRadius.circular(8),
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context)
+              .push(FadeTransitionPageRoute(child: GoogleMapScreen())).then((value) => setState(() {
+                
+              }));
+        },
         child: Container(
           decoration: BoxDecoration(
             border: Border.all(color: Colors.black54, width: 2),
@@ -30,7 +41,9 @@ class LocationPicker extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                myFont("Shop Location",
+                myFont(
+                  add==null?
+                  "Shop Location":add.toString(),
                     fontFamily: balooChettan,
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
@@ -47,4 +60,3 @@ class LocationPicker extends StatelessWidget {
     );
   }
 }
-

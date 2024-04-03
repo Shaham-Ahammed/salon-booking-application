@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trim_spot_barber_side/blocs/on%20boarding%20bloc/onboardind_bloc_bloc.dart';
-import 'package:trim_spot_barber_side/reusable%20widgets/colors.dart';
-import 'package:trim_spot_barber_side/reusable%20widgets/font.dart';
+import 'package:trim_spot_barber_side/blocs/on_boarding_bloc/onboardind_bloc_bloc.dart';
+import 'package:trim_spot_barber_side/reusable_widgets/colors.dart';
+import 'package:trim_spot_barber_side/reusable_widgets/font.dart';
 
 
 class RegisterNowText extends StatelessWidget {

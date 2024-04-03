@@ -9,3 +9,4 @@ Color transparentColor = Colors.transparent;
 Color greyColor2 = const Color.fromRGBO(217, 217, 217, 1);
 Color registerTextField = const Color.fromRGBO(43, 43, 43, 1);
 Color greyColor3 = const Color.fromARGB(255, 122, 122, 122);
+Color opaqueBlack = Colors.black54;

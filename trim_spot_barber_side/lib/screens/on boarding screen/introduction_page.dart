@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trim_spot_barber_side/blocs/on%20boarding%20bloc/onboardind_bloc_bloc.dart';
-import 'package:trim_spot_barber_side/reusable%20widgets/page%20transitions/fade_transition.dart';
+import 'package:trim_spot_barber_side/blocs/on_boarding_bloc/onboardind_bloc_bloc.dart';
+import 'package:trim_spot_barber_side/reusable_widgets/page_transitions/fade_transition.dart';
 import 'package:trim_spot_barber_side/screens/on%20boarding%20screen/modals/introduction_lists.dart';
 import 'package:trim_spot_barber_side/screens/on%20boarding%20screen/widgets/images.dart';
 import 'package:trim_spot_barber_side/screens/on%20boarding%20screen/widgets/smoothanimation.dart';

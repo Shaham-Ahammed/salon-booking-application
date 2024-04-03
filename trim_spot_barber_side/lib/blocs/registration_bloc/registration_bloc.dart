@@ -1,8 +1,9 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-part 'service_selection_bloc_event.dart';
-part 'service_selection_bloc_state.dart';
+part 'registration_bloc_event.dart';
+part 'registration_bloc_state.dart';
 
 class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
   RegisterFormBloc()
@@ -13,9 +14,10 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
           "beard trim": false,
           "massage": false,
           "straighten": false
-        },holidays: [])) {
+        }, holidays: [])) {
     on<ServiceSwitchPressed>(_serviceSwitchPressed);
     on<HolidaysSelected>(_holidaySelected);
+    on<LocationPickerPressed>(_locationPickerPressed);
   }
   void _serviceSwitchPressed(
       ServiceSwitchPressed event, Emitter<RegisterFormState> emit) {
@@ -38,5 +40,14 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
       emit(RegisterFormInitial(
           switches: currentState.switches, holidays: currentState.holidays));
     }
+  }
+
+  _locationPickerPressed(
+      LocationPickerPressed event, Emitter<RegisterFormState> emit) {
+    emit(Openmap());
+
+    emit(RegisterFormInitial(
+        switches: (state as RegisterFormInitial).switches,
+        holidays: (state as RegisterFormInitial).holidays));
   }
 }

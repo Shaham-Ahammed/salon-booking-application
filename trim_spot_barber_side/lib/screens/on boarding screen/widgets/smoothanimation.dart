@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:trim_spot_barber_side/blocs/on%20boarding%20bloc/onboardind_bloc_bloc.dart';
-import 'package:trim_spot_barber_side/reusable%20widgets/colors.dart';
-import 'package:trim_spot_barber_side/reusable%20widgets/mediaquery.dart';
+import 'package:trim_spot_barber_side/blocs/on_boarding_bloc/onboardind_bloc_bloc.dart';
+import 'package:trim_spot_barber_side/reusable_widgets/colors.dart';
+import 'package:trim_spot_barber_side/reusable_widgets/mediaquery.dart';
 import '../modals/introduction_lists.dart';
 
 class SmoothPageIndincatorAndNextButton extends StatelessWidget {

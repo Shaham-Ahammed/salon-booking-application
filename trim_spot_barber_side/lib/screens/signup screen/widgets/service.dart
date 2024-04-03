@@ -1,9 +1,9 @@
  import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trim_spot_barber_side/blocs/service%20switches%20bloc/service_selection_bloc_bloc.dart';
-import 'package:trim_spot_barber_side/reusable%20widgets/colors.dart';
-import 'package:trim_spot_barber_side/reusable%20widgets/font.dart';
-import 'package:trim_spot_barber_side/reusable%20widgets/mediaquery.dart';
+import 'package:trim_spot_barber_side/blocs/registration_bloc/registration_bloc.dart';
+import 'package:trim_spot_barber_side/reusable_widgets/colors.dart';
+import 'package:trim_spot_barber_side/reusable_widgets/font.dart';
+import 'package:trim_spot_barber_side/reusable_widgets/mediaquery.dart';
 import 'package:trim_spot_barber_side/screens/signup%20screen/widgets/service_rate.dart';
 import 'package:trim_spot_barber_side/screens/signup%20screen/widgets/service_time.dart';
  

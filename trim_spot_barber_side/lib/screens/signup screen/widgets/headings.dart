@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:trim_spot_barber_side/reusable%20widgets/colors.dart';
-import 'package:trim_spot_barber_side/reusable%20widgets/font.dart';
+import 'package:trim_spot_barber_side/reusable_widgets/colors.dart';
+import 'package:trim_spot_barber_side/reusable_widgets/font.dart';
 
 
 class ProofsHeading extends StatelessWidget {

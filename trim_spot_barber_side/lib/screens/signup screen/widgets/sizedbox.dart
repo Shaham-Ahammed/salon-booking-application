@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trim_spot_barber_side/reusable%20widgets/mediaquery.dart';
+import 'package:trim_spot_barber_side/reusable_widgets/mediaquery.dart';
 
 
 textFormFieldSizedBox(context) {

@@ -1,4 +1,4 @@
-part of 'service_selection_bloc_bloc.dart';
+part of 'registration_bloc.dart';
 
 @immutable
 sealed class RegisterFormEvent {}
@@ -15,3 +15,5 @@ class HolidaysSelected extends RegisterFormEvent {
   HolidaysSelected({required this.day});
 
 }
+
+class LocationPickerPressed extends RegisterFormEvent{}
