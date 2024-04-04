@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:trim_spot_barber_side/blocs/registration_bloc/registration_bloc.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/colors.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/font.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/mediaquery.dart';
@@ -16,60 +18,43 @@ class GoogleMapScreen extends StatefulWidget {
 }
 
 class _GoogleMapScreenState extends State<GoogleMapScreen> {
-  late GoogleMapController mapController;
-  LocationData? currentLocation;
-  LatLng? pickerLocation;
-
-  @override
-  void initState() {
-    super.initState();
-    requestPermission();
-  }
-
-  requestPermission() async {
-    if (await Permission.location.request().isGranted) {
-      _getUserLocation();
-    }
-  }
-
-  _getUserLocation() async {
-    Location location = Location();
-    try {
-      final current = await location.getLocation();
-      setState(() {
-        currentLocation = current;
-        pickerLocation = LatLng(current.latitude!, current.longitude!);
-      });
-    } catch (e) {
-      print(e);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
-          GoogleMap(
-              initialCameraPosition: CameraPosition(
-                target: LatLng(
-                  currentLocation!.latitude!,
-                  currentLocation!.longitude!,
-                ),
-                zoom: 15,
-              ),
-              onCameraMove: (position) {
-                setState(() {
-                  pickerLocation = position.target;
-                });
-              },
-              markers: {
-                Marker(
-                    position: pickerLocation!,
-                    markerId: MarkerId("location picker"),
-                    icon: BitmapDescriptor.defaultMarkerWithHue(
-                        BitmapDescriptor.hueYellow))
-              }),
+          BlocConsumer<RegisterFormBloc, RegisterFormState>(
+            listener: (context, state) {
+              // TODO: implement listener
+            },
+            builder: (context, state) {
+              if (state is LoadingCurrentLocation) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              if (state is OpenMap) {
+                return GoogleMap(
+                    initialCameraPosition: CameraPosition(
+                      target: state.pickerLocation,
+                      zoom: 15,
+                    ),
+                    onTap: (position) {
+                      context
+                          .read<RegisterFormBloc>()
+                          .add(TappedOnLocation(newPosition: position));
+                    },
+                    markers: {
+                      Marker(
+                          position: state.pickerLocation,
+                          markerId: MarkerId("location picker"),
+                          icon: BitmapDescriptor.defaultMarkerWithHue(
+                              BitmapDescriptor.hueYellow))
+                    });
+              }
+              return Container();
+            },
+          ),
           Positioned(
               bottom: mediaqueryHeight(0.07, context),
               left: mediaqueryWidth(0.28, context),
@@ -79,9 +64,9 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
                 child: InkWell(
                   borderRadius: BorderRadius.circular(90),
                   onTap: () {
-                    setState(() {
-                      add = pickerLocation!.latitude;
-                    });
+                    // setState(() {
+                    //   add = pickerLocation!.latitude;
+                    // });
                     Navigator.pop(context);
                   },
                   child: Container(

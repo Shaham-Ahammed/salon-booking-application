@@ -17,3 +17,8 @@ class HolidaysSelected extends RegisterFormEvent {
 }
 
 class LocationPickerPressed extends RegisterFormEvent{}
+
+final class TappedOnLocation extends RegisterFormEvent {
+ final LatLng newPosition;
+  TappedOnLocation({required this.newPosition});
+}

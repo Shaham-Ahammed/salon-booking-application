@@ -1,6 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location/location.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 part 'registration_bloc_event.dart';
 part 'registration_bloc_state.dart';
@@ -18,6 +21,7 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
     on<ServiceSwitchPressed>(_serviceSwitchPressed);
     on<HolidaysSelected>(_holidaySelected);
     on<LocationPickerPressed>(_locationPickerPressed);
+    on<TappedOnLocation>(_tappedOnLocation);
   }
   void _serviceSwitchPressed(
       ServiceSwitchPressed event, Emitter<RegisterFormState> emit) {
@@ -43,9 +47,28 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
   }
 
   _locationPickerPressed(
-      LocationPickerPressed event, Emitter<RegisterFormState> emit) {
-    emit(Openmap());
+      LocationPickerPressed event, Emitter<RegisterFormState> emit) async {
+    final checkPermission = await Permission.location.request();
+    if (checkPermission.isGranted) {
+       emit(FetchedCurrentLocation());
+      emit(LoadingCurrentLocation());
+      Location location = Location();
+      try {
+        final current = await location.getLocation();
+       
+        emit(OpenMap(
+            pickerLocation: LatLng(current.latitude!, current.longitude!)));
+        emit(RegisterFormInitial(
+            switches: (state as RegisterFormInitial).switches,
+            holidays: (state as RegisterFormInitial).holidays));
+      } catch (e) {}
+    }
+  }
 
+  _tappedOnLocation(TappedOnLocation event, Emitter<RegisterFormState> emit) {
+    emit(OpenMap(
+        pickerLocation:
+            LatLng(event.newPosition.latitude, event.newPosition.longitude)));
     emit(RegisterFormInitial(
         switches: (state as RegisterFormInitial).switches,
         holidays: (state as RegisterFormInitial).holidays));
