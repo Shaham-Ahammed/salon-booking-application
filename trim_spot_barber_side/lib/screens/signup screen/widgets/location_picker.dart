@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trim_spot_barber_side/blocs/registration_bloc/registration_bloc.dart';
+import 'package:trim_spot_barber_side/blocs/registration_blocs/location_bloc/location_bloc.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/colors.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/font.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/mediaquery.dart';
-import 'package:trim_spot_barber_side/reusable_widgets/page_transitions/fade_transition.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/page_transitions/no_transition_page_route.dart';
 import 'package:trim_spot_barber_side/screens/signup%20screen/widgets/map.dart';
 
@@ -20,22 +19,21 @@ class LocationPicker extends StatefulWidget {
 class _LocationPickerState extends State<LocationPicker> {
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<RegisterFormBloc, RegisterFormState>(
+    return BlocConsumer<LocationBloc, LocationState>(
       listener: (context, state) {
-        if (state is FetchedCurrentLocation) {
+        if (state is NavigateToMap) {
           Navigator.of(context)
               .push(NoTransitionPageRoute(child: GoogleMapScreen()));
         }
       },
       builder: (context, state) {
-        
         return Material(
           borderRadius: BorderRadius.circular(8),
           color: greyColor,
           child: InkWell(
             borderRadius: BorderRadius.circular(8),
             onTap: () {
-              context.read<RegisterFormBloc>().add(LocationPickerPressed());
+              context.read<LocationBloc>().add(LocationPickerPressed());
             },
             child: Container(
               decoration: BoxDecoration(
@@ -50,11 +48,21 @@ class _LocationPickerState extends State<LocationPicker> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    myFont(add == null ? "Shop Location" : add.toString(),
-                        fontFamily: balooChettan,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        fontColor: Colors.black54),
+                    if (state is! LocationInitial || state.address.isEmpty)
+                      myFont("Shop Location",
+                          fontFamily: balooChettan,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          fontColor: Colors.black54),
+                    if (state is LocationInitial && state.address.isNotEmpty)
+                      Expanded(
+                        child:Container(child: myFont(state.address,
+                            fontFamily: balooChettan,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                            fontColor: Colors.black54),)
+                        
+                      ),
                     Icon(
                       Icons.location_pin,
                       color: Colors.red.shade800,
