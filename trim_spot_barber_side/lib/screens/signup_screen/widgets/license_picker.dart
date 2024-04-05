@@ -16,7 +16,8 @@ class ShopLicensePicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
+      
+      child:  Container(
         height: mediaqueryHeight(0.25, context),
         decoration: BoxDecoration(
             color: Colors.black54,

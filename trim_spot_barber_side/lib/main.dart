@@ -4,6 +4,7 @@ import 'package:trim_spot_barber_side/blocs/registration_blocs/holiday_bloc/holi
 import 'package:trim_spot_barber_side/blocs/registration_blocs/location_bloc/location_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/registration_blocs/service_bloc/service_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/registration_blocs/image_bloc/image_bloc.dart';
+import 'package:trim_spot_barber_side/blocs/registration_blocs/working_hours/working_hours_bloc.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/colors.dart';
 import 'package:trim_spot_barber_side/screens/on_boarding_screen/introduction_page.dart';
 import 'blocs/on_boarding_bloc/onboardind_bloc_bloc.dart';
@@ -11,6 +12,7 @@ import 'blocs/on_boarding_bloc/onboardind_bloc_bloc.dart';
 void main(List<String> args) {
   runApp(MultiBlocProvider(
     providers: [
+      BlocProvider<WorkingHoursBloc>(create: (context) => WorkingHoursBloc()),
       BlocProvider<ImageBloc>(create: (context) => ImageBloc()),
       BlocProvider<OnboardindBloc>(create: (context) => OnboardindBloc()),
       BlocProvider<LocationBloc>(create: (context) => LocationBloc()),
