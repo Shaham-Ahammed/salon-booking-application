@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trim_spot_barber_side/blocs/registration_bloc/registration_bloc.dart';
+import 'package:trim_spot_barber_side/blocs/registration_blocs/service_bloc/service_bloc.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/colors.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/font.dart';
 import 'package:trim_spot_barber_side/screens/signup%20screen/widgets/service.dart';
@@ -14,9 +14,9 @@ import 'package:trim_spot_barber_side/screens/signup%20screen/widgets/service.da
           border: Border.all(color: cyanColor, width: 2)),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: BlocBuilder<RegisterFormBloc, RegisterFormState>(
+        child: BlocBuilder<ServiceBloc, ServiceBlocState>(
           builder: (context, state) {
-            if (state is RegisterFormInitial) {
+            if (state is ServiceBlocInitial) {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trim_spot_barber_side/blocs/registration_bloc/registration_bloc.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/mediaquery.dart';
 import 'package:trim_spot_barber_side/screens/login%20screen/widgets/background_image.dart';
 import 'package:trim_spot_barber_side/screens/login%20screen/widgets/textformfields.dart';
@@ -28,7 +27,7 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  List<String> weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
 
   @override
   Widget build(BuildContext context) {
@@ -98,14 +97,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 const SizedBox(
                   height: 3,
                 ),
-                BlocBuilder<RegisterFormBloc, RegisterFormState>(
-                  builder: (context, state) {
-                    if (state is RegisterFormInitial) {
-                      return HolidayPicker(weekDays: weekDays, state: state);
-                    }
-                    return Container();
-                  },
-                ),
+               HolidayPicker()
+                 
+                ,
                 textFormFieldSizedBox(context),
                 const UpiIdTextFormField(),
                 textFormFieldSizedBox(context),
