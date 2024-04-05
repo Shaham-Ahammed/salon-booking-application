@@ -1,4 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trim_spot_barber_side/blocs/registration_blocs/image_bloc/image_bloc.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/colors.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/font.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/mediaquery.dart';
@@ -41,15 +45,30 @@ class ProfilePicker extends StatelessWidget {
                     bottom: mediaqueryHeight(0.04, context)),
                 child: SizedBox(
                   width: double.infinity,
-                  child: DottedBorder(
-                      color: cyanColor,
-                      child: Center(
-                        child: Icon(
-                          Icons.person_outline,
-                          color: greyColor,
-                          size: 30,
-                        ),
-                      )),
+                  child: GestureDetector(
+                    onTap: () => context.read<ImageBloc>().add(PickingProfile()),
+                    child: DottedBorder(
+                        color: cyanColor,
+                        child: Center(
+                          child: BlocBuilder<ImageBloc, ImageState>(
+                              builder: (context, state) {
+                            if (state is ImageInitial &&
+                                state.ProfileImagePath.isNotEmpty) {
+                              return Container(
+                                width: double.maxFinite,
+                                height: double.maxFinite,
+                                child: Image.file(File(state.ProfileImagePath),
+                                    fit: BoxFit.cover),
+                              );
+                            }
+                            return Icon(
+                              Icons.person_outline,
+                              color: greyColor,
+                              size: 30,
+                            );
+                          }),
+                        )),
+                  ),
                 ),
               ),
             )
@@ -59,4 +78,3 @@ class ProfilePicker extends StatelessWidget {
     );
   }
 }
-

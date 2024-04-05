@@ -1,4 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trim_spot_barber_side/blocs/registration_blocs/image_bloc/image_bloc.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/colors.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/font.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/mediaquery.dart';
@@ -34,19 +38,35 @@ class ShopImagePicker extends StatelessWidget {
             height: 7,
           ),
           Expanded(
-            child: SizedBox(
-              width: double.infinity,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: DottedBorder(
-                    color: cyanColor,
-                    child: Center(
-                      child: Icon(
-                        Icons.store,
-                        size: 35,
-                        color: greyColor,
-                      ),
-                    )),
+            child: GestureDetector(
+              onTap: () => context.read<ImageBloc>().add(PickingShopImage()),
+              child: SizedBox(
+                width: double.infinity,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: DottedBorder(
+                      color: cyanColor,
+                      child: Center(child: BlocBuilder<ImageBloc, ImageState>(
+                        builder: (context, state) {
+                          if (state is ImageInitial &&
+                              state.ShopImageImagePath.isNotEmpty) {
+                            return Container(
+                              width: double.maxFinite,
+                              height: double.maxFinite,
+                              child: Image.file(
+                                File(state.ShopImageImagePath),
+                                fit: BoxFit.cover,
+                              ),
+                            );
+                          }
+                          return Icon(
+                            Icons.store,
+                            size: 35,
+                            color: greyColor,
+                          );
+                        },
+                      ))),
+                ),
               ),
             ),
           )

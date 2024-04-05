@@ -1,8 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trim_spot_barber_side/blocs/registration_blocs/image_bloc/image_bloc.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/colors.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/font.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/mediaquery.dart';
 import 'package:dotted_border/dotted_border.dart';
+
 class ShopLicensePicker extends StatelessWidget {
   const ShopLicensePicker({
     super.key,
@@ -39,15 +44,28 @@ class ShopLicensePicker extends StatelessWidget {
                     bottom: mediaqueryHeight(0.04, context)),
                 child: SizedBox(
                   width: double.infinity,
-                  child: DottedBorder(
-                      color: cyanColor,
-                      child: Center(
-                        child: Icon(
-                          Icons.document_scanner_outlined,
-                          color: greyColor,
-                          size: 30,
-                        ),
-                      )),
+                  child: GestureDetector(
+                    onTap: () => context.read<ImageBloc>().add(PickingShopLicense()),
+                    child: DottedBorder(
+                        color: cyanColor,
+                        child: Center(child: BlocBuilder<ImageBloc, ImageState>(
+                            builder: (context, state) {
+                          if (state is ImageInitial &&
+                              state.LicensemagePath.isNotEmpty) {
+                            return Container(
+                              width: double.maxFinite,
+                              height: double.maxFinite,
+                              child: Image.file(File(state.LicensemagePath),
+                                  fit: BoxFit.cover),
+                            );
+                          }
+                          return Icon(
+                            Icons.document_scanner_outlined,
+                            color: greyColor,
+                            size: 30,
+                          );
+                        }))),
+                  ),
                 ),
               ),
             )
