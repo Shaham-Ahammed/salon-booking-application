@@ -13,68 +13,75 @@ class ClosingTimePicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      borderRadius: BorderRadius.circular(8),
-      color: Colors.black54,
-      child: InkWell(
-        borderRadius: BorderRadius.circular(8),
-        onTap: () {
-          Navigator.of(context).push(
-            showPicker(
-              blurredBackground: true,
-              context: context,
-              value: Time(hour: 9, minute: 0),
-              onChange: (p0) {},
-              sunrise: TimeOfDay(hour: 6, minute: 0),
-              sunset: TimeOfDay(hour: 18, minute: 0),
-              duskSpanInMinutes: 120,
-              onChangeDateTime: (time) {
-                context
-                    .read<WorkingHoursBloc>()
-                    .add(ClosingTimeSelected(closingTime: time));
-              },
-            ),
-          );
-        },
-        child: Container(
-          decoration: BoxDecoration(
-            border: Border.all(color: cyanColor, width: 2),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+           myFont("closing time", fontFamily: b612, fontSize: 14, fontWeight: FontWeight.normal, fontColor: Colors.grey),
+        SizedBox(height: 4,),
+        Material(
+          borderRadius: BorderRadius.circular(8),
+          color: Colors.blueGrey.shade900,
+          child: InkWell(
             borderRadius: BorderRadius.circular(8),
-          ),
-          height: mediaqueryHeight(0.07, context),
-          width: double.infinity,
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: mediaqueryWidth(0.045, context)),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-               BlocBuilder<WorkingHoursBloc, WorkingHoursState>(
-                  builder: (context, state) {
-                    if (state is WorkingHoursInitial &&
-                        state.closingTime != null) {
-                      return myFont(state.closingTimeDisplayText,
-                          fontFamily: balooChettan,
-                          fontSize: 18,
-                          fontWeight: FontWeight.normal,
-                          fontColor: greyColor2);
-                    }
-                    return myFont("Closing Time",
-                        fontFamily: balooChettan,
-                        fontSize: 16,
-                        fontWeight: FontWeight.normal,
-                        fontColor: greyColor2);
+            onTap: () {
+              Navigator.of(context).push(
+                showPicker(
+                  blurredBackground: true,
+                  context: context,
+                  value: Time(hour: 9, minute: 0),
+                  onChange: (p0) {},
+                  sunrise: TimeOfDay(hour: 6, minute: 0),
+                  sunset: TimeOfDay(hour: 18, minute: 0),
+                  duskSpanInMinutes: 120,
+                  onChangeDateTime: (time) {
+                    context
+                        .read<WorkingHoursBloc>()
+                        .add(ClosingTimeSelected(closingTime: time));
                   },
                 ),
-                Icon(
-                  Icons.schedule,
-                  color: Colors.red.shade600,
-                )
-              ],
+              );
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: cyanColor, width: 2),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              height: mediaqueryHeight(0.07, context),
+              width: double.infinity,
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: mediaqueryWidth(0.045, context)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                   BlocBuilder<WorkingHoursBloc, WorkingHoursState>(
+                      builder: (context, state) {
+                        if (state is WorkingHoursInitial &&
+                            state.closingTime != null) {
+                          return myFont(state.closingTimeDisplayText,
+                              fontFamily: balooChettan,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                              fontColor: greyColor2);
+                        }
+                        return myFont("Closing Time",
+                            fontFamily: balooChettan,
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal,
+                            fontColor: greyColor2);
+                      },
+                    ),
+                    Icon(
+                      Icons.schedule,
+                      color: Colors.red.shade600,
+                    )
+                  ],
+                ),
+              ),
             ),
           ),
         ),
-      ),
+      ],
     );
   }
 }
