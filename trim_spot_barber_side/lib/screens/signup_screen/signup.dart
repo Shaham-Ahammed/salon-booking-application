@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/mediaquery.dart';
-import 'package:trim_spot_barber_side/screens/login%20screen/widgets/background_image.dart';
-import 'package:trim_spot_barber_side/screens/login%20screen/widgets/textformfields.dart';
-import 'package:trim_spot_barber_side/screens/signup%20screen/widgets/closing_time_picker.dart';
-import 'package:trim_spot_barber_side/screens/signup%20screen/widgets/headings.dart';
-import 'package:trim_spot_barber_side/screens/signup%20screen/widgets/holiday_picker.dart';
-import 'package:trim_spot_barber_side/screens/signup%20screen/widgets/license_picker.dart';
-import 'package:trim_spot_barber_side/screens/signup%20screen/widgets/location_picker.dart';
-import 'package:trim_spot_barber_side/screens/signup%20screen/widgets/opening_time_picker.dart';
-import 'package:trim_spot_barber_side/screens/signup%20screen/widgets/profile_picker.dart';
-import 'package:trim_spot_barber_side/screens/signup%20screen/widgets/register_button.dart';
-import 'package:trim_spot_barber_side/screens/signup%20screen/widgets/screen_padding.dart';
-import 'package:trim_spot_barber_side/screens/signup%20screen/widgets/service_piker.dart';
-import 'package:trim_spot_barber_side/screens/signup%20screen/widgets/shop_image_picker.dart';
-import 'package:trim_spot_barber_side/screens/signup%20screen/widgets/sizedbox.dart';
-import 'package:trim_spot_barber_side/screens/signup%20screen/widgets/textfields.dart';
-import 'package:trim_spot_barber_side/screens/signup%20screen/widgets/upi_id_textform_field.dart';
-import 'package:trim_spot_barber_side/screens/signup%20screen/widgets/welocme.dart';
+import 'package:trim_spot_barber_side/screens/login_screen/widgets/background_image.dart';
+import 'package:trim_spot_barber_side/screens/login_screen/widgets/textformfields.dart';
+import 'package:trim_spot_barber_side/screens/signup_screen/widgets/closing_time_picker.dart';
+import 'package:trim_spot_barber_side/screens/signup_screen/widgets/headings.dart';
+import 'package:trim_spot_barber_side/screens/signup_screen/widgets/holiday_picker.dart';
+import 'package:trim_spot_barber_side/screens/signup_screen/widgets/license_picker.dart';
+import 'package:trim_spot_barber_side/screens/signup_screen/widgets/location_picker.dart';
+import 'package:trim_spot_barber_side/screens/signup_screen/widgets/opening_time_picker.dart';
+import 'package:trim_spot_barber_side/screens/signup_screen/widgets/profile_picker.dart';
+import 'package:trim_spot_barber_side/screens/signup_screen/widgets/register_button.dart';
+import 'package:trim_spot_barber_side/screens/signup_screen/widgets/screen_padding.dart';
+import 'package:trim_spot_barber_side/screens/signup_screen/widgets/service_piker.dart';
+import 'package:trim_spot_barber_side/screens/signup_screen/widgets/shop_image_picker.dart';
+import 'package:trim_spot_barber_side/screens/signup_screen/widgets/sizedbox.dart';
+import 'package:trim_spot_barber_side/screens/signup_screen/widgets/textfields.dart';
+import 'package:trim_spot_barber_side/screens/signup_screen/widgets/upi_id_textform_field.dart';
+import 'package:trim_spot_barber_side/screens/signup_screen/widgets/welocme.dart';
+
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});

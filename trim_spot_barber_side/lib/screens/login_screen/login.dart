@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/mediaquery.dart';
-import 'package:trim_spot_barber_side/screens/login%20screen/widgets/background_image.dart';
-import 'package:trim_spot_barber_side/screens/login%20screen/widgets/google_signin.dart';
-import 'package:trim_spot_barber_side/screens/login%20screen/widgets/login_button.dart';
-import 'package:trim_spot_barber_side/screens/login%20screen/widgets/or_seperator.dart';
-import 'package:trim_spot_barber_side/screens/login%20screen/widgets/resgister_text.dart';
-import 'package:trim_spot_barber_side/screens/login%20screen/widgets/textformfields.dart';
+import 'package:trim_spot_barber_side/screens/login_screen/widgets/background_image.dart';
+import 'package:trim_spot_barber_side/screens/login_screen/widgets/google_signin.dart';
+import 'package:trim_spot_barber_side/screens/login_screen/widgets/login_button.dart';
+import 'package:trim_spot_barber_side/screens/login_screen/widgets/resgister_text.dart';
+import 'package:trim_spot_barber_side/screens/login_screen/widgets/textformfields.dart';
+
+import 'widgets/or_seperator.dart';
+
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

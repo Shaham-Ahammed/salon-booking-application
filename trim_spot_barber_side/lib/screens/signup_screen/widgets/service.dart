@@ -4,8 +4,9 @@ import 'package:trim_spot_barber_side/blocs/registration_blocs/service_bloc/serv
 import 'package:trim_spot_barber_side/reusable_widgets/colors.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/font.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/mediaquery.dart';
-import 'package:trim_spot_barber_side/screens/signup%20screen/widgets/service_rate.dart';
-import 'package:trim_spot_barber_side/screens/signup%20screen/widgets/service_time.dart';
+import 'package:trim_spot_barber_side/screens/signup_screen/widgets/service_rate.dart';
+import 'package:trim_spot_barber_side/screens/signup_screen/widgets/service_time.dart';
+
 
 Column registerServices(
     BuildContext context, String service, bool state, String serviceName) {

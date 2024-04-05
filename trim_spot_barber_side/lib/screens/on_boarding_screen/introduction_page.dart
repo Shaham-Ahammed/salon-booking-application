@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/on_boarding_bloc/onboardind_bloc_bloc.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/page_transitions/fade_transition.dart';
-import 'package:trim_spot_barber_side/screens/on%20boarding%20screen/modals/introduction_lists.dart';
-import 'package:trim_spot_barber_side/screens/on%20boarding%20screen/widgets/images.dart';
-import 'package:trim_spot_barber_side/screens/on%20boarding%20screen/widgets/smoothanimation.dart';
-import 'package:trim_spot_barber_side/screens/on%20boarding%20screen/widgets/title_and_description.dart';
+import 'package:trim_spot_barber_side/screens/login_or_signup/login_or_signup.dart';
+import 'package:trim_spot_barber_side/screens/on_boarding_screen/modals/introduction_lists.dart';
+import 'package:trim_spot_barber_side/screens/on_boarding_screen/widgets/images.dart';
+import 'package:trim_spot_barber_side/screens/on_boarding_screen/widgets/smoothanimation.dart';
+import 'package:trim_spot_barber_side/screens/on_boarding_screen/widgets/title_and_description.dart';
 
-import '../login  or signup/login_or_signup.dart';
 import 'widgets/curved_contianer.dart';
 
 

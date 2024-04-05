@@ -4,10 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/on_boarding_bloc/onboardind_bloc_bloc.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/colors.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/page_transitions/fade_transition.dart';
-import 'package:trim_spot_barber_side/screens/login%20%20or%20signup/widgets/background_image.dart';
-import 'package:trim_spot_barber_side/screens/login%20%20or%20signup/widgets/login_signup_buttons.dart';
-import 'package:trim_spot_barber_side/screens/login%20screen/login.dart';
-import 'package:trim_spot_barber_side/screens/signup%20screen/signup.dart';
+import 'package:trim_spot_barber_side/screens/login_or_signup/widgets/background_image.dart';
+import 'package:trim_spot_barber_side/screens/login_or_signup/widgets/login_signup_buttons.dart';
+
+import '../login_screen/login.dart';
+import '../signup_screen/signup.dart';
+
 
 
 class LoginOrSignup extends StatelessWidget {

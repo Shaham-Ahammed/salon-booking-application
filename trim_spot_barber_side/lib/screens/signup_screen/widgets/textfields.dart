@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:trim_spot_barber_side/screens/login%20screen/widgets/textformfields.dart';
+import 'package:trim_spot_barber_side/screens/login_screen/widgets/textformfields.dart';
 
 
 class ShopNameTextFormField extends StatelessWidget {

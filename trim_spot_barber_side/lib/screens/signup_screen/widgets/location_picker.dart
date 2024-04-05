@@ -5,7 +5,7 @@ import 'package:trim_spot_barber_side/reusable_widgets/colors.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/font.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/mediaquery.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/page_transitions/no_transition_page_route.dart';
-import 'package:trim_spot_barber_side/screens/signup%20screen/widgets/map.dart';
+import 'package:trim_spot_barber_side/screens/signup_screen/widgets/map.dart';
 
 class LocationPicker extends StatefulWidget {
   const LocationPicker({

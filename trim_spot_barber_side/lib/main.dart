@@ -4,8 +4,8 @@ import 'package:trim_spot_barber_side/blocs/registration_blocs/holiday_bloc/holi
 import 'package:trim_spot_barber_side/blocs/registration_blocs/location_bloc/location_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/registration_blocs/service_bloc/service_bloc.dart';
 import 'package:trim_spot_barber_side/reusable_widgets/colors.dart';
+import 'package:trim_spot_barber_side/screens/on_boarding_screen/introduction_page.dart';
 import 'blocs/on_boarding_bloc/onboardind_bloc_bloc.dart';
-import 'screens/on boarding screen/introduction_page.dart';
 
 void main(List<String> args) {
   runApp(MultiBlocProvider(
