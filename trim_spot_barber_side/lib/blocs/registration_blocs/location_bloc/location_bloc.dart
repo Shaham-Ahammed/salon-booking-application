@@ -8,32 +8,35 @@ part 'location_event.dart';
 part 'location_state.dart';
 
 class LocationBloc extends Bloc<LocationEvent, LocationState> {
-  LocationBloc() : super(LocationInitial(address: "")) {
+  LocationBloc()
+      : super(LocationInitial(
+            address: "", latLng: LatLng(0, 0),  registrationPressed: false)) {
     on<LocationPickerPressed>(_locationPickerPressed);
     on<TappedOnLocation>(_tappedOnLocation);
     on<PickedShopPosition>(_pickedShopLocation);
+    on<RegistrationButtonPressed>(_registrationButtonPressed);
   }
   _locationPickerPressed(
       LocationPickerPressed event, Emitter<LocationState> emit) async {
     final checkPermission = await Permission.location.request();
     if (checkPermission.isGranted) {
-      emit(NavigateToMap());
-      emit(LoadingCurrentLocation());
+      emit(NavigateToMap(address: (state.address),registrationPressed: state.registrationPressed,latLng: state.latLng));
+      emit(LoadingCurrentLocation(address: state.address,registrationPressed: state.registrationPressed,latLng: state.latLng));
 
       loc.Location location = loc.Location();
       try {
         final current = await location.getLocation();
 
-        emit(FetchedCurrentLocation(
+        emit(FetchedCurrentLocation(address: state.address,registrationPressed: state.registrationPressed,latLng: state.latLng,
             pickerLocation: LatLng(current.latitude!, current.longitude!)));
       } catch (e) {}
     }
   }
 
   _tappedOnLocation(TappedOnLocation event, Emitter<LocationState> emit) {
-    emit(FetchedCurrentLocation(
+    emit(FetchedCurrentLocation(address: state.address,registrationPressed: state.registrationPressed,
         pickerLocation:
-            LatLng(event.newPosition.latitude, event.newPosition.longitude)));
+            LatLng(event.newPosition.latitude, event.newPosition.longitude), latLng: state.latLng));
   }
 
   _pickedShopLocation(
@@ -42,15 +45,28 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
       List<geocoding.Placemark> placemarks =
           await geocoding.placemarkFromCoordinates(
               event.position.latitude, event.position.longitude);
-     
-        geocoding.Placemark place = placemarks.first;        
-        String addressPosition =
-            "${place.locality}, ${place.administrativeArea}, ${place.country}";
-        emit(LocationInitial(address: addressPosition));
-     
+
+      geocoding.Placemark place = placemarks.first;
+      String addressPosition =
+          "${place.locality}, ${place.administrativeArea}, ${place.country}";
+      print(addressPosition);
+      double lat = event.position.latitude;
+      double lng = event.position.longitude;
+      emit(LocationInitial(
+        registrationPressed: false,
+         
+          address: addressPosition,
+          latLng: LatLng(lat, lng)));
     } catch (e) {
       print("Error fetching placemarks: $e");
     }
- 
+  }
+
+  _registrationButtonPressed(
+      RegistrationButtonPressed event, Emitter<LocationState> emit) {
+    emit(LocationInitial(
+        address: state.address,
+        latLng:(state as LocationInitial).latLng,
+        registrationPressed: true));
   }
 }

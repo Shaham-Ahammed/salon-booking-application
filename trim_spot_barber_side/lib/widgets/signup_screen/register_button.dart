@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trim_spot_barber_side/blocs/registration_blocs/location_bloc/location_bloc.dart';
 import 'package:trim_spot_barber_side/utils/constant_variables/signup_screen_constants.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
 import 'package:trim_spot_barber_side/utils/cyan_container.dart';
@@ -16,8 +18,8 @@ class RegisterButton extends StatelessWidget {
         color: cyanColor,
         borderRadius: BorderRadius.circular(90),
         child: InkWell(
-          splashFactory: InkSplash.splashFactory,
           onTap: () {
+            context.read<LocationBloc>().add(RegistrationButtonPressed());
             if (registrationFormValidation.currentState!.validate()) {
             } else {
               return;

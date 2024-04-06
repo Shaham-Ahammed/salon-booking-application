@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trim_spot_barber_side/blocs/bloc_observer.dart';
 import 'package:trim_spot_barber_side/blocs/registration_blocs/holiday_bloc/holiday_bloc_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/registration_blocs/location_bloc/location_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/registration_blocs/service_bloc/service_bloc.dart';
@@ -10,6 +11,7 @@ import 'package:trim_spot_barber_side/utils/colors.dart';
 import 'blocs/on_boarding_bloc/onboardind_bloc_bloc.dart';
 
 void main(List<String> args) {
+  Bloc.observer = AppBlocObserver();
   runApp(MultiBlocProvider(
     providers: [
       BlocProvider<WorkingHoursBloc>(create: (context) => WorkingHoursBloc()),

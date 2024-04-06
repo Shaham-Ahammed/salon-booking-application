@@ -7,7 +7,6 @@ import 'package:trim_spot_barber_side/utils/mediaquery.dart';
 import 'package:trim_spot_barber_side/utils/page_transitions/no_transition_page_route.dart';
 import 'package:trim_spot_barber_side/widgets/signup_screen/map.dart';
 
-
 class LocationPicker extends StatefulWidget {
   const LocationPicker({
     super.key,
@@ -49,21 +48,21 @@ class _LocationPickerState extends State<LocationPicker> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    if (state is! LocationInitial || state.address.isEmpty)
+                    if (state.address.isEmpty)
                       myFont("Shop Location",
                           fontFamily: balooChettan,
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
                           fontColor: Colors.black54),
-                    if (state is LocationInitial && state.address.isNotEmpty)
+                    if (state.address.isNotEmpty)
                       Expanded(
-                        child:Container(child: myFont(state.address,
+                          child: Container(
+                        child: myFont(state.address,
                             fontFamily: balooChettan,
                             fontSize: 18,
                             fontWeight: FontWeight.w600,
-                            fontColor: Colors.black54),)
-                        
-                      ),
+                            fontColor: Colors.black54),
+                      )),
                     Icon(
                       Icons.location_pin,
                       color: Colors.red.shade800,

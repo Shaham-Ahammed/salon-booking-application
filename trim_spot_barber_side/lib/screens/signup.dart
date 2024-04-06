@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trim_spot_barber_side/blocs/registration_blocs/location_bloc/location_bloc.dart';
 import 'package:trim_spot_barber_side/utils/constant_variables/signup_screen_constants.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
 import 'package:trim_spot_barber_side/utils/mediaquery.dart';
@@ -18,7 +20,6 @@ import 'package:trim_spot_barber_side/widgets/signup_screen/sizedbox.dart';
 import 'package:trim_spot_barber_side/widgets/signup_screen/textfields.dart';
 import 'package:trim_spot_barber_side/widgets/signup_screen/upi_id_textform_field.dart';
 import 'package:trim_spot_barber_side/widgets/signup_screen/welocme.dart';
-
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -62,16 +63,26 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     const ShopNameTextFormField(),
                     textFormFieldSizedBox(context),
                     const LocationPicker(),
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Text("select location",style: TextStyle(
-                        color: Colors.red.shade800, // or any other color you prefer
-                        fontSize: 13.0, // or any other size you prefer
-                      
-                      ),),
+                    BlocBuilder<LocationBloc, LocationState>(
+                      builder: (context, state) {
+                        if (state.address.isEmpty &&
+                            state.registrationPressed) {
+                          return Align(
+                            alignment: Alignment.topLeft,
+                            child: Text(
+                              "select location",
+                              style: TextStyle(
+                                color: Colors.red
+                                    .shade800, // or any other color you prefer
+                                fontSize: 13.0, // or any other size you prefer
+                              ),
+                            ),
+                          );
+                        }
+                        return Container();
+                      },
                     ),
                     textFormFieldSizedBox(context),
-
                     const ProofsHeading(),
                     const SizedBox(
                       height: 3,
