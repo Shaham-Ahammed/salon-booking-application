@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trim_spot_barber_side/blocs/registration_blocs/location_bloc/location_bloc.dart';
 import 'package:trim_spot_barber_side/utils/constant_variables/signup_screen_constants.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
 import 'package:trim_spot_barber_side/utils/mediaquery.dart';
 import 'package:trim_spot_barber_side/widgets/login_screen/background_image.dart';
 import 'package:trim_spot_barber_side/widgets/signup_screen/closing_time_picker.dart';
+import 'package:trim_spot_barber_side/widgets/signup_screen/error_displays_widgets/closing_time_error.dart';
+import 'package:trim_spot_barber_side/widgets/signup_screen/error_displays_widgets/location_error.dart';
+import 'package:trim_spot_barber_side/widgets/signup_screen/error_displays_widgets/opening_time_error.dart';
+import 'package:trim_spot_barber_side/widgets/signup_screen/error_displays_widgets/shop_image_error.dart';
 import 'package:trim_spot_barber_side/widgets/signup_screen/headings.dart';
 import 'package:trim_spot_barber_side/widgets/signup_screen/holiday_picker.dart';
 import 'package:trim_spot_barber_side/widgets/signup_screen/license_picker.dart';
@@ -63,25 +65,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     const ShopNameTextFormField(),
                     textFormFieldSizedBox(context),
                     const LocationPicker(),
-                    BlocBuilder<LocationBloc, LocationState>(
-                      builder: (context, state) {
-                        if (state.address.isEmpty &&
-                            state.registrationPressed) {
-                          return Align(
-                            alignment: Alignment.topLeft,
-                            child: Text(
-                              "select location",
-                              style: TextStyle(
-                                color: Colors.red
-                                    .shade800, // or any other color you prefer
-                                fontSize: 13.0, // or any other size you prefer
-                              ),
-                            ),
-                          );
-                        }
-                        return Container();
-                      },
-                    ),
+                    LocationValidationErrorMessage(),
                     textFormFieldSizedBox(context),
                     const ProofsHeading(),
                     const SizedBox(
@@ -99,6 +83,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       height: 3,
                     ),
                     const ShopImagePicker(),
+                    ShopImageError(),
                     textFormFieldSizedBox(context),
                     const ServiceHeading(),
                     const SizedBox(
@@ -111,10 +96,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       height: 3,
                     ),
                     const OpeningTimePicker(),
+                    OpenTimeError(),
                     SizedBox(
                       height: mediaqueryHeight(0.02, context),
                     ),
                     const ClosingTimePicker(),
+                    ClosingTimeError(),
                     textFormFieldSizedBox(context),
                     const RegisterHeadings(heading: "Holidays"),
                     const SizedBox(

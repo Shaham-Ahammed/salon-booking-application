@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
-import 'package:trim_spot_barber_side/utils/cyan_container.dart';
+import 'package:trim_spot_barber_side/utils/registration_page/cyan_container.dart';
 import 'package:trim_spot_barber_side/utils/font.dart';
 import 'package:trim_spot_barber_side/utils/mediaquery.dart';
 

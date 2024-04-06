@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:trim_spot_barber_side/utils/constant_variables/login_screen_constants.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
 import 'package:trim_spot_barber_side/utils/mediaquery.dart';
-import 'package:trim_spot_barber_side/utils/textformfields.dart';
+import 'package:trim_spot_barber_side/utils/registration_page/textformfields.dart';
 import 'package:trim_spot_barber_side/widgets/login_screen/background_image.dart';
 import 'package:trim_spot_barber_side/widgets/login_screen/google_signin.dart';
 import 'package:trim_spot_barber_side/widgets/login_screen/login_button.dart';

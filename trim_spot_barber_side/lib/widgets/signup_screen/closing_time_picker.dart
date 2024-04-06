@@ -16,8 +16,14 @@ class ClosingTimePicker extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-           myFont("closing time", fontFamily: b612, fontSize: 14, fontWeight: FontWeight.normal, fontColor: Colors.grey),
-        SizedBox(height: 4,),
+        myFont("closing time",
+            fontFamily: b612,
+            fontSize: 14,
+            fontWeight: FontWeight.normal,
+            fontColor: Colors.grey),
+        SizedBox(
+          height: 4,
+        ),
         Material(
           borderRadius: BorderRadius.circular(8),
           color: Colors.blueGrey.shade900,
@@ -28,7 +34,7 @@ class ClosingTimePicker extends StatelessWidget {
                 showPicker(
                   blurredBackground: true,
                   context: context,
-                  value: Time(hour: 9, minute: 0),
+                  value: Time(hour: 20, minute: 0),
                   onChange: (p0) {},
                   sunrise: TimeOfDay(hour: 6, minute: 0),
                   sunset: TimeOfDay(hour: 18, minute: 0),
@@ -54,7 +60,7 @@ class ClosingTimePicker extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                   BlocBuilder<WorkingHoursBloc, WorkingHoursState>(
+                    BlocBuilder<WorkingHoursBloc, WorkingHoursState>(
                       builder: (context, state) {
                         if (state is WorkingHoursInitial &&
                             state.closingTime != null) {

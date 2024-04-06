@@ -1,9 +1,12 @@
 part of 'holiday_bloc_bloc.dart';
 
 @immutable
-sealed class HolidayBlocState {}
+sealed class HolidayBlocState {
+ final List<String> holidays;
+
+ const HolidayBlocState({required this.holidays});
+}
 
 final class HolidayBlocInitial extends HolidayBlocState {
- final List<String> holidays ;
-  HolidayBlocInitial({required this.holidays});
+ HolidayBlocInitial({required List<String> holidays}) : super(holidays: holidays);
 }

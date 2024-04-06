@@ -7,6 +7,7 @@ import 'package:trim_spot_barber_side/utils/colors.dart';
 import 'package:trim_spot_barber_side/utils/font.dart';
 import 'package:trim_spot_barber_side/utils/mediaquery.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:trim_spot_barber_side/widgets/signup_screen/error_displays_widgets/license_image_error.dart';
 
 class ShopLicensePicker extends StatelessWidget {
   const ShopLicensePicker({
@@ -69,7 +70,8 @@ class ShopLicensePicker extends StatelessWidget {
                   ),
                 ),
               ),
-            )
+            ),
+            LicenseImageError()
           ],
         ),
       ),

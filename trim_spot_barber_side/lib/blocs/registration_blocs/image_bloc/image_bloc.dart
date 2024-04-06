@@ -23,8 +23,8 @@ class ImageBloc extends Bloc<ImageEvent, ImageState> {
     if (licenseImage != null) {
       emit(ImageInitial(
           LicensemagePath: licenseImage.path,
-          ProfileImagePath: (state as ImageInitial).ProfileImagePath,
-          ShopImageImagePath: (state as ImageInitial).ShopImageImagePath));
+          ProfileImagePath: state.ProfileImagePath,
+          ShopImageImagePath:state.ShopImageImagePath));
     }
   }
   _profilePicker(
@@ -33,9 +33,9 @@ class ImageBloc extends Bloc<ImageEvent, ImageState> {
     final profileImage = await picker.pickImage(source: ImageSource.gallery);
     if (profileImage != null) {
       emit(ImageInitial(
-          LicensemagePath: (state as ImageInitial).LicensemagePath,
+          LicensemagePath:state.LicensemagePath,
           ProfileImagePath: profileImage.path,
-          ShopImageImagePath: (state as ImageInitial).ShopImageImagePath));
+          ShopImageImagePath: state.ShopImageImagePath));
     }
   }
   _shopImagePicker(
@@ -44,8 +44,8 @@ class ImageBloc extends Bloc<ImageEvent, ImageState> {
     final shopImage = await picker.pickImage(source: ImageSource.gallery);
     if (shopImage != null) {
       emit(ImageInitial(
-          LicensemagePath: (state as ImageInitial).LicensemagePath,
-          ProfileImagePath: (state as ImageInitial).ProfileImagePath,
+          LicensemagePath: state.LicensemagePath,
+          ProfileImagePath: state.ProfileImagePath,
           ShopImageImagePath: shopImage.path));
     }
   }

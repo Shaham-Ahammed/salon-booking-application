@@ -7,6 +7,7 @@ import 'package:trim_spot_barber_side/utils/colors.dart';
 import 'package:trim_spot_barber_side/utils/font.dart';
 import 'package:trim_spot_barber_side/utils/mediaquery.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:trim_spot_barber_side/widgets/signup_screen/error_displays_widgets/profile_image_error.dart';
 
 class ProfilePicker extends StatelessWidget {
   const ProfilePicker({
@@ -71,7 +72,8 @@ class ProfilePicker extends StatelessWidget {
                   ),
                 ),
               ),
-            )
+            ),
+            ProfileImageError()
           ],
         ),
       ),

@@ -17,4 +17,3 @@ final class PickedShopPosition extends LocationEvent {
   
 }
 
-final class RegistrationButtonPressed extends LocationEvent{}

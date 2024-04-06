@@ -10,31 +10,31 @@ part 'location_state.dart';
 class LocationBloc extends Bloc<LocationEvent, LocationState> {
   LocationBloc()
       : super(LocationInitial(
-            address: "", latLng: LatLng(0, 0),  registrationPressed: false)) {
+            address: "", latLng: LatLng(0, 0), )) {
     on<LocationPickerPressed>(_locationPickerPressed);
     on<TappedOnLocation>(_tappedOnLocation);
     on<PickedShopPosition>(_pickedShopLocation);
-    on<RegistrationButtonPressed>(_registrationButtonPressed);
+    
   }
   _locationPickerPressed(
       LocationPickerPressed event, Emitter<LocationState> emit) async {
     final checkPermission = await Permission.location.request();
     if (checkPermission.isGranted) {
-      emit(NavigateToMap(address: (state.address),registrationPressed: state.registrationPressed,latLng: state.latLng));
-      emit(LoadingCurrentLocation(address: state.address,registrationPressed: state.registrationPressed,latLng: state.latLng));
+      emit(NavigateToMap(address: (state.address),latLng: state.latLng));
+      emit(LoadingCurrentLocation(address: state.address,latLng: state.latLng));
 
       loc.Location location = loc.Location();
       try {
         final current = await location.getLocation();
 
-        emit(FetchedCurrentLocation(address: state.address,registrationPressed: state.registrationPressed,latLng: state.latLng,
+        emit(FetchedCurrentLocation(address: state.address,latLng: state.latLng,
             pickerLocation: LatLng(current.latitude!, current.longitude!)));
       } catch (e) {}
     }
   }
 
   _tappedOnLocation(TappedOnLocation event, Emitter<LocationState> emit) {
-    emit(FetchedCurrentLocation(address: state.address,registrationPressed: state.registrationPressed,
+    emit(FetchedCurrentLocation(address: state.address,
         pickerLocation:
             LatLng(event.newPosition.latitude, event.newPosition.longitude), latLng: state.latLng));
   }
@@ -53,7 +53,7 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
       double lat = event.position.latitude;
       double lng = event.position.longitude;
       emit(LocationInitial(
-        registrationPressed: false,
+       
          
           address: addressPosition,
           latLng: LatLng(lat, lng)));
@@ -62,11 +62,5 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
     }
   }
 
-  _registrationButtonPressed(
-      RegistrationButtonPressed event, Emitter<LocationState> emit) {
-    emit(LocationInitial(
-        address: state.address,
-        latLng:(state as LocationInitial).latLng,
-        registrationPressed: true));
-  }
+
 }

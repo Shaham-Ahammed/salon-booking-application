@@ -1,9 +1,10 @@
+// ignore_for_file: invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member
+
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trim_spot_barber_side/blocs/registration_blocs/location_bloc/location_bloc.dart';
 import 'package:trim_spot_barber_side/utils/constant_variables/signup_screen_constants.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
-import 'package:trim_spot_barber_side/utils/cyan_container.dart';
+import 'package:trim_spot_barber_side/utils/registration_page/container_validations.dart';
+import 'package:trim_spot_barber_side/utils/registration_page/cyan_container.dart';
 import 'package:trim_spot_barber_side/utils/font.dart';
 import 'package:trim_spot_barber_side/utils/mediaquery.dart';
 
@@ -19,9 +20,12 @@ class RegisterButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(90),
         child: InkWell(
           onTap: () {
-            context.read<LocationBloc>().add(RegistrationButtonPressed());
-            if (registrationFormValidation.currentState!.validate()) {
+            registerButtonPressed.value = true;
+            registerButtonPressed.notifyListeners();
+            if (detailsSubmitted(context)) {
+              print("success");
             } else {
+              print("failure");
               return;
             }
           },

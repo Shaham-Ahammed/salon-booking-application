@@ -1,15 +1,14 @@
-// ignore_for_file: must_be_immutable
+
 
 part of 'service_bloc.dart';
 
-
 @immutable
-sealed class ServiceBlocState {}
+sealed class ServiceBlocState {
+ final Map<String, bool> switches;
 
-final class ServiceBlocInitial extends ServiceBlocState {
-  final Map<String, bool> switches;
-
-  
-  ServiceBlocInitial({required this.switches});
+ const ServiceBlocState({required this.switches});
 }
 
+final class ServiceBlocInitial extends ServiceBlocState {
+ ServiceBlocInitial({required Map<String, bool> switches}) : super(switches: switches);
+}
