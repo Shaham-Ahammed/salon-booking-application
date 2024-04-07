@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
 import 'package:trim_spot_barber_side/utils/mediaquery.dart';
-import 'package:trim_spot_barber_side/utils/submit_buttons.dart';
 import 'package:trim_spot_barber_side/widgets/login_widgets/background_image.dart';
 import 'package:trim_spot_barber_side/widgets/otp_page/heading_texts.dart';
 import 'package:trim_spot_barber_side/widgets/otp_page/otp_fields.dart';
+import 'package:trim_spot_barber_side/widgets/otp_page/submit_button.dart';
 import 'package:trim_spot_barber_side/widgets/signup_widgets/screen_padding.dart';
 
 class OtpVerificationScreen extends StatelessWidget {
@@ -40,10 +40,7 @@ class OtpVerificationScreen extends StatelessWidget {
                   SizedBox(
                     height: mediaqueryHeight(0.3, context),
                   ),
-                  submitButtonCyan(context,
-                      heigh: mediaqueryHeight(0.06, context),
-                      text: "submit",
-                      width: mediaqueryWidth(0.5, context))
+                  submitButton(context)
                 ],
               ),
             ),
@@ -52,10 +49,6 @@ class OtpVerificationScreen extends StatelessWidget {
       ),
     );
   }
-
-
-
- 
 
 
 }

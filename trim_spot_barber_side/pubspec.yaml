@@ -90,6 +90,9 @@ flutter:
     - assets/images/intoduction1-2.jpeg
     - assets/icons/mdi--google.svg
     - assets/images/splash barber blur.jpg
+    - assets/icons/menu_icon.svg
+    - assets/images/registration success.png
+    - assets/images/registraion denied.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -9,13 +9,16 @@ submitButtonCyan(context,
     required double width,
     Color fontColor = blackColor,
     double fontSize = 20,
+    required Function? function(),
     Color inkwellColor = transparentColor,
     Color buttonColor = cyanColor}) {
   return Material(
       color: buttonColor,
       borderRadius: BorderRadius.circular(90),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          function();
+        },
         borderRadius: BorderRadius.circular(90),
         child: Container(
           width: width,
