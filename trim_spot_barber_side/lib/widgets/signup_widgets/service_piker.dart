@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/registration_blocs/service_bloc/service_bloc.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
 import 'package:trim_spot_barber_side/utils/font.dart';
-import 'package:trim_spot_barber_side/widgets/signup_screen/service.dart';
+import 'package:trim_spot_barber_side/widgets/signup_widgets/service.dart';
 
 
   Container servicePicker() {

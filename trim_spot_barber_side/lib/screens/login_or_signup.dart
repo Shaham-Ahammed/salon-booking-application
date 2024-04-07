@@ -6,8 +6,8 @@ import 'package:trim_spot_barber_side/screens/login.dart';
 import 'package:trim_spot_barber_side/screens/signup.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
 import 'package:trim_spot_barber_side/utils/page_transitions/fade_transition.dart';
-import 'package:trim_spot_barber_side/widgets/login_or_signup/background_image.dart';
-import 'package:trim_spot_barber_side/widgets/login_or_signup/login_signup_buttons.dart';
+import 'package:trim_spot_barber_side/widgets/login_or_signup_widgets/background_image.dart';
+import 'package:trim_spot_barber_side/widgets/login_or_signup_widgets/login_signup_buttons.dart';
 
 
 class LoginOrSignup extends StatelessWidget {

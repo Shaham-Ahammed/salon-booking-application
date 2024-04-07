@@ -3,11 +3,11 @@ import 'package:trim_spot_barber_side/utils/constant_variables/login_screen_cons
 import 'package:trim_spot_barber_side/utils/colors.dart';
 import 'package:trim_spot_barber_side/utils/mediaquery.dart';
 import 'package:trim_spot_barber_side/utils/registration_page/textformfields.dart';
-import 'package:trim_spot_barber_side/widgets/login_screen/background_image.dart';
-import 'package:trim_spot_barber_side/widgets/login_screen/google_signin.dart';
-import 'package:trim_spot_barber_side/widgets/login_screen/login_button.dart';
-import 'package:trim_spot_barber_side/widgets/login_screen/or_seperator.dart';
-import 'package:trim_spot_barber_side/widgets/login_screen/resgister_text.dart';
+import 'package:trim_spot_barber_side/widgets/login_widgets/background_image.dart';
+import 'package:trim_spot_barber_side/widgets/login_widgets/google_signin.dart';
+import 'package:trim_spot_barber_side/widgets/login_widgets/login_button.dart';
+import 'package:trim_spot_barber_side/widgets/login_widgets/or_seperator.dart';
+import 'package:trim_spot_barber_side/widgets/login_widgets/resgister_text.dart';
 
 
 class LoginScreen extends StatelessWidget {

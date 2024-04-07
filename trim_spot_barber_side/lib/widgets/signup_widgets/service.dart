@@ -4,8 +4,8 @@ import 'package:trim_spot_barber_side/blocs/registration_blocs/service_bloc/serv
 import 'package:trim_spot_barber_side/utils/colors.dart';
 import 'package:trim_spot_barber_side/utils/font.dart';
 import 'package:trim_spot_barber_side/utils/mediaquery.dart';
-import 'package:trim_spot_barber_side/widgets/signup_screen/service_rate.dart';
-import 'package:trim_spot_barber_side/widgets/signup_screen/service_time.dart';
+import 'package:trim_spot_barber_side/widgets/signup_widgets/service_rate.dart';
+import 'package:trim_spot_barber_side/widgets/signup_widgets/service_time.dart';
 
 
 

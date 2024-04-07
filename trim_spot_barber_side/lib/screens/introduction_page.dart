@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/on_boarding_bloc/onboardind_bloc_bloc.dart';
 import 'package:trim_spot_barber_side/models/introduction_lists.dart';
 import 'package:trim_spot_barber_side/utils/page_transitions/fade_transition.dart';
-import 'package:trim_spot_barber_side/widgets/on_boarding_screen/curved_contianer.dart';
-import 'package:trim_spot_barber_side/widgets/on_boarding_screen/images.dart';
-import 'package:trim_spot_barber_side/widgets/on_boarding_screen/smoothanimation.dart';
-import 'package:trim_spot_barber_side/widgets/on_boarding_screen/title_and_description.dart';
+import 'package:trim_spot_barber_side/widgets/on_boarding_screen_widgets/curved_contianer.dart';
+import 'package:trim_spot_barber_side/widgets/on_boarding_screen_widgets/images.dart';
+import 'package:trim_spot_barber_side/widgets/on_boarding_screen_widgets/smoothanimation.dart';
+import 'package:trim_spot_barber_side/widgets/on_boarding_screen_widgets/title_and_description.dart';
 
 import 'login_or_signup.dart';
 
