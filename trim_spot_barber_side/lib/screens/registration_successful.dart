@@ -17,7 +17,7 @@ class RegistrationSuccessfulMessageScreen extends StatelessWidget {
     ));
 
     return Scaffold(
-      key: registrationScaffoldKey,
+      key: registrationSuccessScaffoldKey,
       backgroundColor: blackColor,
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, mediaqueryHeight(0.11, context)),

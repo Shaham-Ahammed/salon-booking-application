@@ -6,8 +6,6 @@ import 'package:trim_spot_barber_side/utils/font.dart';
 import 'package:trim_spot_barber_side/utils/mediaquery.dart';
 import 'package:trim_spot_barber_side/utils/page_transitions/no_transition_page_route.dart';
 
-
-
 class DrawerItems extends StatelessWidget {
   const DrawerItems({
     super.key,
@@ -23,7 +21,7 @@ class DrawerItems extends StatelessWidget {
       child: SafeArea(
         child: ListView(
           padding: EdgeInsets.zero,
-          children:[
+          children: [
             Container(
               height: mediaqueryHeight(0.122, context),
               child: DrawerHeader(
@@ -40,7 +38,6 @@ class DrawerItems extends StatelessWidget {
                   fontWeight: FontWeight.normal,
                   fontColor: greyColor),
               onTap: () {
-                
                 Navigator.of(context).pushReplacement(
                     NoTransitionPageRoute(child: LoginScreen()));
               },
@@ -52,9 +49,8 @@ class DrawerItems extends StatelessWidget {
                   fontWeight: FontWeight.normal,
                   fontColor: greyColor),
               onTap: () {
-                Navigator.of(context).push(NoTransitionPageRoute(
-                    child: CustomerSupport()));
-    
+                Navigator.of(context)
+                    .push(NoTransitionPageRoute(child: CustomerSupport()));
               },
             ),
           ],

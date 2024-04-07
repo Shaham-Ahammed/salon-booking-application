@@ -11,3 +11,4 @@ const Color registerTextField = const Color.fromRGBO(43, 43, 43, 1);
 const Color greyColor3 = const Color.fromARGB(255, 122, 122, 122);
 const Color opaqueBlack = Colors.black54;
 const Color appBarColor = Color.fromRGBO(79, 79, 79, 0.64);
+const Color subTitlesTextGrey = Color.fromRGBO(177, 177, 177, 1);

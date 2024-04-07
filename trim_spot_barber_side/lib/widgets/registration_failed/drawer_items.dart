@@ -5,10 +5,8 @@ import 'package:trim_spot_barber_side/utils/constant_variables/registration_succ
 import 'package:trim_spot_barber_side/utils/logo.dart';
 import 'package:trim_spot_barber_side/utils/mediaquery.dart';
 
-class AppBarItems extends StatelessWidget {
-  const AppBarItems({
-    super.key,
-  });
+class AppBarItemsFailed extends StatelessWidget {
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +26,7 @@ class AppBarItems extends StatelessWidget {
                   scale: 1.5,
                   child: GestureDetector(
                     onTap: () {
-                      registrationSuccessScaffoldKey.currentState?.openDrawer();
+                      registrationFailedScaffoldKey.currentState?.openDrawer();
                     },
                     child: SvgPicture.asset(
                       "assets/icons/menu_icon.svg",
