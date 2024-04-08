@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:trim_spot_barber_side/utils/bottom_navigation/page_index.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
@@ -26,6 +25,4 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
           ),
         ));
   }
-
-
 }

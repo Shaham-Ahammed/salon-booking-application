@@ -25,12 +25,12 @@ class RegisterButton extends StatelessWidget {
                 .push(NoTransitionPageRoute(child: OtpVerificationScreen()));
             // registerButtonPressed.value = true;
             // registerButtonPressed.notifyListeners();
-            if (detailsSubmitted(context)) {
-              print("success");
-            } else {
-              print("failure");
-              return;
-            }
+            // if (detailsSubmitted(context)) {
+            //   print("success");
+            // } else {
+            //   print("failure");
+            //   return;
+            // }
           },
           borderRadius: BorderRadius.circular(90),
           child: Container(
