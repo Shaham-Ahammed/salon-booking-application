@@ -6,7 +6,7 @@ import 'package:trim_spot_barber_side/utils/font.dart';
 import 'package:trim_spot_barber_side/utils/mediaquery.dart';
 
 heading(BuildContext context) {
-    myFont("Customer support",
+   return myFont("Customer support",
         fontFamily: balooChettan,
         fontSize: mediaqueryHeight(0.025, context),
         fontWeight: FontWeight.normal,
@@ -14,7 +14,7 @@ heading(BuildContext context) {
   }
 
   customerSupporText() {
-    myFont(customerSupport,
+  return  myFont(customerSupport,
         fontFamily: balooChettan,
         fontSize: 12,
         fontWeight: FontWeight.normal,

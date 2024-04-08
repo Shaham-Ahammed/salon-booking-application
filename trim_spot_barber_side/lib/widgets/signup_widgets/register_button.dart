@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:trim_spot_barber_side/screens/otp_verification.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
 import 'package:trim_spot_barber_side/utils/page_transitions/no_transition_page_route.dart';
+import 'package:trim_spot_barber_side/utils/registration_page/container_validations.dart';
 import 'package:trim_spot_barber_side/utils/registration_page/cyan_container.dart';
 import 'package:trim_spot_barber_side/utils/font.dart';
 import 'package:trim_spot_barber_side/utils/mediaquery.dart';
@@ -24,12 +25,12 @@ class RegisterButton extends StatelessWidget {
                 .push(NoTransitionPageRoute(child: OtpVerificationScreen()));
             // registerButtonPressed.value = true;
             // registerButtonPressed.notifyListeners();
-            // if (detailsSubmitted(context)) {
-            //   print("success");
-            // } else {
-            //   print("failure");
-            //   return;
-            // }
+            if (detailsSubmitted(context)) {
+              print("success");
+            } else {
+              print("failure");
+              return;
+            }
           },
           borderRadius: BorderRadius.circular(90),
           child: Container(
