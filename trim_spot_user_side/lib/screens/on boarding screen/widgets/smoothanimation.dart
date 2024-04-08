@@ -32,7 +32,7 @@ class SmoothPageIndincatorAndNextButton extends StatelessWidget {
           SmoothPageIndicator(
             controller: pageController,
             count: controller.items.length,
-            effect: JumpingDotEffect(activeDotColor: cyanColor),
+            effect: const JumpingDotEffect(activeDotColor: cyanColor),
           ),
           SizedBox(width: mediaqueryWidth(0.33, context)),
           InkWell(
