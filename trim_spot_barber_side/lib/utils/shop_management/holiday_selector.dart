@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/registration_blocs/holiday_bloc/holiday_bloc_bloc.dart';
-import 'package:trim_spot_barber_side/utils/constant_variables/signup_screen_constants.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
+import 'package:trim_spot_barber_side/utils/constant_variables/signup_screen_constants.dart';
 import 'package:trim_spot_barber_side/utils/font.dart';
 import 'package:trim_spot_barber_side/utils/mediaquery.dart';
 
-class HolidayPicker extends StatelessWidget {
-  const HolidayPicker({
+
+class HolidaySelector extends StatelessWidget {
+  const HolidaySelector({
     super.key,
   });
 
@@ -16,7 +17,7 @@ class HolidayPicker extends StatelessWidget {
     return BlocBuilder<HolidayBloc, HolidayBlocState>(
       builder: (context, state) {
         return SizedBox(
-          height: mediaqueryHeight(0.229, context),
+          height: mediaqueryHeight(0.25, context),
           child: GridView.builder(
             physics: NeverScrollableScrollPhysics(),
             itemCount: weekDays.length,
@@ -50,9 +51,10 @@ class HolidayPicker extends StatelessWidget {
                       fontFamily: balooChettan,
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
-                      fontColor: state.holidays.contains(weekDays[index])
-                          ? blackColor
-                          : greyColor,
+                      fontColor:
+                          state.holidays.contains(weekDays[index])
+                              ? blackColor
+                              : greyColor,
                     ),
                   ),
                 ),
@@ -64,3 +66,4 @@ class HolidayPicker extends StatelessWidget {
     );
   }
 }
+

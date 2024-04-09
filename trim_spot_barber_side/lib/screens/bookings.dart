@@ -3,7 +3,7 @@ import 'package:trim_spot_barber_side/screens/completed_bookings.dart';
 import 'package:trim_spot_barber_side/screens/pending_bookings.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
 import 'package:trim_spot_barber_side/utils/constant_variables/bookings.dart';
-import 'package:trim_spot_barber_side/widgets/customer_support/appbar.dart';
+import 'package:trim_spot_barber_side/widgets/bookings_widgets/appbar.dart';
 
 class BookingsScreen extends StatefulWidget {
   const BookingsScreen({super.key});

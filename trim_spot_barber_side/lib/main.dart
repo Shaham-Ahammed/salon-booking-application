@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/home_screen_pageview_bloc/home_screen_page_controller_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/bloc_observer.dart';
 import 'package:trim_spot_barber_side/blocs/bottom_navigation_bloc/bottom_navigation_bar_bloc.dart';
+import 'package:trim_spot_barber_side/blocs/occasional_closure_bloc/occasional_closure_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/registration_blocs/holiday_bloc/holiday_bloc_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/registration_blocs/location_bloc/location_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/registration_blocs/service_bloc/service_bloc.dart';
@@ -17,6 +18,8 @@ void main(List<String> args) {
   Bloc.observer = AppBlocObserver();
   runApp(MultiBlocProvider(
     providers: [
+       BlocProvider<OccasionalClosureBloc>(
+          create: (context) => OccasionalClosureBloc()),
         BlocProvider<SlotSelectionBloc>(
           create: (context) => SlotSelectionBloc()),
        BlocProvider<HomeScreenPageControllerBloc>(
