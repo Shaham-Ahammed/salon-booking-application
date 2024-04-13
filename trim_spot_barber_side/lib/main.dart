@@ -15,12 +15,15 @@ import 'package:trim_spot_barber_side/blocs/registration_blocs/service_bloc/serv
 import 'package:trim_spot_barber_side/blocs/registration_blocs/image_bloc/image_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/registration_blocs/working_hours/working_hours_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/slot_selection_bloc/slot_selection_bloc.dart';
+import 'package:trim_spot_barber_side/firebase_options.dart';
 import 'package:trim_spot_barber_side/screens/onboarding_screen.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
 import 'blocs/on_boarding_bloc/onboardind_bloc_bloc.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main(List<String> args) {
+void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   Bloc.observer = AppBlocObserver();
   runApp(MultiBlocProvider(
     providers: [
