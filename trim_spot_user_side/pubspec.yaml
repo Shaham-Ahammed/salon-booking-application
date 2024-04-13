@@ -38,6 +38,7 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   flutter_bloc: ^8.1.5
   flutter_svg: ^2.0.10+1
+  firebase_core: ^2.29.0
   
 
 dev_dependencies:
