@@ -12,20 +12,26 @@ class TextFormFieldCyan extends StatelessWidget {
       this.obscureText = false,
       this.textInputType = TextInputType.text,
       this.maxLenght,
+      required this.controller,
+      this.validation,
       this.filteringTextInputFormatter});
   final String hintText;
   final TextInputType textInputType;
   final FilteringTextInputFormatter? filteringTextInputFormatter;
   final bool obscureText;
- final int? maxLenght;
+  final TextEditingController controller;
+  final int? maxLenght;
+  final String? Function(String?)? validation;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: validation,
+      controller: controller,
       keyboardType: textInputType,
       inputFormatters: filteringTextInputFormatter == null
           ? null
           : [filteringTextInputFormatter!],
-     maxLength:maxLenght??maxLenght ,
+      maxLength: maxLenght ?? maxLenght,
       style:
           TextStyle(fontFamily: balooChettan, color: greyColor2, fontSize: 18),
       obscureText: obscureText,

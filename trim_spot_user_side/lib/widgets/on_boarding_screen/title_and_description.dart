@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:trim_spot_user_side/utils/colors.dart';
 import 'package:trim_spot_user_side/utils/font.dart';
 import 'package:trim_spot_user_side/utils/mediaquery.dart';
-import 'package:trim_spot_user_side/utils/introduction_screen/introduction_lists.dart';
+import 'package:trim_spot_user_side/utils/introduction_widgets/introduction_lists.dart';
 
 class OnBoardingDescription extends StatelessWidget {
   const OnBoardingDescription({

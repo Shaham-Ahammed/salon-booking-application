@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trim_spot_user_side/utils/login_screen/controllers.dart';
 import 'package:trim_spot_user_side/utils/mediaquery.dart';
 import 'package:trim_spot_user_side/widgets/login_page_widgets/background_image.dart';
 import 'package:trim_spot_user_side/widgets/login_page_widgets/google_signin.dart';
@@ -40,14 +41,16 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(
                     height: mediaqueryHeight(0.03, context),
                   ),
-                  const TextFormFieldCyan(
+                   TextFormFieldCyan(
+                    controller: loginEmailController,
                     hintText: "Email",
                     textInputType: TextInputType.emailAddress,
                   ),
                   SizedBox(
                     height: mediaqueryHeight(0.03, context),
                   ),
-                  const TextFormFieldCyan(
+                   TextFormFieldCyan(
+                    controller: loginPasswordController,
                     hintText: "Password",
                     obscureText: true,
                   ),

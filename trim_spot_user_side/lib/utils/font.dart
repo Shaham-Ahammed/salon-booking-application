@@ -16,7 +16,7 @@ myFont( String text,
     text,
     textAlign: textalign,
     style: TextStyle(
-        
+      
         fontFamily: fontFamily,
         fontSize: fontSize,
         fontWeight: fontWeight,

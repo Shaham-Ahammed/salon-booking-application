@@ -1,9 +1,13 @@
+// ignore_for_file: invalid_use_of_protected_member, invalid_use_of_visible_for_testing_member
 
 import 'package:flutter/material.dart';
+import 'package:trim_spot_user_side/screens/otp_verification.dart';
 import 'package:trim_spot_user_side/utils/colors.dart';
 import 'package:trim_spot_user_side/utils/cyan_container.dart';
 import 'package:trim_spot_user_side/utils/font.dart';
 import 'package:trim_spot_user_side/utils/mediaquery.dart';
+import 'package:trim_spot_user_side/utils/page%20transitions/no_transition_page_route.dart';
+import 'package:trim_spot_user_side/utils/register_page/valuenotifier.dart';
 
 class RegisterButton extends StatelessWidget {
   const RegisterButton({
@@ -17,7 +21,12 @@ class RegisterButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(90),
         child: InkWell(
           splashFactory: InkSplash.splashFactory,
-          onTap: () {},
+          onTap: () {
+            pressedSubmitButton.value = true;
+            pressedSubmitButton.notifyListeners();
+            Navigator.of(context)
+                .push(NoTransitionPageRoute(child: OtpVerificationScreen()));
+          },
           borderRadius: BorderRadius.circular(90),
           child: Container(
             width: mediaqueryWidth(0.6, context),
