@@ -28,7 +28,7 @@ Container profileAppBar(BuildContext context) {
             child: Icon(
               Icons.logout_outlined,
               color: cyanColor,
-              size: mediaqueryHeight(0.03, context),
+              size: mediaqueryHeight(0.035, context),
             ),
           ),
           SizedBox(

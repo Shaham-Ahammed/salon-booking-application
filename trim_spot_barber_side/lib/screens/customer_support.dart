@@ -23,7 +23,7 @@ class CustomerSupport extends StatelessWidget {
             children: [
               customerSupporText(),
               SizedBox(
-                height: mediaqueryHeight(0.061, context),
+                height: mediaqueryHeight(0.041, context),
               ),
               heading(context),
               SizedBox(height: mediaqueryHeight(0.016, context)),
