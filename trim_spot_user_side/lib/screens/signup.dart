@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:trim_spot_user_side/reusable%20widgets/colors.dart';
-import 'package:trim_spot_user_side/reusable%20widgets/font.dart';
-import 'package:trim_spot_user_side/reusable%20widgets/mediaquery.dart';
-import 'package:trim_spot_user_side/screens/login%20screen/widgets/background_image.dart';
-import 'package:trim_spot_user_side/screens/login%20screen/widgets/textformfields.dart';
-import 'package:trim_spot_user_side/screens/signup%20screen/widgets/register_button.dart';
-import 'package:trim_spot_user_side/screens/signup%20screen/widgets/sizedbox.dart';
+import 'package:trim_spot_user_side/utils/mediaquery.dart';
+import 'package:trim_spot_user_side/widgets/login_page_widgets/background_image.dart';
+import 'package:trim_spot_user_side/widgets/login_page_widgets/textformfields.dart';
+import 'package:trim_spot_user_side/widgets/signup_screen/register_button.dart';
+import 'package:trim_spot_user_side/widgets/signup_screen/screen_padding.dart';
+import 'package:trim_spot_user_side/widgets/signup_screen/sizedbox.dart';
+import 'package:trim_spot_user_side/widgets/signup_screen/welcome.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -22,21 +22,13 @@ class SignUpScreen extends StatelessWidget {
         child: SingleChildScrollView(
           reverse: true,
           child: Padding(
-            padding: EdgeInsets.only(
-                left: mediaqueryHeight(0.04, context),
-                right: mediaqueryHeight(0.04, context),
-                top: mediaqueryHeight(0.04, context),
-                bottom: MediaQuery.of(context).viewInsets.bottom),
+            padding: screenPadding(context),
             child: Column(
               children: [
                 SizedBox(
                   height: mediaqueryHeight(0.04, context),
                 ),
-                myFont("welcome",
-                    fontFamily: cabinCondensed,
-                    fontSize: 38,
-                    fontWeight: FontWeight.w600,
-                    fontColor: whiteColor),
+                welcomeText(),
                 SizedBox(
                   height: mediaqueryHeight(0.02, context),
                 ),
@@ -83,8 +75,4 @@ class SignUpScreen extends StatelessWidget {
       ),
     );
   }
-
- 
 }
-
-

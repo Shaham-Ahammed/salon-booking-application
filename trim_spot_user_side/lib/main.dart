@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trim_spot_user_side/reusable%20widgets/colors.dart';
+import 'package:trim_spot_user_side/utils/colors.dart';
 
 import 'blocs/on boarding bloc/onboardind_bloc_bloc.dart';
-import 'screens/on boarding screen/introduction_page.dart';
+import 'screens/introduction_page.dart';
 
 void main(List<String> args) {
   runApp(MultiBlocProvider(
@@ -25,7 +25,7 @@ class App extends StatelessWidget {
       theme: ThemeData(
           bottomSheetTheme:
               BottomSheetThemeData(backgroundColor: introductionColor)),
-      home:  FirstIntroductionPage(),
+      home: FirstIntroductionPage(),
     );
   }
 }

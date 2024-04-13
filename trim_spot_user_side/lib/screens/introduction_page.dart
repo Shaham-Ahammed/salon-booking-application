@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_user_side/blocs/on%20boarding%20bloc/onboardind_bloc_bloc.dart';
-import 'package:trim_spot_user_side/reusable%20widgets/page%20transitions/fade_transition.dart';
-import 'package:trim_spot_user_side/screens/on%20boarding%20screen/modals/introduction_lists.dart';
-import 'package:trim_spot_user_side/screens/on%20boarding%20screen/widgets/curved_contianer.dart';
-import 'package:trim_spot_user_side/screens/on%20boarding%20screen/widgets/images.dart';
-import 'package:trim_spot_user_side/screens/on%20boarding%20screen/widgets/smoothanimation.dart';
-import 'package:trim_spot_user_side/screens/on%20boarding%20screen/widgets/title_and_description.dart';
-import 'package:trim_spot_user_side/screens/login%20%20or%20signup/login_or_signup.dart';
+import 'package:trim_spot_user_side/utils/page%20transitions/fade_transition.dart';
+import 'package:trim_spot_user_side/utils/introduction_screen/introduction_lists.dart';
+import 'package:trim_spot_user_side/widgets/on_boarding_screen/curved_contianer.dart';
+import 'package:trim_spot_user_side/widgets/on_boarding_screen/images.dart';
+import 'package:trim_spot_user_side/widgets/on_boarding_screen/smoothanimation.dart';
+import 'package:trim_spot_user_side/widgets/on_boarding_screen/title_and_description.dart';
+import 'package:trim_spot_user_side/screens/login_or_signup.dart';
 
 
 class FirstIntroductionPage extends StatelessWidget {

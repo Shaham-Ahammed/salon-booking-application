@@ -2,9 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:trim_spot_user_side/reusable%20widgets/colors.dart';
-import 'package:trim_spot_user_side/reusable%20widgets/font.dart';
-import 'package:trim_spot_user_side/reusable%20widgets/mediaquery.dart';
+import 'package:trim_spot_user_side/utils/colors.dart';
+import 'package:trim_spot_user_side/utils/font.dart';
+import 'package:trim_spot_user_side/utils/mediaquery.dart';
 
 class GoogleSignIn extends StatelessWidget {
   const GoogleSignIn({

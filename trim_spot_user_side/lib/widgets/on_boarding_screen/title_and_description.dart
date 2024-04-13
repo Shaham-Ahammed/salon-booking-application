@@ -1,9 +1,9 @@
 
 import 'package:flutter/material.dart';
-import 'package:trim_spot_user_side/reusable%20widgets/colors.dart';
-import 'package:trim_spot_user_side/reusable%20widgets/font.dart';
-import 'package:trim_spot_user_side/reusable%20widgets/mediaquery.dart';
-import 'package:trim_spot_user_side/screens/on%20boarding%20screen/modals/introduction_lists.dart';
+import 'package:trim_spot_user_side/utils/colors.dart';
+import 'package:trim_spot_user_side/utils/font.dart';
+import 'package:trim_spot_user_side/utils/mediaquery.dart';
+import 'package:trim_spot_user_side/utils/introduction_screen/introduction_lists.dart';
 
 class OnBoardingDescription extends StatelessWidget {
   const OnBoardingDescription({
