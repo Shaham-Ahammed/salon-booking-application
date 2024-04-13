@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 class SlideTransitionPageRoute extends PageRouteBuilder {
   final Widget child;
   final AxisDirection direction;
-  SlideTransitionPageRoute({required this.child, this.direction = AxisDirection.left})
+  SlideTransitionPageRoute(
+      {required this.child, this.direction = AxisDirection.left})
       : super(
-          transitionDuration: const Duration(milliseconds: 500),
+          transitionDuration: const Duration(milliseconds: 600),
           pageBuilder: (context, animation, secondaryAnimation) => child,
         );
   @override

@@ -41,3 +41,5 @@ final List<String> timeSlots = [
 ];
 
 List<String> booked = ['12:00', '18:00', '20:30'];
+
+final GlobalKey<ScaffoldState> homeScaffoldKey = GlobalKey<ScaffoldState>();

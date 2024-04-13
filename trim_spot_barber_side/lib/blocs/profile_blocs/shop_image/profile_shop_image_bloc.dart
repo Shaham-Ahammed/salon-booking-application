@@ -8,7 +8,8 @@ part 'profile_shop_image_state.dart';
 class ProfileShopImageBloc
     extends Bloc<ProfileShopImageEvent, ProfileShopImageState> {
   ProfileShopImageBloc()
-      : super(ProfileShopImageInitial(ShopImage: "assets/images/s2.jpg", newShopImage: '')) {
+      : super(ProfileShopImageInitial(
+            ShopImage: "assets/images/s2.jpg", newShopImage: '')) {
     on<ProfilShopImageEditPressed>(_profilShopImageEditPressed);
   }
   _profilShopImageEditPressed(ProfilShopImageEditPressed event,
@@ -16,7 +17,8 @@ class ProfileShopImageBloc
     final ImagePicker imagePicker = ImagePicker();
     final image = await imagePicker.pickImage(source: ImageSource.gallery);
     if (image != null) {
-      emit(ProfileShopImageInitial(ShopImage: state.ShopImage,newShopImage: image.path));
+      emit(ProfileShopImageInitial(
+          ShopImage: state.ShopImage, newShopImage: image.path));
     }
   }
 }

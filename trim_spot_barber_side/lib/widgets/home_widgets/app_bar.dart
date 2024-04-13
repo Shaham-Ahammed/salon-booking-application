@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
+import 'package:trim_spot_barber_side/utils/constant_variables/home.dart';
 import 'package:trim_spot_barber_side/utils/logo.dart';
 import 'package:trim_spot_barber_side/utils/mediaquery.dart';
 
 class AppBarHomeScreen extends StatelessWidget {
-  
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,10 +22,11 @@ class AppBarHomeScreen extends StatelessWidget {
                 Transform.scale(
                   scale: 1.25,
                   child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        homeScaffoldKey.currentState?.openDrawer();
+                      },
                       child: CircleAvatar(
-                        backgroundImage:
-                            AssetImage("assets/images/s2.jpg"),
+                        backgroundImage: AssetImage("assets/images/s2.jpg"),
                       )),
                 ),
                 AppLogo(
