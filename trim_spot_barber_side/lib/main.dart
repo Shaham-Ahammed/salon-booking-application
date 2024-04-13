@@ -20,6 +20,7 @@ import 'package:trim_spot_barber_side/utils/colors.dart';
 import 'blocs/on_boarding_bloc/onboardind_bloc_bloc.dart';
 
 void main(List<String> args) {
+  WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = AppBlocObserver();
   runApp(MultiBlocProvider(
     providers: [
