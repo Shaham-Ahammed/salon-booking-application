@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:trim_spot_barber_side/utils/constant_variables/signup_screen_constants.dart';
-import 'package:trim_spot_barber_side/utils/registration_page/textformfields.dart';
+import 'package:trim_spot_barber_side/utils/textformfields.dart';
 
 class ShopNameTextFormField extends StatelessWidget {
   const ShopNameTextFormField({

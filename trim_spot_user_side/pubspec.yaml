@@ -40,6 +40,9 @@ dependencies:
   flutter_svg: ^2.0.10+1
   firebase_core: ^2.29.0
   image_picker: ^1.0.8
+  cloud_firestore: ^4.16.1
+  firebase_storage: ^11.7.1
+  connectivity_plus: ^6.0.2
   
 
 dev_dependencies:

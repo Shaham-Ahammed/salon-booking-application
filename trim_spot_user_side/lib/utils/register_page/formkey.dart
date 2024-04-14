@@ -1,3 +1,3 @@
 import 'package:flutter/material.dart';
 
-GlobalKey registerFormKey = GlobalKey<FormState>();
+GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();

@@ -22,7 +22,7 @@ class OnBoardingTextAreaContainer extends StatelessWidget {
               child: Container(
                 width: double.infinity,
                 height: mediaqueryHeight(0.45, context),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     shape: BoxShape.circle, color: introductionColor),
               ),
             ),

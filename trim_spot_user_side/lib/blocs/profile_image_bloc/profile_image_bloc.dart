@@ -5,15 +5,22 @@ part 'profile_image_event.dart';
 part 'profile_image_state.dart';
 
 class ProfileImageBloc extends Bloc<ProfileImageEvent, ProfileImageState> {
-  ProfileImageBloc() : super(ProfileImageInitial(imagePath: '')) {
+  
+  ProfileImageBloc()
+      : super(const ProfileImageInitial(imagePath: '', imageInBytes: null)) {
     on<SelectedProfile>(_selectedProfile);
   }
   _selectedProfile(
       SelectedProfile event, Emitter<ProfileImageState> emit) async {
+    String? imagePath;
+    Uint8List? selectedImageInBytes;
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (image != null) {
-      final imagePath = image.path;
-      emit(ProfileImageInitial(imagePath: imagePath));
+      imagePath = image.name;
+      selectedImageInBytes = await image.readAsBytes();
+
+      emit(ProfileImageInitial(
+          imagePath: imagePath, imageInBytes: selectedImageInBytes));
     }
   }
 }

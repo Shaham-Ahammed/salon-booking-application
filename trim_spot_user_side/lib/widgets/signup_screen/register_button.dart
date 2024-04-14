@@ -1,13 +1,12 @@
 // ignore_for_file: invalid_use_of_protected_member, invalid_use_of_visible_for_testing_member
 
 import 'package:flutter/material.dart';
-import 'package:trim_spot_user_side/screens/otp_verification.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trim_spot_user_side/blocs/user_form_validation/form_validation_bloc.dart';
 import 'package:trim_spot_user_side/utils/colors.dart';
 import 'package:trim_spot_user_side/utils/cyan_container.dart';
 import 'package:trim_spot_user_side/utils/font.dart';
 import 'package:trim_spot_user_side/utils/mediaquery.dart';
-import 'package:trim_spot_user_side/utils/page%20transitions/no_transition_page_route.dart';
-import 'package:trim_spot_user_side/utils/register_page/valuenotifier.dart';
 
 class RegisterButton extends StatelessWidget {
   const RegisterButton({
@@ -16,16 +15,23 @@ class RegisterButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+  
+
     return Material(
         color: cyanColor,
         borderRadius: BorderRadius.circular(90),
         child: InkWell(
           splashFactory: InkSplash.splashFactory,
-          onTap: () {
-            pressedSubmitButton.value = true;
-            pressedSubmitButton.notifyListeners();
-            Navigator.of(context)
-                .push(NoTransitionPageRoute(child: OtpVerificationScreen()));
+          onTap: () async {
+            context
+                .read<FormValidationBloc>()
+                .add(SubmitButtonPressed(context));
+          
+            // final downloadurl = await uploadImage();
+            // addData(downloadurl!);
+
+            // Navigator.of(context).push(
+            //     NoTransitionPageRoute(child: const OtpVerificationScreen()));
           },
           borderRadius: BorderRadius.circular(90),
           child: Container(
