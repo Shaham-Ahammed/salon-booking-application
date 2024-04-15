@@ -1,11 +1,13 @@
 // ignore_for_file: invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member, unrelated_type_equality_checks, use_build_context_synchronously
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_user_side/blocs/profile_image_bloc/profile_image_bloc.dart';
-import 'package:trim_spot_user_side/data/repository/add_image.dart';
+import 'package:trim_spot_user_side/data/repository/user_registration.dart';
 import 'package:trim_spot_user_side/utils/firebase/collection_references.dart';
+import 'package:trim_spot_user_side/utils/register_page/controllers.dart';
 import 'package:trim_spot_user_side/utils/register_page/formkey.dart';
 import 'package:trim_spot_user_side/utils/register_page/valuenotifier.dart';
 
@@ -31,9 +33,22 @@ class FormValidationBloc
         emit(NetworkError());
         return;
       }
-      try {
-        emit(AddingToDataToFirebase());
 
+      final collection =
+          await FirebaseFirestore.instance.collection("user_information").get();
+      emit(AddingToDataToFirebase());
+
+      final List<String> usernames = [];
+      usernames.clear();
+      for (var doc in collection.docs) {
+        usernames.add(doc.data()['username'] as String);
+      }
+
+      if (usernames.contains(registerUsernameController.text.trim())) {
+        emit(UserNameExists());
+        return;
+      }
+      try {
         AddUserDetailsToFirebase().addImage(event.context);
 
         String downloadURL =

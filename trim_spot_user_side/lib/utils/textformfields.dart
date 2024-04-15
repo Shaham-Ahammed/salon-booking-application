@@ -33,8 +33,8 @@ class TextFormFieldCyan extends StatelessWidget {
           ? null
           : [filteringTextInputFormatter!],
       maxLength: maxLenght ?? maxLenght,
-      style:
-          const TextStyle(fontFamily: balooChettan, color: greyColor2, fontSize: 18),
+      style: const TextStyle(
+          fontFamily: balooChettan, color: greyColor2, fontSize: 18),
       obscureText: obscureText,
       cursorColor: cyanColor,
       decoration: InputDecoration(
@@ -60,7 +60,7 @@ class TextFormFieldCyan extends StatelessWidget {
             vertical: mediaqueryHeight(0.015, context),
             horizontal: mediaqueryWidth(0.04, context)),
         hintStyle: const TextStyle(
-            fontFamily: balooChettan, color: greyColor2, fontSize: 18),
+            fontFamily: balooChettan, color: greyColor, fontSize: 18),
         hintText: hintText,
         enabledBorder: OutlineInputBorder(
             borderSide: const BorderSide(width: 2, color: cyanColor),

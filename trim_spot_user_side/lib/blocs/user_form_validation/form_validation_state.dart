@@ -13,3 +13,4 @@ final class NetworkError extends FormValidationState{}
 
 final class DataAddingError extends FormValidationState{}
 
+final class UserNameExists extends FormValidationState{}

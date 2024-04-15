@@ -5,10 +5,10 @@ class UserDetailsData {
   Map<String, dynamic> userData(String downloadURL) {
     final data = UserModel(
             imagePath: downloadURL,
-            username: registerUsernameController.text,
-            email: registerEmailController.text,
-            phone: registerPhoneController.text,
-            password: registerPasswordController.text)
+            username: registerUsernameController.text.trim(),
+            email: registerEmailController.text.trim(),
+            phone: registerPhoneController.text.trim(),
+            password: registerPasswordController.text.trim())
         .toMap();
     return data;
   }

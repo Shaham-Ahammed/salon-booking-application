@@ -28,16 +28,3 @@ import 'package:trim_spot_user_side/utils/mediaquery.dart';
     );
   }
 
-  SnackBar dataAddingErrorSnackBar() {
-    return const SnackBar(
-      margin: EdgeInsets.symmetric(horizontal: 10),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(18), topRight: Radius.circular(18)),
-      ),
-      behavior: SnackBarBehavior.floating,
-      duration: Duration(seconds: 2),
-      dismissDirection: DismissDirection.startToEnd,
-      content: Center(child: Text("something went wrong. please try again")),
-    );
-  }

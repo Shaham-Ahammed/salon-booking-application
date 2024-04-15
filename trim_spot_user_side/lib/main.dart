@@ -1,11 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trim_spot_user_side/blocs/login_validation/login_validation_bloc.dart';
 import 'package:trim_spot_user_side/blocs/profile_image_bloc/profile_image_bloc.dart';
 import 'package:trim_spot_user_side/blocs/user_form_validation/form_validation_bloc.dart';
 import 'package:trim_spot_user_side/firebase_options.dart';
 import 'package:trim_spot_user_side/utils/colors.dart';
-
 import 'blocs/on_boarding_bloc/onboardind_bloc_bloc.dart';
 import 'screens/introduction_page.dart';
 
@@ -14,6 +14,8 @@ void main(List<String> args) async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(MultiBlocProvider(
     providers: [
+      BlocProvider<LoginValidationBloc>(
+          create: (context) => LoginValidationBloc()),
       BlocProvider<FormValidationBloc>(
           create: (context) => FormValidationBloc()),
       BlocProvider<ProfileImageBloc>(create: (context) => ProfileImageBloc()),
