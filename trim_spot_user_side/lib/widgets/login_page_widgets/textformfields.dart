@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:trim_spot_user_side/utils/login_screen/controllers.dart';
 import 'package:trim_spot_user_side/utils/textformfields.dart';
 
-class UsernNameLoginTextFormField extends StatelessWidget {
-  const UsernNameLoginTextFormField({
+class EmailLoginTextFormField extends StatelessWidget {
+  const EmailLoginTextFormField({
     super.key,
   });
 
@@ -12,13 +12,13 @@ class UsernNameLoginTextFormField extends StatelessWidget {
     return TextFormFieldCyan(
       validation: (value) {
         if (value == "") {
-          return "enter username";
+          return "enter email";
         } else {
           return null;
         }
       },
-      controller: loginUsernameController,
-      hintText: "Username",
+      controller: loginEmailController,
+      hintText: "Email",
       textInputType: TextInputType.emailAddress,
     );
   }

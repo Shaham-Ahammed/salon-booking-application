@@ -9,8 +9,6 @@ final class LoginSuccess extends LoginValidationState {}
 
 final class AuthenticatingUser extends LoginValidationState {}
 
-final class UserDoesNotExist extends LoginValidationState {}
-
-final class InocrrectPassword extends LoginValidationState {}
+final class IncorrectDetails extends LoginValidationState {}
 
 final class NetworkError extends LoginValidationState {}

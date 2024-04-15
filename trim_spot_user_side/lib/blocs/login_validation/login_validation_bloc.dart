@@ -1,8 +1,8 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trim_spot_user_side/data/repository/login_validation.dart';
-import 'package:trim_spot_user_side/utils/login_screen/controllers.dart';
+import 'package:trim_spot_user_side/data/firebase_auth_implementation/firebase_auth_services.dart';
 import 'package:trim_spot_user_side/utils/login_screen/formkey.dart';
 part 'login_validation_event.dart';
 part 'login_validation_state.dart';
@@ -24,24 +24,16 @@ class LoginValidationBloc
         return;
       }
       emit(AuthenticatingUser());
-      final querySnapshot = await LoginValidationRepository().gettingUserName();
-      if (querySnapshot.docs.isEmpty) {
-        emit(UserDoesNotExist());
-   
+
+      final User? user =
+          await FirebaseAuthService().signInWithEmailAndPassword();
+      if (user != null) {
+        emit(LoginSuccess());
         return;
       } else {
-        final data = querySnapshot.docs.first;
-        final password = data['password'];
-        if (password == loginPasswordController.text.trim()) {
-          emit(LoginSuccess());
-      
-          return;
-        } else {
-          emit(InocrrectPassword());
-          
-          return;
-        }
+        emit(IncorrectDetails());
       }
+     
     } else {
       return;
     }

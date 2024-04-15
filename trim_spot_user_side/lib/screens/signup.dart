@@ -46,8 +46,9 @@ class SignUpScreen extends StatelessWidget {
                       .showSnackBar(networkErrorSnackbar(context));
                 }
                 if (state is DataAddingError) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                      errorSnackBar("something went wrong. please try again"));
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(errorSnackBar("Email already registered"));
+                  Navigator.pop(context);
                 }
                 if (state is NavigateToOtpPage) {
                   Navigator.of(context).pushReplacement(NoTransitionPageRoute(

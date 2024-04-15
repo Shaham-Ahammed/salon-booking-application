@@ -34,16 +34,12 @@ class LoginScreen extends StatelessWidget {
                 .push(FadeTransitionPageRoute(child: const HomeScreen()));
             loginSuccessSnackBar(context).show(context);
           }
-          if (state is UserDoesNotExist) {
-            loginUsernameController.clear();
-            ScaffoldMessenger.of(context)
-                .showSnackBar(errorSnackBar("User does not exist !"));
-            Navigator.pop(context);
-          }
-          if (state is InocrrectPassword) {
+
+          if (state is IncorrectDetails) {
             loginPasswordController.clear();
+            loginEmailController.clear();
             ScaffoldMessenger.of(context)
-                .showSnackBar(errorSnackBar("incorrect password"));
+                .showSnackBar(errorSnackBar("incorrect email or password"));
             Navigator.pop(context);
           }
           if (state is NetworkError) {
@@ -85,7 +81,7 @@ class LoginScreen extends StatelessWidget {
                           SizedBox(
                             height: mediaqueryHeight(0.03, context),
                           ),
-                          const UsernNameLoginTextFormField(),
+                          const EmailLoginTextFormField(),
                           SizedBox(
                             height: mediaqueryHeight(0.03, context),
                           ),

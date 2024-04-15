@@ -2,9 +2,11 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_user_side/blocs/profile_image_bloc/profile_image_bloc.dart';
+import 'package:trim_spot_user_side/data/firebase_auth_implementation/firebase_auth_services.dart';
 import 'package:trim_spot_user_side/data/repository/user_registration.dart';
 import 'package:trim_spot_user_side/utils/firebase/collection_references.dart';
 import 'package:trim_spot_user_side/utils/register_page/controllers.dart';
@@ -33,10 +35,9 @@ class FormValidationBloc
         emit(NetworkError());
         return;
       }
-
+      emit(AddingToDataToFirebase());
       final collection =
           await FirebaseFirestore.instance.collection("user_information").get();
-      emit(AddingToDataToFirebase());
 
       final List<String> usernames = [];
       usernames.clear();
@@ -55,7 +56,11 @@ class FormValidationBloc
             await userStorageReference(event.context).getDownloadURL();
 
         AddUserDetailsToFirebase().addData(downloadURL);
-
+        User? user = await FirebaseAuthService().signUpWithEmailAndPassword();
+        if (user == null) {
+          emit(DataAddingError());
+          return;
+        }
         emit(NavigateToOtpPage());
       } catch (e) {
         emit(DataAddingError());

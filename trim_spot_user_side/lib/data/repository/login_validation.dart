@@ -6,7 +6,7 @@ Future<QuerySnapshot<Object?>>  gettingUserName() async {
     final FirebaseFirestore firestore = FirebaseFirestore.instance;
     final QuerySnapshot querySnapshot = await firestore
         .collection('user_information')
-        .where("username", isEqualTo: loginUsernameController.text.trim())
+        .where("username", isEqualTo: loginEmailController.text.trim())
         .get();
     return querySnapshot;
   }
