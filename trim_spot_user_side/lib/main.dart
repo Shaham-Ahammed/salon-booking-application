@@ -2,7 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_user_side/blocs/bloc_observer.dart';
-import 'package:trim_spot_user_side/blocs/google_sign_in_blox/google_sign_in_bloc.dart';
+import 'package:trim_spot_user_side/blocs/bottom_nav_bloc/bottom_navigation_bloc.dart';
+import 'package:trim_spot_user_side/blocs/google_sign_in_bloc/google_sign_in_bloc.dart';
+
 import 'package:trim_spot_user_side/blocs/login_validation/login_validation_bloc.dart';
 import 'package:trim_spot_user_side/blocs/profile_image_bloc/profile_image_bloc.dart';
 import 'package:trim_spot_user_side/blocs/user_form_validation/form_validation_bloc.dart';
@@ -17,6 +19,8 @@ void main(List<String> args) async {
   Bloc.observer = AppBlocObserver();
   runApp(MultiBlocProvider(
     providers: [
+      BlocProvider<BottomNavigationBloc>(
+          create: (context) => BottomNavigationBloc()),
       BlocProvider<GoogleSignInBloc>(
           create: (context) => GoogleSignInBloc()),
       BlocProvider<LoginValidationBloc>(

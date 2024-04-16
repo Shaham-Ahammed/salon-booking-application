@@ -5,8 +5,8 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:trim_spot_user_side/blocs/on_boarding_bloc/onboardind_bloc_bloc.dart';
 import 'package:trim_spot_user_side/utils/colors.dart';
 import 'package:trim_spot_user_side/utils/mediaquery.dart';
+import 'package:trim_spot_user_side/utils/onboarding/introduction_lists.dart';
 
-import '../../utils/introduction_widgets/introduction_lists.dart';
 
 class SmoothPageIndincatorAndNextButton extends StatelessWidget {
   const SmoothPageIndincatorAndNextButton({

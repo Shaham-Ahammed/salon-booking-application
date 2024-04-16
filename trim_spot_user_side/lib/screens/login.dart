@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trim_spot_user_side/blocs/google_sign_in_blox/google_sign_in_bloc.dart';
+import 'package:trim_spot_user_side/blocs/google_sign_in_bloc/google_sign_in_bloc.dart';
+
 import 'package:trim_spot_user_side/blocs/login_validation/login_validation_bloc.dart';
-import 'package:trim_spot_user_side/screens/home_screen.dart';
+import 'package:trim_spot_user_side/screens/bottom_navigation.dart';
 import 'package:trim_spot_user_side/utils/colors.dart';
 import 'package:trim_spot_user_side/utils/error_snackbars.dart';
 import 'package:trim_spot_user_side/utils/login_screen/controllers.dart';
@@ -33,8 +34,8 @@ class LoginScreen extends StatelessWidget {
             listener: (context, state) {
               if (state is LoginSuccess) {
                 Navigator.pop(context);
-                Navigator.of(context)
-                    .push(FadeTransitionPageRoute(child: const HomeScreen()));
+                Navigator.of(context).push(FadeTransitionPageRoute(
+                    child: const BottomNavigationBarScreen()));
                 loginSuccessSnackBar(context).show(context);
               }
 
@@ -59,8 +60,8 @@ class LoginScreen extends StatelessWidget {
               listener: (context, state) {
             if (state is GoogleSigninSuccess) {
               Navigator.pop(context);
-              Navigator.of(context)
-                  .push(FadeTransitionPageRoute(child: const HomeScreen()));
+              Navigator.of(context).push(FadeTransitionPageRoute(
+                  child: const BottomNavigationBarScreen()));
               loginSuccessSnackBar(context).show(context);
             }
             if (state is ProcessingLogin) {

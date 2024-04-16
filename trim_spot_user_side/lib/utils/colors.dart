@@ -13,3 +13,5 @@ const Color greyColor3 = Color.fromARGB(255, 122, 122, 122);
 const Color opaqueBlack = Colors.black54;
 const Color appBarColor = Color.fromRGBO(73, 73, 73, 0.631);
 const Color subTitlesTextGrey = Color.fromRGBO(177, 177, 177, 1);
+const Color bottomNavBarColor = Color.fromRGBO(255, 255, 255, 0.494);
+const Color nonSelectedIconBackgroundColor = Color.fromRGBO(177, 177, 177, 0.6);
