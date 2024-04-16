@@ -46,6 +46,7 @@ dependencies:
   loading_indicator: ^3.1.1
   another_flushbar: ^1.12.30
   firebase_auth: ^4.19.1
+  google_sign_in: ^6.2.1
   
 
 dev_dependencies:

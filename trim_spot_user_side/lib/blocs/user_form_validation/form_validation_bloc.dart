@@ -50,17 +50,18 @@ class FormValidationBloc
         return;
       }
       try {
+         User? user = await FirebaseAuthService().signUpWithEmailAndPassword();
+        if (user == null) {
+          emit(DataAddingError());
+          return;
+        }
         AddUserDetailsToFirebase().addImage(event.context);
 
         String downloadURL =
             await userStorageReference(event.context).getDownloadURL();
 
         AddUserDetailsToFirebase().addData(downloadURL);
-        User? user = await FirebaseAuthService().signUpWithEmailAndPassword();
-        if (user == null) {
-          emit(DataAddingError());
-          return;
-        }
+       
         emit(NavigateToOtpPage());
       } catch (e) {
         emit(DataAddingError());

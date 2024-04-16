@@ -46,6 +46,7 @@ class SignUpScreen extends StatelessWidget {
                       .showSnackBar(networkErrorSnackbar(context));
                 }
                 if (state is DataAddingError) {
+                  registerEmailController.clear();
                   ScaffoldMessenger.of(context)
                       .showSnackBar(errorSnackBar("Email already registered"));
                   Navigator.pop(context);

@@ -1,13 +1,13 @@
-
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:trim_spot_user_side/blocs/google_sign_in_blox/google_sign_in_bloc.dart';
 import 'package:trim_spot_user_side/utils/colors.dart';
 import 'package:trim_spot_user_side/utils/font.dart';
 import 'package:trim_spot_user_side/utils/mediaquery.dart';
 
-class GoogleSignIn extends StatelessWidget {
-  const GoogleSignIn({
+class GoogleSignInWidget extends StatelessWidget {
+  const GoogleSignInWidget({
     super.key,
   });
 
@@ -18,12 +18,13 @@ class GoogleSignIn extends StatelessWidget {
       color: greyColor2,
       child: InkWell(
         borderRadius: BorderRadius.circular(90),
-        onTap: () {},
+        onTap: () {
+          context.read<GoogleSignInBloc>().add(GoogleSigninButtonPressed());
+        },
         child: Container(
           height: mediaqueryHeight(0.06, context),
           width: double.infinity,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(90)),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(90)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
