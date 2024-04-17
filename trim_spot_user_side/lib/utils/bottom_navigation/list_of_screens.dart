@@ -5,8 +5,8 @@ import 'package:trim_spot_user_side/screens/profile.dart';
 import 'package:trim_spot_user_side/screens/search_screen.dart';
 
 List<Widget> tabs = [
-  HomeScreen(),
-  SearchScreen(),
-  BookingsScreen(),
-  ProfileScreen()
+  const HomeScreen(),
+  const SearchScreen(),
+  const BookingsScreen(),
+  const ProfileScreen()
 ];

@@ -91,6 +91,9 @@ flutter:
     - assets/images/intoduction1-2.jpeg
     - assets/icons/mdi--google.svg
     - assets/animations/home_animation.json
+    - assets/icons/menu_icon.svg
+    - assets/images/shop_image.jpg
+    
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

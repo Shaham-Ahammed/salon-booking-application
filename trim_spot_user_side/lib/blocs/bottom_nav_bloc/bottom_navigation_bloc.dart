@@ -6,7 +6,7 @@ part 'bottom_navigation_state.dart';
 
 class BottomNavigationBloc
     extends Bloc<BottomNavigationEvent, BottomNavigationState> {
-  BottomNavigationBloc() : super(BottomNavigationInitial(currentPageIndex: 0)) {
+  BottomNavigationBloc() : super(const BottomNavigationInitial(currentPageIndex: 0)) {
     on<BottomNavBarPressed>(_bottomNavBarPressed);
   }
   _bottomNavBarPressed(

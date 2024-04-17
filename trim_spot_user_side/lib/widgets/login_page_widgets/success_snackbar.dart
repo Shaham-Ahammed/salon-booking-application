@@ -7,7 +7,7 @@ import 'package:trim_spot_user_side/utils/mediaquery.dart';
   Flushbar<dynamic> loginSuccessSnackBar(BuildContext context) {
     return Flushbar(
       flushbarStyle: FlushbarStyle.FLOATING,
-      backgroundColor: Colors.green.shade900,
+      backgroundColor: cyanColor,
       borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
       maxWidth: mediaqueryWidth(0.95, context),
