@@ -7,6 +7,10 @@ import 'package:trim_spot_user_side/blocs/google_sign_in_bloc/google_sign_in_blo
 
 import 'package:trim_spot_user_side/blocs/login_validation/login_validation_bloc.dart';
 import 'package:trim_spot_user_side/blocs/nearby_salons_bloc/nearby_salons_bloc.dart';
+import 'package:trim_spot_user_side/blocs/profile_blocs/email_bloc/profile_email_bloc.dart';
+import 'package:trim_spot_user_side/blocs/profile_blocs/name_bloc/profile_name_bloc.dart';
+import 'package:trim_spot_user_side/blocs/profile_blocs/phone_bloc/profile_phone_bloc.dart';
+import 'package:trim_spot_user_side/blocs/profile_blocs/user_profile_image_bloc/profile_user_image_bloc.dart';
 import 'package:trim_spot_user_side/blocs/profile_image_bloc/profile_image_bloc.dart';
 import 'package:trim_spot_user_side/blocs/user_form_validation/form_validation_bloc.dart';
 import 'package:trim_spot_user_side/firebase_options.dart';
@@ -20,12 +24,15 @@ void main(List<String> args) async {
   Bloc.observer = AppBlocObserver();
   runApp(MultiBlocProvider(
     providers: [
-       BlocProvider<NearbySalonsBloc>(
-          create: (context) => NearbySalonsBloc()),
+      BlocProvider<ProfileEmailBloc>(create: (context) => ProfileEmailBloc()),
+      BlocProvider<ProfileNameBloc>(create: (context) => ProfileNameBloc()),
+      BlocProvider<ProfilePhoneBloc>(create: (context) => ProfilePhoneBloc()),
+      BlocProvider<ProfileUserImageBloc>(
+          create: (context) => ProfileUserImageBloc()),
+      BlocProvider<NearbySalonsBloc>(create: (context) => NearbySalonsBloc()),
       BlocProvider<BottomNavigationBloc>(
           create: (context) => BottomNavigationBloc()),
-      BlocProvider<GoogleSignInBloc>(
-          create: (context) => GoogleSignInBloc()),
+      BlocProvider<GoogleSignInBloc>(create: (context) => GoogleSignInBloc()),
       BlocProvider<LoginValidationBloc>(
           create: (context) => LoginValidationBloc()),
       BlocProvider<FormValidationBloc>(

@@ -8,5 +8,5 @@ List<Widget> tabs = [
   const HomeScreen(),
   const SearchScreen(),
   const BookingsScreen(),
-  const ProfileScreen()
+   const ProfileScreen()
 ];
