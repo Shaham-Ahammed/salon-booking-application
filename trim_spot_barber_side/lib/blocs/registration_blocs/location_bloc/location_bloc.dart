@@ -10,33 +10,39 @@ part 'location_state.dart';
 class LocationBloc extends Bloc<LocationEvent, LocationState> {
   LocationBloc()
       : super(LocationInitial(
-            address: "", latLng: LatLng(0, 0), )) {
+          address: "",
+          latLng: LatLng(0, 0),
+        )) {
     on<LocationPickerPressed>(_locationPickerPressed);
     on<TappedOnLocation>(_tappedOnLocation);
     on<PickedShopPosition>(_pickedShopLocation);
-    
   }
   _locationPickerPressed(
       LocationPickerPressed event, Emitter<LocationState> emit) async {
     final checkPermission = await Permission.location.request();
     if (checkPermission.isGranted) {
-      emit(NavigateToMap(address: (state.address),latLng: state.latLng));
-      emit(LoadingCurrentLocation(address: state.address,latLng: state.latLng));
+      emit(NavigateToMap(address: (state.address), latLng: state.latLng));
+      emit(
+          LoadingCurrentLocation(address: state.address, latLng: state.latLng));
 
       loc.Location location = loc.Location();
       try {
         final current = await location.getLocation();
 
-        emit(FetchedCurrentLocation(address: state.address,latLng: state.latLng,
+        emit(FetchedCurrentLocation(
+            address: state.address,
+            latLng: state.latLng,
             pickerLocation: LatLng(current.latitude!, current.longitude!)));
       } catch (e) {}
     }
   }
 
   _tappedOnLocation(TappedOnLocation event, Emitter<LocationState> emit) {
-    emit(FetchedCurrentLocation(address: state.address,
+    emit(FetchedCurrentLocation(
+        address: state.address,
         pickerLocation:
-            LatLng(event.newPosition.latitude, event.newPosition.longitude), latLng: state.latLng));
+            LatLng(event.newPosition.latitude, event.newPosition.longitude),
+        latLng: state.latLng));
   }
 
   _pickedShopLocation(
@@ -52,15 +58,9 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
       print(addressPosition);
       double lat = event.position.latitude;
       double lng = event.position.longitude;
-      emit(LocationInitial(
-       
-         
-          address: addressPosition,
-          latLng: LatLng(lat, lng)));
+      emit(LocationInitial(address: addressPosition, latLng: LatLng(lat, lng)));
     } catch (e) {
       print("Error fetching placemarks: $e");
     }
   }
-
-
 }

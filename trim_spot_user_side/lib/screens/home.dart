@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trim_spot_user_side/utils/colors.dart';
+import 'package:trim_spot_user_side/utils/home/scaffold_key.dart';
 import 'package:trim_spot_user_side/utils/mediaquery.dart';
 import 'package:trim_spot_user_side/utils/screen_padding.dart';
 import 'package:trim_spot_user_side/widgets/home_widgets/app_bar.dart';
@@ -8,6 +9,15 @@ import 'package:trim_spot_user_side/widgets/home_widgets/headings.dart';
 import 'package:trim_spot_user_side/widgets/home_widgets/nearbysalon_listtile.dart';
 import 'package:trim_spot_user_side/widgets/home_widgets/search_box.dart';
 import 'package:trim_spot_user_side/widgets/home_widgets/viewmore_button.dart';
+import 'package:trim_spot_user_side/utils/home/scaffold_key.dart';
+import 'package:trim_spot_user_side/utils/mediaquery.dart';
+import 'package:trim_spot_user_side/widgets/bottom_nav_bar/bottom_nav_container.dart';
+import 'package:trim_spot_user_side/widgets/drawer_home/close_button.dart';
+import 'package:trim_spot_user_side/widgets/drawer_home/divider.dart';
+import 'package:trim_spot_user_side/widgets/drawer_home/listtile_items.dart';
+import 'package:trim_spot_user_side/widgets/drawer_home/profile_image.dart';
+import 'package:trim_spot_user_side/widgets/drawer_home/user_details.dart';
+import 'package:trim_spot_user_side/widgets/drawer_home/version_number.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -15,6 +25,52 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       key: homeScaffoldKey,
+       
+      drawer: Drawer(
+        backgroundColor: blackColor,
+        width: mediaqueryWidth(0.85, context),
+        child: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.all(mediaqueryHeight(0.02, context)),
+            child: Column(
+              children: [
+                CloseButtonDrawer(),
+                Row(
+                  children: [
+                    Stack(
+                      children: [
+                        ProfileImageDisplay(),
+                        ProfileImageEditButton()
+                      ],
+                    ),
+                    SizedBox(
+                      width: mediaqueryHeight(0.02, context),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        userName(context),
+                        userEmail(context),
+                        userPhone(context),
+                      ],
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: mediaqueryHeight(0.02, context),
+                ),
+                DrawerDivider(),
+                SizedBox(
+                  height: mediaqueryHeight(0.01, context),
+                ),
+               listviewDrawerHome(context),
+               
+              ],
+            ),
+          ),
+        ),
+      ),
         backgroundColor: blackColor,
         body: SafeArea(
           child: SingleChildScrollView(

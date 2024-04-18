@@ -16,7 +16,7 @@ class SubmitButton extends StatelessWidget {
         child: submitButtonCyan(context,
             text: "Save Changes",
             fontSize: mediaqueryHeight(0.02, context),
-            heigh: mediaqueryHeight(0.04, context),
+            heigh: mediaqueryHeight(0.05, context),
             width: mediaqueryWidth(0.35, context), function: () {
       return null;
     }));

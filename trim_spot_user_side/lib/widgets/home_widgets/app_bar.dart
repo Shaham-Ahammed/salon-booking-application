@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:trim_spot_user_side/blocs/profile_image_bloc/profile_image_bloc.dart';
 import 'package:trim_spot_user_side/utils/colors.dart';
 import 'package:trim_spot_user_side/utils/font.dart';
+import 'package:trim_spot_user_side/utils/home/scaffold_key.dart';
 import 'package:trim_spot_user_side/utils/mediaquery.dart';
 
 class AppBarElements extends StatelessWidget {
@@ -27,7 +28,6 @@ class AppBarElements extends StatelessWidget {
   }
 }
 
-
 class MenuIcon extends StatelessWidget {
   const MenuIcon({
     super.key,
@@ -35,8 +35,13 @@ class MenuIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Transform.scale(
-        scale: 1.34, child: SvgPicture.asset("assets/icons/menu_icon.svg"));
+    return GestureDetector(
+      onTap: () {
+        homeScaffoldKey.currentState?.openDrawer();
+      },
+      child: Transform.scale(
+          scale: 1.34, child: SvgPicture.asset("assets/icons/menu_icon.svg")),
+    );
   }
 }
 
