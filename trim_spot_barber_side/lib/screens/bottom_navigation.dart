@@ -8,12 +8,7 @@ import 'package:trim_spot_barber_side/widgets/bottom_navigation/bottom_nav_bar.d
 import 'package:trim_spot_barber_side/widgets/bottom_navigation/padding.dart';
 import 'package:trim_spot_barber_side/widgets/home_widgets/drawer.dart';
 
-class BottomNavigationScreen extends StatefulWidget {
-  @override
-  State<BottomNavigationScreen> createState() => _BottomNavigationScreenState();
-}
-
-class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
+class BottomNavigationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,9 +24,4 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
           ),
         ));
   }
-
-
-  
- 
 }
-

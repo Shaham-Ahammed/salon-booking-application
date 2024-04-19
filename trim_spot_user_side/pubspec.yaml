@@ -49,6 +49,7 @@ dependencies:
   google_sign_in: ^6.2.1
   lottie: ^3.1.0
   font_awesome_flutter: ^10.7.0
+  intl: ^0.19.0
   
 
 dev_dependencies:
@@ -90,7 +91,7 @@ flutter:
     - assets/images/splash barber.jpg
     - assets/images/intoduction1-2.jpeg
     - assets/icons/mdi--google.svg
-    - assets/animations/home_animation.json
+    - assets/animations/bookmark_lottie.json
     - assets/icons/menu_icon.svg
     - assets/images/shop_image.jpg
     

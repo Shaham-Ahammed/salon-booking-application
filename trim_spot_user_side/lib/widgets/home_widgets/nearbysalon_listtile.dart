@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_user_side/blocs/nearby_salons_bloc/nearby_salons_bloc.dart';
+import 'package:trim_spot_user_side/blocs/service_booking_blocs/bloc/date_selection_bloc.dart';
+import 'package:trim_spot_user_side/screens/booking_screen.dart';
 import 'package:trim_spot_user_side/utils/colors.dart';
 import 'package:trim_spot_user_side/utils/font.dart';
 import 'package:trim_spot_user_side/utils/mediaquery.dart';
+import 'package:trim_spot_user_side/utils/page%20transitions/slide_transition.dart';
 
 class NearbySalonsListviewWidget extends StatelessWidget {
   const NearbySalonsListviewWidget({
@@ -18,46 +21,54 @@ class NearbySalonsListviewWidget extends StatelessWidget {
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) {
-              return Container(
-                padding: const EdgeInsets.all(12),
-                width: double.infinity,
-                height: mediaqueryHeight(0.25, context),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(14),
-                    image: const DecorationImage(
-                        fit: BoxFit.cover,
-                        image: AssetImage("assets/images/shop_image.jpg"))),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    myFont("HIPOCHI SALON",
-                        fontFamily: balooChettan,
-                        fontSize: mediaqueryHeight(0.015, context),
-                        fontWeight: FontWeight.w600,
-                        fontColor: whiteColor),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.location_on,
-                          size: mediaqueryHeight(
-                            0.013,
-                            context,
+              return GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(SlideTransitionPageRoute(
+                      child: ServiceBookingScreen(
+                    
+                  )));
+                },
+                child: Container(
+                  padding: const EdgeInsets.all(12),
+                  width: double.infinity,
+                  height: mediaqueryHeight(0.25, context),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(14),
+                      image: const DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage("assets/images/shop_image.jpg"))),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      myFont("HIPOCHI SALON",
+                          fontFamily: balooChettan,
+                          fontSize: mediaqueryHeight(0.015, context),
+                          fontWeight: FontWeight.w600,
+                          fontColor: whiteColor),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.location_on,
+                            size: mediaqueryHeight(
+                              0.013,
+                              context,
+                            ),
+                            color: whiteColor,
                           ),
-                          color: whiteColor,
-                        ),
-                        const SizedBox(
-                          width: 3,
-                        ),
-                        myFont("Manjeri",
-                            fontFamily: balooChettan,
-                            fontSize: mediaqueryHeight(0.014, context),
-                            fontWeight: FontWeight.w500,
-                            fontColor: whiteColor)
-                      ],
-                    )
-                  ],
+                          const SizedBox(
+                            width: 3,
+                          ),
+                          myFont("Manjeri",
+                              fontFamily: balooChettan,
+                              fontSize: mediaqueryHeight(0.014, context),
+                              fontWeight: FontWeight.w500,
+                              fontColor: whiteColor)
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               );
             },

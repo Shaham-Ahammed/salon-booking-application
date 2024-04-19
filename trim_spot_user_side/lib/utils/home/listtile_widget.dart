@@ -4,7 +4,7 @@ import 'package:trim_spot_user_side/utils/font.dart';
 import 'package:trim_spot_user_side/utils/mediaquery.dart';
 
  ListTile drawerListTiles(BuildContext context,
-      {required Function? function()?,
+      {required Function? Function()? function,
       required double iconSize,
       required String title,
       Color color = greyColor3,

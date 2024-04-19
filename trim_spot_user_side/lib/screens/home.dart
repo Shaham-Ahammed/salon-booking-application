@@ -9,15 +9,11 @@ import 'package:trim_spot_user_side/widgets/home_widgets/headings.dart';
 import 'package:trim_spot_user_side/widgets/home_widgets/nearbysalon_listtile.dart';
 import 'package:trim_spot_user_side/widgets/home_widgets/search_box.dart';
 import 'package:trim_spot_user_side/widgets/home_widgets/viewmore_button.dart';
-import 'package:trim_spot_user_side/utils/home/scaffold_key.dart';
-import 'package:trim_spot_user_side/utils/mediaquery.dart';
-import 'package:trim_spot_user_side/widgets/bottom_nav_bar/bottom_nav_container.dart';
 import 'package:trim_spot_user_side/widgets/drawer_home/close_button.dart';
 import 'package:trim_spot_user_side/widgets/drawer_home/divider.dart';
 import 'package:trim_spot_user_side/widgets/drawer_home/listtile_items.dart';
 import 'package:trim_spot_user_side/widgets/drawer_home/profile_image.dart';
 import 'package:trim_spot_user_side/widgets/drawer_home/user_details.dart';
-import 'package:trim_spot_user_side/widgets/drawer_home/version_number.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -35,10 +31,10 @@ class HomeScreen extends StatelessWidget {
             padding: EdgeInsets.all(mediaqueryHeight(0.02, context)),
             child: Column(
               children: [
-                CloseButtonDrawer(),
+                const CloseButtonDrawer(),
                 Row(
                   children: [
-                    Stack(
+                    const Stack(
                       children: [
                         ProfileImageDisplay(),
                         ProfileImageEditButton()
@@ -60,7 +56,7 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(
                   height: mediaqueryHeight(0.02, context),
                 ),
-                DrawerDivider(),
+                const DrawerDivider(),
                 SizedBox(
                   height: mediaqueryHeight(0.01, context),
                 ),

@@ -13,7 +13,7 @@ class ProfileImageDisplay extends StatelessWidget {
   Widget build(BuildContext context) {
     return CircleAvatar(
       radius: mediaqueryHeight(0.05, context),
-      backgroundImage: AssetImage("assets/images/s2.jpg"),
+      backgroundImage: const AssetImage("assets/images/s2.jpg"),
     );
   }
 }
@@ -36,13 +36,13 @@ class ProfileImageEditButton extends StatelessWidget {
               Navigator.pop(context);
               Navigator.of(context).push(
                   FadeTransitionPageRoute(
-                      child: ProfileScreen()));
+                      child: const ProfileScreen()));
             },
             borderRadius: BorderRadius.circular(90),
             child: Container(
               padding: EdgeInsets.all(
                   mediaqueryHeight(0.007, context)),
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 shape: BoxShape.circle,
               ),
               child: Icon(

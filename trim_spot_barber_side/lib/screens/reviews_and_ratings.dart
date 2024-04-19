@@ -4,15 +4,9 @@ import 'package:trim_spot_barber_side/utils/font.dart';
 import 'package:trim_spot_barber_side/utils/mediaquery.dart';
 import 'package:trim_spot_barber_side/utils/reviews_and_ratings/modal_list.dart';
 
-class ReviewsAndRatingsScreen extends StatefulWidget {
+class ReviewsAndRatingsScreen extends StatelessWidget {
   const ReviewsAndRatingsScreen({super.key});
 
-  @override
-  State<ReviewsAndRatingsScreen> createState() =>
-      _ReviewsAndRatingsScreenState();
-}
-
-class _ReviewsAndRatingsScreenState extends State<ReviewsAndRatingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

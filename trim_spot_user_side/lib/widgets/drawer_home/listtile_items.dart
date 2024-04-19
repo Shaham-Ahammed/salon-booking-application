@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_user_side/blocs/bottom_nav_bloc/bottom_navigation_bloc.dart';
-import 'package:trim_spot_user_side/screens/bookings.dart';
 import 'package:trim_spot_user_side/screens/customer_support.dart';
 import 'package:trim_spot_user_side/utils/home/listtile_widget.dart';
 import 'package:trim_spot_user_side/utils/mediaquery.dart';
@@ -51,7 +50,7 @@ Expanded listviewDrawerHome(BuildContext context) {
             function: () {
           Navigator.pop(context);
           Navigator.of(context).push(FadeTransitionPageRoute(
-              child: CustomerSupport()));
+              child: const CustomerSupport()));
           return null;
         }, icon: Icons.headset_mic_outlined, title: "Customer Support"),
         drawerListTiles(context, iconSize: mediaqueryHeight(0.029, context),
