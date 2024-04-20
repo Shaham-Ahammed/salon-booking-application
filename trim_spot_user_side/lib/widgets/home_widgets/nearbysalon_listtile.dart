@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_user_side/blocs/nearby_salons_bloc/nearby_salons_bloc.dart';
-import 'package:trim_spot_user_side/blocs/service_booking_blocs/bloc/date_selection_bloc.dart';
 import 'package:trim_spot_user_side/screens/booking_screen.dart';
 import 'package:trim_spot_user_side/utils/colors.dart';
 import 'package:trim_spot_user_side/utils/font.dart';
@@ -24,7 +23,7 @@ class NearbySalonsListviewWidget extends StatelessWidget {
               return GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(SlideTransitionPageRoute(
-                      child: ServiceBookingScreen(
+                      child: const ServiceBookingScreen(
                     
                   )));
                 },

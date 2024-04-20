@@ -25,5 +25,5 @@ final TextEditingController registrationPasswordController =
 final TextEditingController registrationConfirmPasswordController =
     TextEditingController();
 
- ValueNotifier<bool> registerButtonPressed = ValueNotifier(false);
+//  ValueNotifier<bool> registerButtonPressed = ValueNotifier(false);
 

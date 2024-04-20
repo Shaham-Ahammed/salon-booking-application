@@ -14,65 +14,78 @@ import 'package:trim_spot_barber_side/widgets/home_widgets/slots.dart';
 import 'package:trim_spot_barber_side/widgets/home_widgets/smooth_page_indicator.dart';
 import 'package:trim_spot_barber_side/widgets/home_widgets/todays_booking_heading.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+
 
   @override
   Widget build(BuildContext context) {
     pageViewAutomaticTransition(context);
-    return Scaffold(
-      backgroundColor: blackColor,
-      appBar: PreferredSize(
-          preferredSize:
-              Size(double.infinity, mediaqueryHeight(0.106, context)),
-          child: AppBarHomeScreen()),
-      body: SafeArea(
-          child: Padding(
-        padding: EdgeInsets.all(mediaqueryWidth(0.04, context)),
-        child: Column(
-          children: [
-            Container(
-              height: mediaqueryHeight(0.2, context),
-              child: PageView(
-                controller: homePageController,
-                onPageChanged: (int page) {
-                  context
-                      .read<HomeScreenPageControllerBloc>()
-                      .add(PageChanged(newPage: page));
-                },
-                children: [
-                  EarningsPageView(),
-                  BookingsPageView(),
-                ],
+    return MultiBlocProvider(
+      providers: [  
+        BlocProvider<SlotSelectionBloc>(
+            create: (context) => SlotSelectionBloc()),
+      ],
+      child: Scaffold(
+        backgroundColor: blackColor,
+        appBar: PreferredSize(
+            preferredSize:
+                Size(double.infinity, mediaqueryHeight(0.106, context)),
+            child: AppBarHomeScreen()),
+        body: SafeArea(
+            child: Padding(
+          padding: EdgeInsets.all(mediaqueryWidth(0.04, context)),
+          child: Column(
+            children: [
+              Container(
+                height: mediaqueryHeight(0.2, context),
+                child: PageView(
+                  controller: homePageController,
+                  onPageChanged: (int page) {
+                    context
+                        .read<HomeScreenPageControllerBloc>()
+                        .add(PageChanged(newPage: page));
+                  },
+                  children: [
+                    EarningsPageView(),
+                    BookingsPageView(),
+                  ],
+                ),
               ),
-            ),
-            SizedBox(
-              height: mediaqueryHeight(0.01, context),
-            ),
-            SmoothPageIndicatorHomeScreen(),
-            SizedBox(
-              height: mediaqueryHeight(0.01, context),
-            ),
-            TodaysBookingsHeading(),
-            SlotTiles(),
-            SizedBox(
-              height: mediaqueryHeight(0.01, context),
-            ),
-            BlocBuilder<SlotSelectionBloc, SlotSelectionState>(
-              builder: (context, state) {
-                return submitButtonCyan(context, text: "Lock Slots",
-                    function: () {
-                  return null;
+              SizedBox(
+                height: mediaqueryHeight(0.01, context),
+              ),
+              SmoothPageIndicatorHomeScreen(),
+              SizedBox(
+                height: mediaqueryHeight(0.01, context),
+              ),
+              TodaysBookingsHeading(),
+              SlotTiles(),
+              SizedBox(
+                height: mediaqueryHeight(0.01, context),
+              ),
+              BlocBuilder<SlotSelectionBloc, SlotSelectionState>(
+                builder: (context, state) {
+                  return submitButtonCyan(context, text: "Lock Slots",
+                      function: () {
+                    return null;
+                  },
+                      heigh: mediaqueryHeight(0.05, context),
+                      width: mediaqueryWidth(0.3, context),
+                      fontSize: mediaqueryHeight(0.02, context),
+                      buttonColor: buttonColor(context));
                 },
-                    heigh: mediaqueryHeight(0.05, context),
-                    width: mediaqueryWidth(0.3, context),
-                    fontSize: mediaqueryHeight(0.02, context),
-                    buttonColor: buttonColor(context));
-              },
-            )
-          ],
-        ),
-      )),
+              )
+            ],
+          ),
+        )),
+      ),
     );
   }
 }

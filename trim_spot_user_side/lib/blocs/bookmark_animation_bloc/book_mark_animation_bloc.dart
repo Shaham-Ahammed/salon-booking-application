@@ -8,7 +8,7 @@ part 'book_mark_animation_state.dart';
 class BookMarkAnimationBloc
     extends Bloc<BookMarkAnimationEvent, BookMarkAnimationState> {
   BookMarkAnimationBloc()
-      : super(BookMarkAnimationInitial(isBookmarked: false)) {
+      : super(const BookMarkAnimationInitial(isBookmarked: false)) {
     on<BookMarkPressed>(_bookMarkPressed);
   }
   _bookMarkPressed(
@@ -16,10 +16,10 @@ class BookMarkAnimationBloc
     state.isBookmarked
         ?await bookmarkAnimationController.reverse().whenComplete(
               () => emit(
-                BookMarkAnimationInitial(isBookmarked: false),
+                const BookMarkAnimationInitial(isBookmarked: false),
               ),
             )
         :await bookmarkAnimationController.forward().whenComplete(
-            () => emit(BookMarkAnimationInitial(isBookmarked: true)));
+            () => emit(const BookMarkAnimationInitial(isBookmarked: true)));
   }
 }

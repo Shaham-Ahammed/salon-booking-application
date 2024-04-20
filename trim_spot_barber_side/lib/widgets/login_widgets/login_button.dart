@@ -1,6 +1,7 @@
-
 import 'package:flutter/material.dart';
+import 'package:trim_spot_barber_side/screens/bottom_navigation.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
+import 'package:trim_spot_barber_side/utils/page_transitions/no_transition_page_route.dart';
 import 'package:trim_spot_barber_side/utils/registration_page/cyan_container.dart';
 import 'package:trim_spot_barber_side/utils/font.dart';
 import 'package:trim_spot_barber_side/utils/mediaquery.dart';
@@ -16,7 +17,10 @@ class LoginButton extends StatelessWidget {
       color: cyanColor,
       borderRadius: BorderRadius.circular(90),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context)
+              .push(NoTransitionPageRoute(child: BottomNavigationScreen()));
+        },
         borderRadius: BorderRadius.circular(90),
         child: Container(
           decoration: cyanContainer(transparentColor),

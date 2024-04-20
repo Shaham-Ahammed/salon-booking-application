@@ -1,11 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:trim_spot_user_side/blocs/bookmark_animation_bloc/book_mark_animation_bloc.dart';
-import 'package:trim_spot_user_side/blocs/service_booking_blocs/bloc/date_selection_bloc.dart';
+import 'package:trim_spot_user_side/blocs/service_booking_blocs/date_selection_bloc/date_selection_bloc.dart';
+import 'package:trim_spot_user_side/blocs/service_booking_blocs/service_selected_bloc/service_selected_bloc.dart';
 import 'package:trim_spot_user_side/screens/reviews_and_ratings.dart';
 import 'package:trim_spot_user_side/utils/colors.dart';
 import 'package:trim_spot_user_side/utils/font.dart';
@@ -13,11 +11,11 @@ import 'package:trim_spot_user_side/utils/mediaquery.dart';
 import 'package:trim_spot_user_side/utils/page%20transitions/slide_transition.dart';
 import 'package:trim_spot_user_side/utils/reviews_and_ratings/modal_list.dart';
 import 'package:trim_spot_user_side/utils/service_booking/animation_controller.dart';
-import 'package:intl/intl.dart';
+
 import 'package:trim_spot_user_side/utils/service_booking/service_available_list.dart';
 
 class ServiceBookingScreen extends StatefulWidget {
-  ServiceBookingScreen({super.key});
+  const ServiceBookingScreen({super.key});
 
   @override
   State<ServiceBookingScreen> createState() => _ServiceBookingScreenState();
@@ -39,22 +37,25 @@ class _ServiceBookingScreenState extends State<ServiceBookingScreen>
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => DateSelectionBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => DateSelectionBloc()),
+        BlocProvider(create: (context) => ServiceSelectedBloc()),
+      ],
       child: Scaffold(
           backgroundColor: blackColor,
           body: SafeArea(
               child: Column(children: [
             Stack(
               children: [
-                Container(
+                SizedBox(
                   width: mediaqueryWidth(1, context),
                   height: mediaqueryHeight(0.3, context),
                 ),
                 Positioned(
                     child: ClipRRect(
                   borderRadius:
-                      BorderRadius.vertical(bottom: Radius.circular(25)),
+                      const BorderRadius.vertical(bottom: Radius.circular(25)),
                   child: Image.asset(
                     fit: BoxFit.cover,
                     "assets/images/shop_image.jpg",
@@ -68,7 +69,7 @@ class _ServiceBookingScreenState extends State<ServiceBookingScreen>
                     child: Container(
                       height: mediaqueryHeight(0.035, context),
                       width: mediaqueryHeight(0.035, context),
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           shape: BoxShape.circle, color: greyColor3),
                       child: Icon(
                         Icons.arrow_back_ios_new_rounded,
@@ -123,7 +124,7 @@ class _ServiceBookingScreenState extends State<ServiceBookingScreen>
               height: mediaqueryHeight(0.02, context),
             ),
             Expanded(
-              child: Container(
+              child: SizedBox(
                   width: double.infinity,
                   child: Stack(
                     children: [
@@ -135,7 +136,7 @@ class _ServiceBookingScreenState extends State<ServiceBookingScreen>
                           decoration: BoxDecoration(
                               color: const Color.fromARGB(179, 60, 60, 60),
                               border: Border.all(color: cyanColor),
-                              borderRadius: BorderRadius.vertical(
+                              borderRadius: const BorderRadius.vertical(
                                 top: Radius.circular(35),
                               )),
                           child: Padding(
@@ -178,99 +179,97 @@ class _ServiceBookingScreenState extends State<ServiceBookingScreen>
                                       context, "USER REVIEWS"),
                                   ListView.builder(
                                       shrinkWrap: true,
-                                      physics: NeverScrollableScrollPhysics(),
+                                      physics: const NeverScrollableScrollPhysics(),
                                       itemCount: reviewList.length > 2
                                           ? 2
                                           : reviewList.length,
                                       itemBuilder: (context, index) {
                                         final reviewer = reviewList[index];
-                                        return Container(
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              if (index != 0)
-                                                SizedBox(
-                                                  height: mediaqueryHeight(
-                                                      0.02, context),
-                                                ),
-                                              Row(
-                                                children: [
-                                                  CircleAvatar(
-                                                    backgroundImage: AssetImage(
-                                                        reviewer.imagepath),
-                                                    radius: 23,
-                                                  ),
-                                                  SizedBox(
-                                                    width: mediaqueryWidth(
-                                                        0.04, context),
-                                                  ),
-                                                  Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      myFont(reviewer.name,
-                                                          fontFamily:
-                                                              balooChettan,
-                                                          fontSize:
-                                                              mediaqueryHeight(
-                                                                  0.023,
-                                                                  context),
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          fontColor:
-                                                              whiteColor),
-                                                      Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .start,
-                                                        children: List.generate(
-                                                            5, (index) {
-                                                          if (index <
-                                                              reviewer.rating) {
-                                                            return Icon(
-                                                              Icons
-                                                                  .star_rate_rounded,
-                                                              color:
-                                                                  Colors.yellow,
-                                                              size:
-                                                                  mediaqueryHeight(
-                                                                      0.023,
-                                                                      context),
-                                                            );
-                                                          } else {
-                                                            return Icon(
-                                                                Icons
-                                                                    .star_rate_rounded,
-                                                                color:
-                                                                    Colors.grey,
-                                                                size: mediaqueryHeight(
-                                                                    0.023,
-                                                                    context));
-                                                          }
-                                                        }),
-                                                      )
-                                                    ],
-                                                  )
-                                                ],
-                                              ),
+                                        return Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            if (index != 0)
                                               SizedBox(
                                                 height: mediaqueryHeight(
                                                     0.02, context),
                                               ),
-                                              myFont(reviewer.review,
-                                                  fontFamily: balooChettan,
-                                                  fontSize: mediaqueryHeight(
-                                                      0.018, context),
-                                                  fontWeight: FontWeight.normal,
-                                                  fontColor: greyColor),
-                                              SizedBox(
-                                                height: mediaqueryHeight(
-                                                    0.006, context),
-                                              ),
-                                            ],
-                                          ),
+                                            Row(
+                                              children: [
+                                                CircleAvatar(
+                                                  backgroundImage: AssetImage(
+                                                      reviewer.imagepath),
+                                                  radius: 23,
+                                                ),
+                                                SizedBox(
+                                                  width: mediaqueryWidth(
+                                                      0.04, context),
+                                                ),
+                                                Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment
+                                                          .start,
+                                                  children: [
+                                                    myFont(reviewer.name,
+                                                        fontFamily:
+                                                            balooChettan,
+                                                        fontSize:
+                                                            mediaqueryHeight(
+                                                                0.023,
+                                                                context),
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontColor:
+                                                            whiteColor),
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      children: List.generate(
+                                                          5, (index) {
+                                                        if (index <
+                                                            reviewer.rating) {
+                                                          return Icon(
+                                                            Icons
+                                                                .star_rate_rounded,
+                                                            color:
+                                                                Colors.yellow,
+                                                            size:
+                                                                mediaqueryHeight(
+                                                                    0.023,
+                                                                    context),
+                                                          );
+                                                        } else {
+                                                          return Icon(
+                                                              Icons
+                                                                  .star_rate_rounded,
+                                                              color:
+                                                                  Colors.grey,
+                                                              size: mediaqueryHeight(
+                                                                  0.023,
+                                                                  context));
+                                                        }
+                                                      }),
+                                                    )
+                                                  ],
+                                                )
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              height: mediaqueryHeight(
+                                                  0.02, context),
+                                            ),
+                                            myFont(reviewer.review,
+                                                fontFamily: balooChettan,
+                                                fontSize: mediaqueryHeight(
+                                                    0.018, context),
+                                                fontWeight: FontWeight.normal,
+                                                fontColor: greyColor),
+                                            SizedBox(
+                                              height: mediaqueryHeight(
+                                                  0.006, context),
+                                            ),
+                                          ],
                                         );
                                       }),
                                   if (reviewList.length > 2)
@@ -279,7 +278,7 @@ class _ServiceBookingScreenState extends State<ServiceBookingScreen>
                                         Navigator.of(context).push(
                                             SlideTransitionPageRoute(
                                                 child:
-                                                    ReviewsAndRatingsScreen(),
+                                                    const ReviewsAndRatingsScreen(),
                                                 direction: AxisDirection.up));
                                       },
                                       child: Row(
@@ -350,7 +349,7 @@ class _ServiceBookingScreenState extends State<ServiceBookingScreen>
                                                     color: whiteColor,
                                                   ),
                                                 ),
-                                                Icon(
+                                                const Icon(
                                                   Icons.calendar_today_outlined,
                                                   color: whiteColor,
                                                 ),
@@ -368,22 +367,90 @@ class _ServiceBookingScreenState extends State<ServiceBookingScreen>
                                       context, "SERVICES"),
                                   Container(
                                     width: double.infinity,
-                                    padding: containerPaddingServiceBooking(context),
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal:
+                                            mediaqueryWidth(0.03, context),
+                                        vertical:
+                                            mediaqueryHeight(0.01, context)),
                                     decoration: BoxDecoration(
                                       color: blackColor,
                                       border: Border.all(
                                           width: .4, color: cyanColor),
                                       borderRadius: BorderRadius.circular(10),
                                     ),
-                                    child: ListView.builder(
-                                      itemBuilder: (context, index) 
-                                       
-                                     
-                                      {
-                                          final service=serviceAvailableList[index];
-                                        return Row(children: [
-                                       
-                                        Column(children: [myFont(text, fontFamily: fontFamily, fontSize: fontSize, fontWeight: fontWeight, fontColor: fontColor)],)],)},
+                                    child: ListView.separated(
+                                      shrinkWrap: true,
+                                      physics: const NeverScrollableScrollPhysics(),
+                                      itemCount: serviceAvailableList.length,
+                                      separatorBuilder: (context, index) {
+                                        return Column(
+                                          children: [
+                                            SizedBox(
+                                                height: mediaqueryHeight(
+                                                    0.01, context)),
+                                            Container(
+                                              height: .5,
+                                              width:
+                                                  mediaqueryWidth(0.9, context),
+                                              color: greyColor3,
+                                            ),
+                                            SizedBox(
+                                              height: mediaqueryHeight(
+                                                  0.01, context),
+                                            )
+                                          ],
+                                        );
+                                      },
+                                      itemBuilder: (context, index) {
+                                        final service =
+                                            serviceAvailableList[index];
+                                        return Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                myFont(service.service,
+                                                    fontFamily: cabinCondensed,
+                                                    fontSize: mediaqueryHeight(
+                                                        0.023, context),
+                                                    fontWeight: FontWeight.w500,
+                                                    fontColor: whiteColor),
+                                                myFont(
+                                                    "₹ ${service.price} - ${service.time} min",
+                                                    fontFamily: cabinCondensed,
+                                                    fontSize: mediaqueryHeight(
+                                                        0.018, context),
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    fontColor: greyColor2)
+                                              ],
+                                            ),
+                                            Transform.scale(
+                                              scale: .7,
+                                              child: Switch(
+                                                // activeColor: Colors.blueGrey,
+                                                value: BlocProvider.of<
+                                                            ServiceSelectedBloc>(
+                                                        context,
+                                                        listen: true)
+                                                    .state
+                                                    .servicesSelected
+                                                    .contains(service),
+                                                onChanged: (value) {
+                                                  context
+                                                      .read<
+                                                          ServiceSelectedBloc>()
+                                                      .add(SelectedAService(
+                                                          service: service));
+                                                },
+                                              ),
+                                            )
+                                          ],
+                                        );
+                                      },
                                     ),
                                   )
                                 ],
@@ -468,14 +535,14 @@ class _ServiceBookingScreenState extends State<ServiceBookingScreen>
         onTap: function,
         child: Container(
           padding: EdgeInsets.all(mediaqueryHeight(0.02, context)),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(color: cyanColor, width: 2),
+          ),
           child: Icon(
             icon,
             color: whiteColor,
             size: mediaqueryHeight(0.025, context),
-          ),
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(color: cyanColor, width: 2),
           ),
         ),
       ),

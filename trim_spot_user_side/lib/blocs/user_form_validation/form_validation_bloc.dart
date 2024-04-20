@@ -1,4 +1,4 @@
-// ignore_for_file: invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member, unrelated_type_equality_checks, use_build_context_synchronously
+// ignore_for_file: invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member, unrelated_type_equality_checks, use_build_context_synchronously, avoid_print
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -28,7 +28,9 @@ class FormValidationBloc
     pressedSubmitButton.value = true;
     pressedSubmitButton.notifyListeners();
     if (registerFormKey.currentState!.validate() &&
-        BlocProvider.of<ProfileImageBloc>(event.context).state.imageInBytes !=
+        BlocProvider.of<ProfileImageBloc>(event.context, listen: false)
+                .state
+                .imageInBytes !=
             null) {
       final connectivity = await Connectivity().checkConnectivity();
       if (connectivity.contains(ConnectivityResult.none)) {
@@ -50,21 +52,23 @@ class FormValidationBloc
         return;
       }
       try {
-         User? user = await FirebaseAuthService().signUpWithEmailAndPassword();
+        User? user = await FirebaseAuthService().signUpWithEmailAndPassword();
         if (user == null) {
           emit(DataAddingError());
+          print("authentication error");
           return;
         }
-        AddUserDetailsToFirebase().addImage(event.context);
+        await AddUserDetailsToFirebase().addImage(event.context);
 
         String downloadURL =
             await userStorageReference(event.context).getDownloadURL();
 
-        AddUserDetailsToFirebase().addData(downloadURL);
-       
+        await AddUserDetailsToFirebase().addData(downloadURL);
+
         emit(NavigateToOtpPage());
       } catch (e) {
         emit(DataAddingError());
+        print("firebasekk add error $e");
         return null;
       }
     } else {

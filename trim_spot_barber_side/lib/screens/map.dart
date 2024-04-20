@@ -11,7 +11,9 @@ import 'package:trim_spot_barber_side/utils/mediaquery.dart';
 double? add;
 
 class GoogleMapScreen extends StatefulWidget {
-  const GoogleMapScreen({super.key});
+  const GoogleMapScreen({
+    super.key,
+  });
 
   @override
   State<GoogleMapScreen> createState() => _GoogleMapScreenState();

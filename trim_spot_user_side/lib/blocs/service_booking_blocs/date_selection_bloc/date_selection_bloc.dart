@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -8,7 +7,7 @@ part 'date_selection_state.dart';
 
 class DateSelectionBloc extends Bloc<DateSelectionEvent, DateSelectionState> {
   DateSelectionBloc()
-      : super(DateSelectionInitial(date: null, formattedDate: "")) {
+      : super(const DateSelectionInitial(date: null, formattedDate: "")) {
     on<DatePickerPressed>(_datePickerPressed);
     on<DateSelected>(_dateSelected);
   }
@@ -18,7 +17,7 @@ class DateSelectionBloc extends Bloc<DateSelectionEvent, DateSelectionState> {
         builder: (context, child) {
           return Theme(
             data: Theme.of(context).copyWith(
-              colorScheme: ColorScheme.light(
+              colorScheme: const ColorScheme.light(
                 primary: blackColor, // header background color
                 onPrimary: cyanColor, // header text color
                 onSurface: blackColor, // body text color
@@ -35,7 +34,7 @@ class DateSelectionBloc extends Bloc<DateSelectionEvent, DateSelectionState> {
         context: event.context,
         initialDate: state.date ?? DateTime.now(),
         firstDate: DateTime.now(),
-        lastDate: DateTime.now().add(Duration(days: 5)));
+        lastDate: DateTime.now().add(const Duration(days: 5)));
     if (picked != null) {
       add(DateSelected(date: picked));
     }

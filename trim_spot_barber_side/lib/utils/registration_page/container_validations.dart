@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/registration_blocs/image_bloc/image_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/registration_blocs/location_bloc/location_bloc.dart';
+import 'package:trim_spot_barber_side/blocs/registration_blocs/register_button_bloc/register_button_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/registration_blocs/working_hours/working_hours_bloc.dart';
-import 'package:trim_spot_barber_side/utils/constant_variables/signup_screen_constants.dart';
 
 bool locationValidation(context) {
   return BlocProvider.of<LocationBloc>(context, listen: false)
@@ -46,12 +46,8 @@ bool closingTimeValidation(context) {
       .isNotEmpty;
 }
 
-bool detailsSubmitted(context) {
-  return (registrationFormValidation.currentState!.validate() &&
-      locationValidation(context) &&
-      shopImageValidation(context) &&
-      profileValidation(context) &&
-      closingTimeValidation(context) &&
-      openingTimeValidation(context) &&
-      licenseValidation(context));
+bool registerbuttonPressed(context) {
+  return BlocProvider.of<RegisterButtonBloc>(context, listen: true)
+      .state
+      .buttonPressed;
 }

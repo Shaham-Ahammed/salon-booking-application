@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trim_spot_barber_side/blocs/registration_blocs/holiday_bloc/holiday_bloc_bloc.dart';
+import 'package:trim_spot_barber_side/blocs/registration_blocs/image_bloc/image_bloc.dart';
+import 'package:trim_spot_barber_side/blocs/registration_blocs/register_button_bloc/register_button_bloc.dart';
+import 'package:trim_spot_barber_side/blocs/registration_blocs/service_bloc/service_bloc.dart';
+import 'package:trim_spot_barber_side/blocs/registration_blocs/working_hours/working_hours_bloc.dart';
 import 'package:trim_spot_barber_side/utils/constant_variables/signup_screen_constants.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
 import 'package:trim_spot_barber_side/utils/mediaquery.dart';
@@ -33,93 +39,103 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: blackColor,
-      resizeToAvoidBottomInset: false,
-      body: SafeArea(
-        child: Container(
-          height: double.infinity,
-          width: double.infinity,
-          decoration: backgroundImage(),
-          child: SingleChildScrollView(
-            reverse: false,
-            child: Padding(
-              padding: screenPadding(context),
-              child: Form(
-                key: registrationFormValidation,
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: mediaqueryHeight(0.04, context),
-                    ),
-                    welcomeText(),
-                    SizedBox(
-                      height: mediaqueryHeight(0.02, context),
-                    ),
-                    const NameTextField(),
-                    textFormFieldSizedBox(context),
-                    const EmailTextFormField(),
-                    textFormFieldSizedBox(context),
-                    const PhoneTextFormField(),
-                    textFormFieldSizedBox(context),
-                    const ShopNameTextFormField(),
-                    textFormFieldSizedBox(context),
-                    const LocationPicker(),
-                    LocationValidationErrorMessage(),
-                    textFormFieldSizedBox(context),
-                    const ProofsHeading(),
-                    const SizedBox(
-                      height: 3,
-                    ),
-                    const Row(
-                      children: [
-                        ShopLicensePicker(),
-                        ProfilePicker(),
-                      ],
-                    ),
-                    textFormFieldSizedBox(context),
-                    const ShopImageHeading(),
-                    const SizedBox(
-                      height: 3,
-                    ),
-                    const ShopImagePicker(),
-                    ShopImageError(),
-                    textFormFieldSizedBox(context),
-                    const ServiceHeading(),
-                    const SizedBox(
-                      height: 3,
-                    ),
-                    servicePicker(),
-                    textFormFieldSizedBox(context),
-                    const WorkingHoursHeading(),
-                    const SizedBox(
-                      height: 3,
-                    ),
-                    const OpeningTimePicker(),
-                    OpenTimeError(),
-                    SizedBox(
-                      height: mediaqueryHeight(0.02, context),
-                    ),
-                    const ClosingTimePicker(),
-                    ClosingTimeError(),
-                    textFormFieldSizedBox(context),
-                    const RegisterHeadings(heading: "Holidays"),
-                    const SizedBox(
-                      height: 3,
-                    ),
-                    HolidayPicker(),
-                    textFormFieldSizedBox(context),
-                    const UpiIdTextFormField(),
-                    textFormFieldSizedBox(context),
-                    PasswordTextFormField(),
-                    textFormFieldSizedBox(context),
-                    ConfirmPasswordTextFormField(),
-                    SizedBox(
-                      height: mediaqueryHeight(0.05, context),
-                    ),
-                    const RegisterButton(),
-                    SizedBox(height: mediaqueryHeight(0.06, context)),
-                  ],
+    return MultiBlocProvider(
+      providers: [
+       
+        BlocProvider(create: (context) => RegisterButtonBloc()),
+        BlocProvider(create: (context) => HolidayBloc()),
+        BlocProvider<ServiceBloc>(create: (context) => ServiceBloc()),
+        BlocProvider<WorkingHoursBloc>(create: (context) => WorkingHoursBloc()),
+        BlocProvider<ImageBloc>(create: (context) => ImageBloc()),
+      ],
+      child: Scaffold(
+        backgroundColor: blackColor,
+        resizeToAvoidBottomInset: false,
+        body: SafeArea(
+          child: Container(
+            height: double.infinity,
+            width: double.infinity,
+            decoration: backgroundImage(),
+            child: SingleChildScrollView(
+              reverse: false,
+              child: Padding(
+                padding: screenPadding(context),
+                child: Form(
+                  key: registrationFormValidation,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: mediaqueryHeight(0.04, context),
+                      ),
+                      welcomeText(),
+                      SizedBox(
+                        height: mediaqueryHeight(0.02, context),
+                      ),
+                      const NameTextField(),
+                      textFormFieldSizedBox(context),
+                      const EmailTextFormField(),
+                      textFormFieldSizedBox(context),
+                      const PhoneTextFormField(),
+                      textFormFieldSizedBox(context),
+                      const ShopNameTextFormField(),
+                      textFormFieldSizedBox(context),
+                      const LocationPicker(),
+                      LocationValidationErrorMessage(),
+                      textFormFieldSizedBox(context),
+                      const ProofsHeading(),
+                      const SizedBox(
+                        height: 3,
+                      ),
+                      const Row(
+                        children: [
+                          ShopLicensePicker(),
+                          ProfilePicker(),
+                        ],
+                      ),
+                      textFormFieldSizedBox(context),
+                      const ShopImageHeading(),
+                      const SizedBox(
+                        height: 3,
+                      ),
+                      const ShopImagePicker(),
+                      ShopImageError(),
+                      textFormFieldSizedBox(context),
+                      const ServiceHeading(),
+                      const SizedBox(
+                        height: 3,
+                      ),
+                      servicePicker(),
+                      textFormFieldSizedBox(context),
+                      const WorkingHoursHeading(),
+                      const SizedBox(
+                        height: 3,
+                      ),
+                      const OpeningTimePicker(),
+                      OpenTimeError(),
+                      SizedBox(
+                        height: mediaqueryHeight(0.02, context),
+                      ),
+                      const ClosingTimePicker(),
+                      ClosingTimeError(),
+                      textFormFieldSizedBox(context),
+                      const RegisterHeadings(heading: "Holidays"),
+                      const SizedBox(
+                        height: 3,
+                      ),
+                      HolidayPicker(),
+                      textFormFieldSizedBox(context),
+                      const UpiIdTextFormField(),
+                      textFormFieldSizedBox(context),
+                      PasswordTextFormField(),
+                      textFormFieldSizedBox(context),
+                      ConfirmPasswordTextFormField(),
+                      SizedBox(
+                        height: mediaqueryHeight(0.05, context),
+                      ),
+                      const RegisterButton(),
+                      SizedBox(height: mediaqueryHeight(0.06, context)),
+                    ],
+                  ),
                 ),
               ),
             ),

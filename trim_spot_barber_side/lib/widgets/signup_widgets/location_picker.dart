@@ -23,7 +23,7 @@ class _LocationPickerState extends State<LocationPicker> {
       listener: (context, state) {
         if (state is NavigateToMap) {
           Navigator.of(context)
-              .push(NoTransitionPageRoute(child: GoogleMapScreen()));
+              .push(NoTransitionPageRoute(child: GoogleMapScreen( )));
         }
       },
       builder: (context, state) {

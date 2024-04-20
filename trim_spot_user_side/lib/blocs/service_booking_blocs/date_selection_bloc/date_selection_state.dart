@@ -5,9 +5,9 @@ sealed class DateSelectionState {
   final DateTime? date;
   final String formattedDate;
 
-  DateSelectionState({required this.date, required this.formattedDate});
+  const DateSelectionState({required this.date, required this.formattedDate});
 }
 
 final class DateSelectionInitial extends DateSelectionState {
-  DateSelectionInitial({required super.date, required super.formattedDate});
+  const DateSelectionInitial({required super.date, required super.formattedDate});
 }

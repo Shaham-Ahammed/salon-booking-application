@@ -14,8 +14,8 @@ class AddUserDetailsToFirebase {
         metadata);
   }
 
-  addData(String downloadURL) {
+  addData(String downloadURL) async{
     final data = UserDetailsData().userData(downloadURL);
-    userCollections.add(data);
+   await userCollections.add(data);
   }
 }
