@@ -40,11 +40,12 @@ class NearbySalonsListviewWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      myFont("HIPOCHI SALON",
+                      Hero(tag: "tag-1", child:    myFont("HIPOCHI SALON",
                           fontFamily: balooChettan,
                           fontSize: mediaqueryHeight(0.015, context),
                           fontWeight: FontWeight.w600,
-                          fontColor: whiteColor),
+                          fontColor: whiteColor),),
+                   
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [

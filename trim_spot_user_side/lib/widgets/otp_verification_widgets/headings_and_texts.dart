@@ -11,7 +11,7 @@ import 'package:trim_spot_user_side/utils/mediaquery.dart';
   }
 
   fourDigitCodeHeading(BuildContext context) {
-   return myFont("Enter your 4 digit code",
+   return myFont("Enter your 6 digit code",
         fontFamily: balooChettan,
         fontSize: mediaqueryHeight(0.032, context),
         fontWeight: FontWeight.w700,

@@ -27,11 +27,7 @@ class RegisterButton extends StatelessWidget {
                 .read<FormValidationBloc>()
                 .add(SubmitButtonPressed(context));
           
-            // final downloadurl = await uploadImage();
-            // addData(downloadurl!);
-
-            // Navigator.of(context).push(
-            //     NoTransitionPageRoute(child: const OtpVerificationScreen()));
+          
           },
           borderRadius: BorderRadius.circular(90),
           child: Container(

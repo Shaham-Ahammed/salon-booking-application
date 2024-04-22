@@ -1,18 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lottie/lottie.dart';
-import 'package:trim_spot_user_side/blocs/bookmark_animation_bloc/book_mark_animation_bloc.dart';
 import 'package:trim_spot_user_side/blocs/service_booking_blocs/date_selection_bloc/date_selection_bloc.dart';
 import 'package:trim_spot_user_side/blocs/service_booking_blocs/service_selected_bloc/service_selected_bloc.dart';
-import 'package:trim_spot_user_side/screens/reviews_and_ratings.dart';
+import 'package:trim_spot_user_side/blocs/slot_selection_bloc/slot_selection_bloc.dart';
 import 'package:trim_spot_user_side/utils/colors.dart';
-import 'package:trim_spot_user_side/utils/font.dart';
 import 'package:trim_spot_user_side/utils/mediaquery.dart';
-import 'package:trim_spot_user_side/utils/page%20transitions/slide_transition.dart';
 import 'package:trim_spot_user_side/utils/reviews_and_ratings/modal_list.dart';
 import 'package:trim_spot_user_side/utils/service_booking/animation_controller.dart';
 
-import 'package:trim_spot_user_side/utils/service_booking/service_available_list.dart';
+import 'package:trim_spot_user_side/widgets/service_booking_widgets/bookmark_lottie.dart';
+import 'package:trim_spot_user_side/widgets/service_booking_widgets/clear_selection.dart';
+import 'package:trim_spot_user_side/widgets/service_booking_widgets/date_selection.dart';
+import 'package:trim_spot_user_side/widgets/service_booking_widgets/headings.dart';
+import 'package:trim_spot_user_side/widgets/service_booking_widgets/main_contianer_decoration.dart';
+import 'package:trim_spot_user_side/widgets/service_booking_widgets/resusables.dart';
+import 'package:trim_spot_user_side/widgets/service_booking_widgets/round_icons.dart';
+import 'package:trim_spot_user_side/widgets/service_booking_widgets/service_selection.dart';
+import 'package:trim_spot_user_side/widgets/service_booking_widgets/shop_image.dart';
+import 'package:trim_spot_user_side/widgets/service_booking_widgets/shop_location.dart';
+import 'package:trim_spot_user_side/widgets/service_booking_widgets/shop_name.dart';
+import 'package:trim_spot_user_side/widgets/service_booking_widgets/slide_to_widget.dart';
+import 'package:trim_spot_user_side/widgets/service_booking_widgets/slots.dart';
+import 'package:trim_spot_user_side/widgets/service_booking_widgets/total_time.dart';
+import 'package:trim_spot_user_side/widgets/service_booking_widgets/user_review.dart';
+import 'package:trim_spot_user_side/widgets/service_booking_widgets/view_more_ratings_button.dart';
+import 'package:trim_spot_user_side/widgets/service_booking_widgets/working_hours.dart';
 
 class ServiceBookingScreen extends StatefulWidget {
   const ServiceBookingScreen({super.key});
@@ -39,6 +51,7 @@ class _ServiceBookingScreenState extends State<ServiceBookingScreen>
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => SlotSelectionBloc()),
         BlocProvider(create: (context) => DateSelectionBloc()),
         BlocProvider(create: (context) => ServiceSelectedBloc()),
       ],
@@ -52,502 +65,117 @@ class _ServiceBookingScreenState extends State<ServiceBookingScreen>
                   width: mediaqueryWidth(1, context),
                   height: mediaqueryHeight(0.3, context),
                 ),
-                Positioned(
-                    child: ClipRRect(
-                  borderRadius:
-                      const BorderRadius.vertical(bottom: Radius.circular(25)),
-                  child: Image.asset(
-                    fit: BoxFit.cover,
-                    "assets/images/shop_image.jpg",
-                    height: mediaqueryHeight(0.28, context),
-                    width: double.infinity,
-                  ),
-                )),
-                Positioned(
-                    left: mediaqueryWidth(0.04, context),
-                    top: mediaqueryHeight(0.02, context),
-                    child: Container(
-                      height: mediaqueryHeight(0.035, context),
-                      width: mediaqueryHeight(0.035, context),
-                      decoration: const BoxDecoration(
-                          shape: BoxShape.circle, color: greyColor3),
-                      child: Icon(
-                        Icons.arrow_back_ios_new_rounded,
-                        size: mediaqueryHeight(0.024, context),
-                      ),
-                    )),
-                Positioned(
-                  right: mediaqueryWidth(0.08, context),
-                  bottom: mediaqueryHeight(-0.01, context),
-                  child: GestureDetector(
-                    onTap: () {
-                      context
-                          .read<BookMarkAnimationBloc>()
-                          .add(BookMarkPressed());
-                    },
-                    child: Transform.scale(
-                      scaleY: mediaqueryHeight(0.0014, context),
-                      child: LottieBuilder.asset(
-                          controller: bookmarkAnimationController,
-                          onLoaded: (composition) {
-                        bookmarkAnimationController.duration =
-                            composition.duration;
-                      },
-                          repeat: false,
-                          "assets/animations/bookmark_lottie.json"),
-                    ),
-                  ),
-                )
+                const Positioned(child: ShopImageDisplay()),
+                const BackButton(),
+                const BookmarkAnimationLottie()
               ],
             ),
-            myFont("HIPOCHI SALON",
-                fontFamily: balooChettan,
-                fontSize: mediaqueryHeight(0.028, context),
-                fontWeight: FontWeight.w600,
-                fontColor: greyColor),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.location_on,
-                  color: greyColor,
-                  size: mediaqueryHeight(0.022, context),
-                ),
-                myFont(" Mattanjeri",
-                    fontFamily: balooChettan,
-                    fontSize: mediaqueryHeight(0.022, context),
-                    fontWeight: FontWeight.w500,
-                    fontColor: greyColor)
-              ],
-            ),
+            shopName(context),
+            const ShopLocation(),
             SizedBox(
               height: mediaqueryHeight(0.02, context),
             ),
             Expanded(
-              child: SizedBox(
-                  width: double.infinity,
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        top: mediaqueryHeight(0.033, context),
-                        child: Container(
-                          height: mediaqueryHeight(0.539, context),
-                          width: mediaqueryWidth(1, context),
-                          decoration: BoxDecoration(
-                              color: const Color.fromARGB(179, 60, 60, 60),
-                              border: Border.all(color: cyanColor),
-                              borderRadius: const BorderRadius.vertical(
-                                top: Radius.circular(35),
-                              )),
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                                top: mediaqueryHeight(0.05, context),
-                                left: mediaqueryWidth(0.03, context),
-                                right: mediaqueryWidth(0.03, context),
-                                bottom: mediaqueryHeight(0.01, context)),
-                            child: SingleChildScrollView(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  serviceBookingScreenHeadings(
-                                      context, "WORKING HOURS"),
-                                  Container(
-                                    width: double.infinity,
-                                    height: mediaqueryHeight(0.06, context),
-                                    decoration: BoxDecoration(
-                                        color: greyColor3,
-                                        borderRadius: BorderRadius.circular(10),
-                                        border: Border.all(
-                                            color: greyColor, width: .4)),
-                                    padding:
-                                        containerPaddingServiceBooking(context),
-                                    child: Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: myFont("09:00 AM - 08:00 PM",
-                                          fontFamily: cabinCondensed,
-                                          textalign: TextAlign.start,
-                                          fontSize:
+                child: SizedBox(
+                    width: double.infinity,
+                    child: Stack(
+                      children: [
+                        Positioned(
+                            top: mediaqueryHeight(0.033, context),
+                            child: Container(
+                                height: mediaqueryHeight(0.539, context),
+                                width: mediaqueryWidth(1, context),
+                                decoration: bigContainerDecoration(),
+                                child: Padding(
+                                    padding: bigContainerPadding(context),
+                                    child: SingleChildScrollView(
+                                        child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        serviceBookingScreenHeadings(
+                                            context, "WORKING HOURS"),
+                                        workingHourContainerField(context),
+                                        SizedBox(
+                                          height:
                                               mediaqueryHeight(0.02, context),
-                                          fontWeight: FontWeight.normal,
-                                          fontColor: whiteColor),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: mediaqueryHeight(0.02, context),
-                                  ),
-                                  serviceBookingScreenHeadings(
-                                      context, "USER REVIEWS"),
-                                  ListView.builder(
-                                      shrinkWrap: true,
-                                      physics: const NeverScrollableScrollPhysics(),
-                                      itemCount: reviewList.length > 2
-                                          ? 2
-                                          : reviewList.length,
-                                      itemBuilder: (context, index) {
-                                        final reviewer = reviewList[index];
-                                        return Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            if (index != 0)
-                                              SizedBox(
-                                                height: mediaqueryHeight(
-                                                    0.02, context),
-                                              ),
-                                            Row(
-                                              children: [
-                                                CircleAvatar(
-                                                  backgroundImage: AssetImage(
-                                                      reviewer.imagepath),
-                                                  radius: 23,
-                                                ),
-                                                SizedBox(
-                                                  width: mediaqueryWidth(
-                                                      0.04, context),
-                                                ),
-                                                Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment
-                                                          .start,
-                                                  children: [
-                                                    myFont(reviewer.name,
-                                                        fontFamily:
-                                                            balooChettan,
-                                                        fontSize:
-                                                            mediaqueryHeight(
-                                                                0.023,
-                                                                context),
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        fontColor:
-                                                            whiteColor),
-                                                    Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      children: List.generate(
-                                                          5, (index) {
-                                                        if (index <
-                                                            reviewer.rating) {
-                                                          return Icon(
-                                                            Icons
-                                                                .star_rate_rounded,
-                                                            color:
-                                                                Colors.yellow,
-                                                            size:
-                                                                mediaqueryHeight(
-                                                                    0.023,
-                                                                    context),
-                                                          );
-                                                        } else {
-                                                          return Icon(
-                                                              Icons
-                                                                  .star_rate_rounded,
-                                                              color:
-                                                                  Colors.grey,
-                                                              size: mediaqueryHeight(
-                                                                  0.023,
-                                                                  context));
-                                                        }
-                                                      }),
-                                                    )
-                                                  ],
-                                                )
-                                              ],
-                                            ),
-                                            SizedBox(
-                                              height: mediaqueryHeight(
-                                                  0.02, context),
-                                            ),
-                                            myFont(reviewer.review,
-                                                fontFamily: balooChettan,
-                                                fontSize: mediaqueryHeight(
-                                                    0.018, context),
-                                                fontWeight: FontWeight.normal,
-                                                fontColor: greyColor),
-                                            SizedBox(
-                                              height: mediaqueryHeight(
-                                                  0.006, context),
-                                            ),
-                                          ],
-                                        );
-                                      }),
-                                  if (reviewList.length > 2)
-                                    GestureDetector(
-                                      onTap: () {
-                                        Navigator.of(context).push(
-                                            SlideTransitionPageRoute(
-                                                child:
-                                                    const ReviewsAndRatingsScreen(),
-                                                direction: AxisDirection.up));
-                                      },
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          SizedBox(
-                                            height:
-                                                mediaqueryHeight(0.04, context),
-                                          ),
-                                          myFont("view more",
-                                              fontFamily: balooChettan,
-                                              fontSize: mediaqueryHeight(
-                                                  0.018, context),
-                                              fontWeight: FontWeight.normal,
-                                              fontColor: greyColor2),
-                                          Icon(
-                                            Icons.arrow_drop_down_outlined,
-                                            color: greyColor2,
-                                            size: mediaqueryHeight(
-                                                0.023, context),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  SizedBox(
-                                    height: mediaqueryHeight(0.012, context),
-                                  ),
-                                  serviceBookingScreenHeadings(context, "DATE"),
-                                  BlocBuilder<DateSelectionBloc,
-                                      DateSelectionState>(
-                                    builder: (context, state) {
-                                      return Material(
-                                        borderRadius: BorderRadius.circular(10),
-                                        color: blackColor,
-                                        child: InkWell(
-                                          onTap: () {
-                                            context
-                                                .read<DateSelectionBloc>()
-                                                .add(DatePickerPressed(
-                                                    context: context));
-                                          },
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          child: Container(
-                                            width: double.infinity,
-                                            height:
-                                                mediaqueryHeight(0.06, context),
-                                            decoration:
-                                                containerBoxDecoration(),
-                                            padding:
-                                                containerPaddingServiceBooking(
-                                                    context),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Text(
-                                                  state.date != null
-                                                      ? state.formattedDate
-                                                      : "Select Date",
-                                                  style: TextStyle(
-                                                    fontFamily: cabinCondensed,
-                                                    fontSize: mediaqueryHeight(
-                                                        0.023, context),
-                                                    fontWeight: FontWeight.w500,
-                                                    color: whiteColor,
-                                                  ),
-                                                ),
-                                                const Icon(
-                                                  Icons.calendar_today_outlined,
-                                                  color: whiteColor,
-                                                ),
-                                              ],
-                                            ),
-                                          ),
                                         ),
-                                      );
-                                    },
-                                  ),
-                                  SizedBox(
-                                    height: mediaqueryHeight(0.012, context),
-                                  ),
-                                  serviceBookingScreenHeadings(
-                                      context, "SERVICES"),
-                                  Container(
-                                    width: double.infinity,
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal:
-                                            mediaqueryWidth(0.03, context),
-                                        vertical:
-                                            mediaqueryHeight(0.01, context)),
-                                    decoration: BoxDecoration(
-                                      color: blackColor,
-                                      border: Border.all(
-                                          width: .4, color: cyanColor),
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: ListView.separated(
-                                      shrinkWrap: true,
-                                      physics: const NeverScrollableScrollPhysics(),
-                                      itemCount: serviceAvailableList.length,
-                                      separatorBuilder: (context, index) {
-                                        return Column(
-                                          children: [
-                                            SizedBox(
-                                                height: mediaqueryHeight(
-                                                    0.01, context)),
-                                            Container(
-                                              height: .5,
-                                              width:
-                                                  mediaqueryWidth(0.9, context),
-                                              color: greyColor3,
-                                            ),
-                                            SizedBox(
-                                              height: mediaqueryHeight(
-                                                  0.01, context),
-                                            )
-                                          ],
-                                        );
-                                      },
-                                      itemBuilder: (context, index) {
-                                        final service =
-                                            serviceAvailableList[index];
-                                        return Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                myFont(service.service,
-                                                    fontFamily: cabinCondensed,
-                                                    fontSize: mediaqueryHeight(
-                                                        0.023, context),
-                                                    fontWeight: FontWeight.w500,
-                                                    fontColor: whiteColor),
-                                                myFont(
-                                                    "₹ ${service.price} - ${service.time} min",
-                                                    fontFamily: cabinCondensed,
-                                                    fontSize: mediaqueryHeight(
-                                                        0.018, context),
-                                                    fontWeight:
-                                                        FontWeight.normal,
-                                                    fontColor: greyColor2)
-                                              ],
-                                            ),
-                                            Transform.scale(
-                                              scale: .7,
-                                              child: Switch(
-                                                // activeColor: Colors.blueGrey,
-                                                value: BlocProvider.of<
-                                                            ServiceSelectedBloc>(
-                                                        context,
-                                                        listen: true)
-                                                    .state
-                                                    .servicesSelected
-                                                    .contains(service),
-                                                onChanged: (value) {
-                                                  context
-                                                      .read<
-                                                          ServiceSelectedBloc>()
-                                                      .add(SelectedAService(
-                                                          service: service));
-                                                },
-                                              ),
-                                            )
-                                          ],
-                                        );
-                                      },
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                          child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          SizedBox(
-                            width: mediaqueryWidth(0.06, context),
-                          ),
-                          roundIconsBookingScreen(
-                            context,
-                            icon: Icons.call_outlined,
-                            function: () {},
-                          ),
-                          roundIconsBookingScreen(
-                            context,
-                            icon: Icons.map_outlined,
-                            function: () {},
-                          ),
-                          roundIconsBookingScreen(
-                            context,
-                            icon: Icons.message_outlined,
-                            function: () {},
-                          ),
-                          roundIconsBookingScreen(
-                            context,
-                            icon: Icons.share_outlined,
-                            function: () {},
-                          ),
-                          SizedBox(
-                            width: mediaqueryWidth(0.06, context),
-                          ),
-                        ],
-                      )),
-                    ],
-                  )),
-            )
+                                        serviceBookingScreenHeadings(
+                                            context, "USER REVIEWS"),
+                                        const UserReviews(),
+                                        if (reviewList.length > 2)
+                                          const ViewMoreRatingsButton(),
+                                        SizedBox(
+                                          height:
+                                              mediaqueryHeight(0.012, context),
+                                        ),
+                                        serviceBookingScreenHeadings(
+                                            context, "DATE"),
+                                        dateSelectionContaienerField(),
+                                        servicesSection(),
+                                        BlocBuilder<ServiceSelectedBloc,
+                                            ServiceSelectedState>(
+                                          builder: (context, state) {
+                                            if (state
+                                                .servicesSelected.isNotEmpty) {
+                                              return Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  serviceBookingScreenHeadings(
+                                                      context, "TOTAL TIME"),
+                                                  totalTimeContainerField(
+                                                      context),
+                                                  SizedBox(
+                                                    height: mediaqueryHeight(
+                                                        0.012, context),
+                                                  ),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      selectSlotsHeading(
+                                                          context),
+                                                      const ClearSelectionHeading(),
+                                                    ],
+                                                  ),
+                                                  slotSelectionSubtitle(
+                                                      context),
+                                                  SizedBox(
+                                                    height: mediaqueryHeight(
+                                                        0.008, context),
+                                                  ),
+                                                  BlocBuilder<SlotSelectionBloc,
+                                                          SlotSelectionState>(
+                                                      builder:
+                                                          (context, state) {
+                                                    final event = context.read<
+                                                        SlotSelectionBloc>();
+                                                    return Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
+                                                      children: [
+                                                        SlotsPickingArea(
+                                                            event: event),
+                                                        if (state.selectedSlots
+                                                            .isNotEmpty)
+                                                          const SlideToPayWidget(),
+                                                      ],
+                                                    );
+                                                  })
+                                                ],
+                                              );
+                                            }
+                                            return Container();
+                                          },
+                                        )
+                                      ],
+                                    ))))),
+                        fourRoundedIcons(context),
+                      ],
+                    )))
           ]))),
     );
   }
-
-  EdgeInsets containerPaddingServiceBooking(BuildContext context) {
-    return EdgeInsets.symmetric(
-      horizontal: mediaqueryWidth(0.03, context),
-    );
-  }
-
-  BoxDecoration containerBoxDecoration() {
-    return BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: cyanColor, width: .4));
-  }
-
-  serviceBookingScreenHeadings(BuildContext context, String heading) {
-    return Column(
-      children: [
-        myFont(heading,
-            fontFamily: belleza,
-            fontSize: mediaqueryHeight(0.022, context),
-            fontWeight: FontWeight.w500,
-            fontColor: greyColor2),
-        SizedBox(
-          height: mediaqueryHeight(0.008, context),
-        ),
-      ],
-    );
-  }
-
-  Material roundIconsBookingScreen(BuildContext context,
-      {required IconData icon, required Function()? function}) {
-    return Material(
-      color: blackColor,
-      borderRadius: BorderRadius.circular(90),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(90),
-        onTap: function,
-        child: Container(
-          padding: EdgeInsets.all(mediaqueryHeight(0.02, context)),
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(color: cyanColor, width: 2),
-          ),
-          child: Icon(
-            icon,
-            color: whiteColor,
-            size: mediaqueryHeight(0.025, context),
-          ),
-        ),
-      ),
-    );
-  }
-
-  // Function to show date picker
 }

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:trim_spot_user_side/utils/colors.dart';
 import 'package:trim_spot_user_side/utils/mediaquery.dart';
 import 'package:trim_spot_user_side/utils/screen_padding.dart';
-import 'package:trim_spot_user_side/widgets/bookings/heading.dart';
-import 'package:trim_spot_user_side/widgets/bookings/listview.dart';
+import 'package:trim_spot_user_side/widgets/appointments/heading.dart';
+import 'package:trim_spot_user_side/widgets/appointments/listview.dart';
 
 class BookingsScreen extends StatelessWidget {
   const BookingsScreen({super.key});
