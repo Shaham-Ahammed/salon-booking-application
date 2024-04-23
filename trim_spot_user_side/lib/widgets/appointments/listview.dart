@@ -20,7 +20,7 @@ ListView bookingsListViewDisplay() {
             borderRadius: BorderRadius.circular(12),
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const MyAppointmentsDetailsScreen(),
+                builder: (context) =>  MyAppointmentsDetailsScreen(bookingModel:myBookings,),
               ));
             },
             child: Container(

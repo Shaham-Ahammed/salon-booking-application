@@ -6,7 +6,7 @@ List<BookingsModel> bookingsModelList = [
   BookingsModel(
       serviceImage: serviceImagePicker("Massage"),
       service: "Massage",
-      date: "Sun, 11 Feb, 2024",
+      date: "Sun, 13 Feb, 2024",
       time: "02:00 PM",
       shopName: "Baroda Salon",
       shopLocation: "Feroke",
@@ -15,7 +15,7 @@ List<BookingsModel> bookingsModelList = [
   BookingsModel(
       serviceImage: serviceImagePicker("Facial"),
       service: "Facial",
-      date: "Sun, 11 Feb, 2024",
+      date: "Sun, 12 Feb, 2024",
       time: "02:00 PM",
       shopName: "Baroda Salon",
       shopLocation: "Feroke",
@@ -25,9 +25,10 @@ List<BookingsModel> bookingsModelList = [
       serviceImage: serviceImagePicker("Haircut"),
       service: "Haircut",
       date: "Sun, 11 Feb, 2024",
-      time: "02:00 PM",
+      time: "02:02 PM",
       shopName: "Baroda Salon",
       shopLocation: "Feroke",
       status: "completed",
       statusColor: statusColorSelector("completed")),
+
 ];

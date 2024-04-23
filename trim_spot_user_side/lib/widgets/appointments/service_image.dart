@@ -12,13 +12,19 @@ class BookingsImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: mediaqueryWidth(0.2, context),
-      height: double.infinity,
-      decoration: BoxDecoration(
+    return Hero(
+      tag: myBookings.date+myBookings.time,
+      child: Container(
+        width: mediaqueryWidth(0.2, context),
+        height: double.infinity,
+        decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           image: DecorationImage(
-              fit: BoxFit.cover, image: AssetImage(myBookings.serviceImage))),
+            fit: BoxFit.cover,
+            image: AssetImage(myBookings.serviceImage),
+          ),
+        ),
+      ),
     );
   }
 }
