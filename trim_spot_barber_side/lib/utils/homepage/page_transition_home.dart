@@ -3,7 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/home_screen_pageview_bloc/home_screen_page_controller_bloc.dart';
-import 'package:trim_spot_barber_side/utils/constant_variables/home.dart';
+
+import 'package:trim_spot_barber_side/utils/homepage/animation_control.dart';
 
 Timer pageViewAutomaticTransition(BuildContext context) {
     return Timer.periodic(duration, (Timer timer) {

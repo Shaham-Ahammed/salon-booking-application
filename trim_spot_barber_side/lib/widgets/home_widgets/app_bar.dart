@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
-import 'package:trim_spot_barber_side/utils/constant_variables/home.dart';
+import 'package:trim_spot_barber_side/utils/homepage/drawer/scaffold_key.dart';
+
 import 'package:trim_spot_barber_side/utils/logo.dart';
 import 'package:trim_spot_barber_side/utils/mediaquery.dart';
 

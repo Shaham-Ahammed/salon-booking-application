@@ -30,8 +30,8 @@ class MyAppointmentsDetailsScreen extends StatelessWidget {
                     height: mediaqueryHeight(0.45, context),
                   ),
                   ServiceImage(bookingModel: bookingModel),
-                  const BackButtonBookinDetails()
-                  ,StatusAndService(bookingModel: bookingModel)
+                  const BackButtonBookinDetails(),
+                  StatusAndService(bookingModel: bookingModel)
                 ],
               ),
             ),
@@ -42,20 +42,15 @@ class MyAppointmentsDetailsScreen extends StatelessWidget {
             SizedBox(
               height: mediaqueryHeight(0.01, context),
             ),
-            detailsDisplayArea(context,bookingModel),
+            detailsDisplayArea(context, bookingModel),
             SizedBox(
               height: mediaqueryHeight(0.065, context),
             ),
-            if (bookingModel.status != "cancelled") rateOrCancel(context,bookingModel)
+            if (bookingModel.status != "cancelled")
+              rateOrCancel(context, bookingModel)
           ],
         )),
       ),
     );
   }
 }
-
-
-
-
-
-

@@ -1,15 +1,16 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
 import 'package:trim_spot_barber_side/utils/font.dart';
 import 'package:trim_spot_barber_side/utils/mediaquery.dart';
 
-
 class ServiceRateTextFormField extends StatelessWidget {
   const ServiceRateTextFormField({
-    super.key,
+    Key? key,
+    required this.rateController,
     required this.enabled,
-  });
-
+  }) : super(key: key);
+  final TextEditingController rateController;
   final bool enabled;
 
   @override
@@ -17,7 +18,19 @@ class ServiceRateTextFormField extends StatelessWidget {
     return Expanded(
       child: SizedBox(
         height: mediaqueryHeight(0.033, context),
-        child: TextField(
+        child: TextFormField(
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+          validator: enabled
+              ? (value) {
+                  if (value!.isEmpty) {
+                    return "";
+                  } else {
+                    return null;
+                  }
+                }
+              : (value) => null,
+        
+          controller: rateController,
           cursorColor: cyanColor,
           keyboardType: TextInputType.number,
           maxLength: 4,
@@ -25,6 +38,12 @@ class ServiceRateTextFormField extends StatelessWidget {
           decoration: InputDecoration(
               focusedBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: cyanColor)),
+                     focusedErrorBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: redErrorColor,width: 1)),
+              errorStyle:
+                  TextStyle(fontSize: mediaqueryHeight(0.0000000001, context)),
+              errorBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color:enabled? redErrorColor:greyColor,width: 1.5)),
               counterText: "",
               hintStyle: TextStyle(
                   fontFamily: balooChettan,
@@ -45,4 +64,3 @@ class ServiceRateTextFormField extends StatelessWidget {
     );
   }
 }
-

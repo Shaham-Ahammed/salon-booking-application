@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/slot_selection_bloc/slot_selection_bloc.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
-import 'package:trim_spot_barber_side/utils/constant_variables/home.dart';
+
+import 'package:trim_spot_barber_side/utils/homepage/slot_tiles_timings.dart';
 
 
 

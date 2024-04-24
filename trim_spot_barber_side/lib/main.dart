@@ -48,8 +48,11 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.dark,
       theme: ThemeData(
-          bottomSheetTheme:
-              BottomSheetThemeData(backgroundColor: introductionColor)),
+          textSelectionTheme:
+              TextSelectionThemeData(selectionHandleColor: cyanColor),
+          bottomSheetTheme: BottomSheetThemeData(
+            backgroundColor: introductionColor,
+          )),
       home: FirstIntroductionPage(),
     );
   }

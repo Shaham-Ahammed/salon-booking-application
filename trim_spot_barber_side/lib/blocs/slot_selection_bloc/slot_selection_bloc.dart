@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trim_spot_barber_side/utils/constant_variables/home.dart';
+
+import 'package:trim_spot_barber_side/utils/homepage/slot_tiles_timings.dart';
 
 part 'slot_selection_event.dart';
 part 'slot_selection_state.dart';

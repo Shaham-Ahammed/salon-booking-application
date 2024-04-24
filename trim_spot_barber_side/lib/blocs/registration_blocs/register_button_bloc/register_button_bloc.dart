@@ -2,7 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trim_spot_barber_side/utils/constant_variables/signup_screen_constants.dart';
+import 'package:trim_spot_barber_side/utils/registration_page/form_key.dart';
+import 'package:trim_spot_barber_side/utils/registration_page/textediting_controllers.dart';
 import 'package:trim_spot_barber_side/utils/registration_page/container_validations.dart';
 
 part 'register_button_event.dart';
@@ -16,12 +17,13 @@ class RegisterButtonBloc
   _registerButtonPressed(
       RegisterButtonPressed event, Emitter<RegisterButtonState> emit) {
     emit(RegisterButtonInitial(buttonPressed: true));
-    if ((registrationFormValidation.currentState!.validate() &&
+    if ((registrationFormKey.currentState!.validate() &&
         locationValidation(event.context) &&
         shopImageValidation(event.context) &&
         profileValidation(event.context) &&
         closingTimeValidation(event.context) &&
         openingTimeValidation(event.context) &&
+        shopServiceValidation(event.context)&&
         licenseValidation(event.context))) {
       emit(RegisterationSuccess(buttonPressed: state.buttonPressed));
       print("success");
