@@ -53,8 +53,8 @@ class ShopImagePicker extends StatelessWidget {
                             return Container(
                               width: double.maxFinite,
                               height: double.maxFinite,
-                              child: Image.file(
-                                File(state.ShopImageImagePath),
+                              child: Image.memory(
+                              state.ShopImageInBytes!,
                                 fit: BoxFit.cover,
                               ),
                             );

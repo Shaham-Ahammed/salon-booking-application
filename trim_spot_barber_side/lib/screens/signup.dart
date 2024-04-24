@@ -7,7 +7,6 @@ import 'package:trim_spot_barber_side/blocs/registration_blocs/service_bloc/serv
 import 'package:trim_spot_barber_side/blocs/registration_blocs/working_hours/working_hours_bloc.dart';
 import 'package:trim_spot_barber_side/utils/registration_page/container_validations.dart';
 import 'package:trim_spot_barber_side/utils/registration_page/form_key.dart';
-import 'package:trim_spot_barber_side/utils/registration_page/textediting_controllers.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
 import 'package:trim_spot_barber_side/utils/mediaquery.dart';
 import 'package:trim_spot_barber_side/widgets/login_widgets/background_image.dart';
@@ -28,7 +27,6 @@ import 'package:trim_spot_barber_side/widgets/signup_widgets/service_piker.dart'
 import 'package:trim_spot_barber_side/widgets/signup_widgets/shop_image_picker.dart';
 import 'package:trim_spot_barber_side/widgets/signup_widgets/sizedbox.dart';
 import 'package:trim_spot_barber_side/widgets/signup_widgets/textfields.dart';
-import 'package:trim_spot_barber_side/widgets/signup_widgets/upi_id_textform_field.dart';
 import 'package:trim_spot_barber_side/widgets/signup_widgets/welocme.dart';
 
 class SignUpScreen extends StatefulWidget {

@@ -57,7 +57,7 @@ class ShopLicensePicker extends StatelessWidget {
                             return Container(
                               width: double.maxFinite,
                               height: double.maxFinite,
-                              child: Image.file(File(state.LicensemagePath),
+                              child: Image.memory(state.LicenseInBytes!,
                                   fit: BoxFit.cover),
                             );
                           }

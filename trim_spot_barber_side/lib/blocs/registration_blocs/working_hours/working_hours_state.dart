@@ -2,26 +2,26 @@ part of 'working_hours_bloc.dart';
 
 @immutable
 sealed class WorkingHoursState {
- final DateTime? openingTime;
- final DateTime? closingTime;
- final String openTimeDisplayText;
- final String closingTimeDisplayText;
+  final DateTime? openingTime;
+  final DateTime? closingTime;
+  final String openTimeDisplayText;
+  final String closingTimeDisplayText;
 
- const WorkingHoursState({
+  const WorkingHoursState({
     required this.openingTime,
     required this.closingTime,
     required this.openTimeDisplayText,
     required this.closingTimeDisplayText,
- });
+  });
 }
 
 final class WorkingHoursInitial extends WorkingHoursState {
- WorkingHoursInitial({
+  WorkingHoursInitial({
     required DateTime? openingTime,
     required DateTime? closingTime,
     required String openTimeDisplayText,
     required String closingTimeDisplayText,
- }) : super(
+  }) : super(
           openingTime: openingTime,
           closingTime: closingTime,
           openTimeDisplayText: openTimeDisplayText,

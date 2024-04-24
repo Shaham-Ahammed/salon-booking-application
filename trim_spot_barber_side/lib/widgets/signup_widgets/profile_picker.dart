@@ -47,7 +47,8 @@ class ProfilePicker extends StatelessWidget {
                 child: SizedBox(
                   width: double.infinity,
                   child: GestureDetector(
-                    onTap: () => context.read<ImageBloc>().add(PickingProfile()),
+                    onTap: () =>
+                        context.read<ImageBloc>().add(PickingProfile()),
                     child: DottedBorder(
                         color: cyanColor,
                         child: Center(
@@ -58,7 +59,7 @@ class ProfilePicker extends StatelessWidget {
                               return Container(
                                 width: double.maxFinite,
                                 height: double.maxFinite,
-                                child: Image.file(File(state.ProfileImagePath),
+                                child: Image.memory(state.ProfileInBytes!,
                                     fit: BoxFit.cover),
                               );
                             }
