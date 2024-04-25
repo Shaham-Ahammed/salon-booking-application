@@ -18,7 +18,7 @@ import 'package:trim_spot_user_side/widgets/login_page_widgets/or_seperator.dart
 import 'package:trim_spot_user_side/widgets/login_page_widgets/resgister_text.dart';
 import 'package:trim_spot_user_side/widgets/login_page_widgets/success_snackbar.dart';
 import 'package:trim_spot_user_side/widgets/login_page_widgets/textformfields.dart';
-import 'package:trim_spot_user_side/widgets/signup_screen/signup_error_scackbars.dart';
+import 'package:trim_spot_user_side/widgets/signup_screen/network_error_snackbar.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

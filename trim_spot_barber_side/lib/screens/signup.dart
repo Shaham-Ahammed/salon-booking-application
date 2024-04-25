@@ -5,10 +5,18 @@ import 'package:trim_spot_barber_side/blocs/registration_blocs/image_bloc/image_
 import 'package:trim_spot_barber_side/blocs/registration_blocs/register_button_bloc/register_button_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/registration_blocs/service_bloc/service_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/registration_blocs/working_hours/working_hours_bloc.dart';
+import 'package:trim_spot_barber_side/screens/bottom_navigation.dart';
+import 'package:trim_spot_barber_side/screens/otp_verification.dart';
+import 'package:trim_spot_barber_side/utils/error_snackbars.dart';
+import 'package:trim_spot_barber_side/utils/loading_indicator.dart';
+import 'package:trim_spot_barber_side/utils/network_error_snackbar.dart';
+import 'package:trim_spot_barber_side/utils/page_transitions/no_transition_page_route.dart';
+import 'package:trim_spot_barber_side/utils/page_transitions/slide_transition.dart';
 import 'package:trim_spot_barber_side/utils/registration_page/container_validations.dart';
 import 'package:trim_spot_barber_side/utils/registration_page/form_key.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
 import 'package:trim_spot_barber_side/utils/mediaquery.dart';
+import 'package:trim_spot_barber_side/utils/registration_page/textediting_controllers.dart';
 import 'package:trim_spot_barber_side/widgets/login_widgets/background_image.dart';
 import 'package:trim_spot_barber_side/widgets/signup_widgets/closing_time_picker.dart';
 import 'package:trim_spot_barber_side/widgets/signup_widgets/error_displays_widgets/closing_time_error.dart';
@@ -39,14 +47,33 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => RegisterButtonBloc()),
-        BlocProvider(create: (context) => HolidayBloc()),
-        BlocProvider<ServiceBloc>(create: (context) => ServiceBloc()),
-        BlocProvider<WorkingHoursBloc>(create: (context) => WorkingHoursBloc()),
-        BlocProvider<ImageBloc>(create: (context) => ImageBloc()),
-      ],
+    return BlocListener<RegisterButtonBloc, RegisterButtonState>(
+      listener: (context, state) {
+        if (state is RegistrationLoading) {
+          loadingIndicator(context);
+        }
+        if (state is NetworkError) {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(networkErrorSnackbar(context));
+          Navigator.pop(context);
+        }
+        if (state is RegisrationFailure) {
+          registrationEmailController.clear();
+          ScaffoldMessenger.of(context)
+              .showSnackBar(errorSnackBar("${state.error}"));
+          Navigator.pop(context);
+        }
+        if (state is RegistrationSuccess) {
+          Navigator.pop(context);
+          Navigator.of(context)
+              .push(NoTransitionPageRoute(child: BottomNavigationScreen()));
+        }
+        if (state is NavigateToOtpPage) {
+          Navigator.pop(context);
+          Navigator.of(context)
+              .push(SlideTransitionPageRoute(child: OtpVerificationScreen()));
+        }
+      },
       child: Scaffold(
         backgroundColor: blackColor,
         resizeToAvoidBottomInset: false,
@@ -113,7 +140,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               anySelected = true;
                             }
                           }
-                          if (!anySelected && registerbuttonPressed(context) ) {
+                          if (!anySelected && registerbuttonPressed(context)) {
                             return Align(
                               alignment: Alignment.topLeft,
                               child: Padding(

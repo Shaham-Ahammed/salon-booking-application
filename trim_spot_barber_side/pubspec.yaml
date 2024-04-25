@@ -53,7 +53,10 @@ dependencies:
   firebase_auth: ^4.19.1
   cloud_firestore: ^4.16.1
   firebase_storage: ^11.7.1
-
+  loading_indicator: ^3.1.1
+  connectivity_plus: ^6.0.3
+  lottie: ^3.1.0
+  
   
 
 dev_dependencies:
@@ -99,7 +102,7 @@ flutter:
     - assets/icons/menu_icon.svg
     - assets/images/registration success.png
     - assets/images/registraion denied.png
-
+    - assets/animations/email_sended.json
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

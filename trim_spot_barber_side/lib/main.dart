@@ -8,7 +8,12 @@ import 'package:trim_spot_barber_side/blocs/profile_blocs/name_bloc/profile_name
 import 'package:trim_spot_barber_side/blocs/profile_blocs/phone_bloc/profile_phone_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/profile_blocs/shop_image/profile_shop_image_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/profile_blocs/user_profile_image_bloc/profile_user_image_bloc.dart';
+import 'package:trim_spot_barber_side/blocs/registration_blocs/holiday_bloc/holiday_bloc_bloc.dart';
+import 'package:trim_spot_barber_side/blocs/registration_blocs/image_bloc/image_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/registration_blocs/location_bloc/location_bloc.dart';
+import 'package:trim_spot_barber_side/blocs/registration_blocs/register_button_bloc/register_button_bloc.dart';
+import 'package:trim_spot_barber_side/blocs/registration_blocs/service_bloc/service_bloc.dart';
+import 'package:trim_spot_barber_side/blocs/registration_blocs/working_hours/working_hours_bloc.dart';
 import 'package:trim_spot_barber_side/firebase_options.dart';
 import 'package:trim_spot_barber_side/screens/onboarding_screen.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
@@ -21,6 +26,11 @@ void main(List<String> args) async {
   Bloc.observer = AppBlocObserver();
   runApp(MultiBlocProvider(
     providers: [
+         BlocProvider(create: (context) => HolidayBloc()),
+        BlocProvider<ServiceBloc>(create: (context) => ServiceBloc()),
+        BlocProvider<WorkingHoursBloc>(create: (context) => WorkingHoursBloc()),
+        BlocProvider<ImageBloc>(create: (context) => ImageBloc()),
+         BlocProvider(create: (context) => RegisterButtonBloc()),
       BlocProvider<ProfileEmailBloc>(create: (context) => ProfileEmailBloc()),
       BlocProvider<ProfilePhoneBloc>(create: (context) => ProfilePhoneBloc()),
       BlocProvider<ProfileShopImageBloc>(

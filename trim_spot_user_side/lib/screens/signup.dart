@@ -12,7 +12,7 @@ import 'package:trim_spot_user_side/widgets/signup_screen/profile_image.dart';
 import 'package:trim_spot_user_side/widgets/signup_screen/profile_image_error.dart';
 import 'package:trim_spot_user_side/widgets/signup_screen/register_button.dart';
 import 'package:trim_spot_user_side/widgets/signup_screen/screen_padding.dart';
-import 'package:trim_spot_user_side/widgets/signup_screen/signup_error_scackbars.dart';
+import 'package:trim_spot_user_side/widgets/signup_screen/network_error_snackbar.dart';
 import 'package:trim_spot_user_side/widgets/signup_screen/sizedbox.dart';
 import 'package:trim_spot_user_side/widgets/signup_screen/textformfields.dart';
 import 'package:trim_spot_user_side/widgets/signup_screen/welcome.dart';

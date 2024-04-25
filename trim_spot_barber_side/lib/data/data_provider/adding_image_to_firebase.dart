@@ -1,7 +1,6 @@
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/registration_blocs/image_bloc/image_bloc.dart';
-import 'package:trim_spot_barber_side/data/firebase/image_storage_references.dart';
+import 'package:trim_spot_barber_side/data/firebase_references/image_storage_references.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 class AddImageToFirebaseStorage {
@@ -13,7 +12,8 @@ class AddImageToFirebaseStorage {
   Future<String> shopImageToFirebaseStorage(context) async {
     final imagesStoredBloc = BlocProvider.of<ImageBloc>(context).state;
     try {
-      final shopImageReference =   FirebaseStorageReferences().shopImageReference(context);
+      final shopImageReference =
+          FirebaseStorageReferences().shopImageReference(context);
       await shopImageReference.putData(
           imagesStoredBloc.ShopImageInBytes!, metadata);
       return shopImageReference.getDownloadURL();
@@ -26,7 +26,7 @@ class AddImageToFirebaseStorage {
     final imagesStoredBloc = BlocProvider.of<ImageBloc>(context).state;
     try {
       final profileImageReference =
-            FirebaseStorageReferences().profileImageReference(context);
+          FirebaseStorageReferences().profileImageReference(context);
       await profileImageReference.putData(
           imagesStoredBloc.ProfileInBytes!, metadata);
       return profileImageReference.getDownloadURL();
@@ -39,7 +39,7 @@ class AddImageToFirebaseStorage {
     final imagesStoredBloc = BlocProvider.of<ImageBloc>(context).state;
     try {
       final licenseImageReference =
-            FirebaseStorageReferences().licenseImageReference(context);
+          FirebaseStorageReferences().licenseImageReference(context);
       await licenseImageReference.putData(
           imagesStoredBloc.LicenseInBytes!, metadata);
       return licenseImageReference.getDownloadURL();

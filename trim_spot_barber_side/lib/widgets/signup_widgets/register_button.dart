@@ -17,36 +17,28 @@ class RegisterButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<RegisterButtonBloc, RegisterButtonState>(
-      listener: (context, state) {
-        if (state is RegisterationSuccess) {
-          Navigator.of(context).pushReplacement(
-              SlideTransitionPageRoute(child: OtpVerificationScreen()));
-        }
-      },
-      child: Material(
-          color: cyanColor,
+    return Material(
+        color: cyanColor,
+        borderRadius: BorderRadius.circular(90),
+        child: InkWell(
+          onTap: () {
+            context
+                .read<RegisterButtonBloc>()
+                .add(RegisterButtonPressed(context: context));
+          },
           borderRadius: BorderRadius.circular(90),
-          child: InkWell(
-            onTap: () {
-              context
-                  .read<RegisterButtonBloc>()
-                  .add(RegisterButtonPressed(context: context));
-            },
-            borderRadius: BorderRadius.circular(90),
-            child: Container(
-              width: mediaqueryWidth(0.6, context),
-              height: mediaqueryHeight(0.06, context),
-              decoration: cyanContainer(transparentColor),
-              child: Center(
-                child: myFont("Register",
-                    fontFamily: balooChettan,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    fontColor: blackColor),
-              ),
+          child: Container(
+            width: mediaqueryWidth(0.6, context),
+            height: mediaqueryHeight(0.06, context),
+            decoration: cyanContainer(transparentColor),
+            child: Center(
+              child: myFont("Register",
+                  fontFamily: balooChettan,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  fontColor: blackColor),
             ),
-          )),
-    );
+          ),
+        ));
   }
 }

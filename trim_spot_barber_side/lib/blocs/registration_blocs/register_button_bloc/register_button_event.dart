@@ -8,3 +8,9 @@ final class RegisterButtonPressed extends RegisterButtonEvent {
 
   RegisterButtonPressed({required this.context});
 }
+
+final class SubmitOtpPressed extends RegisterButtonEvent{
+   final BuildContext context;
+
+  SubmitOtpPressed({required this.context});
+}
