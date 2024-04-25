@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trim_spot_barber_side/blocs/registration_blocs/holiday_bloc/holiday_bloc_bloc.dart';
-import 'package:trim_spot_barber_side/blocs/registration_blocs/image_bloc/image_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/registration_blocs/register_button_bloc/register_button_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/registration_blocs/service_bloc/service_bloc.dart';
-import 'package:trim_spot_barber_side/blocs/registration_blocs/working_hours/working_hours_bloc.dart';
 import 'package:trim_spot_barber_side/screens/bottom_navigation.dart';
 import 'package:trim_spot_barber_side/screens/otp_verification.dart';
 import 'package:trim_spot_barber_side/utils/error_snackbars.dart';

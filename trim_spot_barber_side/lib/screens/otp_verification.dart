@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/registration_blocs/register_button_bloc/register_button_bloc.dart';
 import 'package:trim_spot_barber_side/screens/bottom_navigation.dart';
@@ -11,10 +10,9 @@ import 'package:trim_spot_barber_side/utils/network_error_snackbar.dart';
 import 'package:trim_spot_barber_side/utils/page_transitions/no_transition_page_route.dart';
 import 'package:trim_spot_barber_side/widgets/login_widgets/background_image.dart';
 import 'package:trim_spot_barber_side/widgets/otp_page/heading_texts.dart';
-import 'package:trim_spot_barber_side/widgets/otp_page/otp_fields.dart';
+import 'package:trim_spot_barber_side/widgets/otp_page/resend_email_button.dart';
 import 'package:trim_spot_barber_side/widgets/otp_page/submit_button.dart';
 import 'package:trim_spot_barber_side/widgets/signup_widgets/screen_padding.dart';
-import 'package:lottie/lottie.dart';
 
 class OtpVerificationScreen extends StatelessWidget {
   const OtpVerificationScreen({super.key});
@@ -33,7 +31,7 @@ class OtpVerificationScreen extends StatelessWidget {
         }
         if (state is RegisrationFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
-              errorSnackBar("some thing went wrong ${state.error}"));
+              errorSnackBar("${state.error}"));
           Navigator.pop(context);
         }
         if (state is RegistrationSuccess) {
@@ -59,11 +57,16 @@ class OtpVerificationScreen extends StatelessWidget {
                     SizedBox(
                       height: mediaqueryHeight(0.26, context),
                     ),
-                   Transform.scale(
-                    scale: .5,
-                    child: LottieBuilder.asset("assets/animations/email_sended.json",height: 30,)),
-                    fourDigitCodeTitle(context),
-                    submitButton(context)
+                    emailSendedText(context),
+                    SizedBox(
+                      height: mediaqueryHeight(0.029, context),
+                    ),
+                    submitButton(context),
+                    SizedBox(
+                      height: mediaqueryHeight(0.19, context),
+                    ),
+                    resendEmailText(context),
+                    ResendEmailButton()
                   ],
                 ),
               ),

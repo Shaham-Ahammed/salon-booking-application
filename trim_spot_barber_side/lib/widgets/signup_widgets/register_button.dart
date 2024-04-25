@@ -3,9 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/registration_blocs/register_button_bloc/register_button_bloc.dart';
-import 'package:trim_spot_barber_side/screens/otp_verification.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
-import 'package:trim_spot_barber_side/utils/page_transitions/slide_transition.dart';
 import 'package:trim_spot_barber_side/utils/registration_page/cyan_container.dart';
 import 'package:trim_spot_barber_side/utils/font.dart';
 import 'package:trim_spot_barber_side/utils/mediaquery.dart';

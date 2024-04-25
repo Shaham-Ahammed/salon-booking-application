@@ -9,8 +9,12 @@ final class RegisterButtonPressed extends RegisterButtonEvent {
   RegisterButtonPressed({required this.context});
 }
 
-final class SubmitOtpPressed extends RegisterButtonEvent{
-   final BuildContext context;
+final class VerifyEmailPressed extends RegisterButtonEvent {
+  final BuildContext context;
 
-  SubmitOtpPressed({required this.context});
+  VerifyEmailPressed({required this.context});
 }
+
+final class AuthenticateUserDetails extends RegisterButtonEvent {}
+
+final class ResendEmailButtonPressed extends RegisterButtonEvent{}
