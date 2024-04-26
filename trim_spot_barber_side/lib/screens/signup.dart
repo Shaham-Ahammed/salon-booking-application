@@ -2,13 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/registration_blocs/register_button_bloc/register_button_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/registration_blocs/service_bloc/service_bloc.dart';
-import 'package:trim_spot_barber_side/screens/bottom_navigation.dart';
-import 'package:trim_spot_barber_side/screens/otp_verification.dart';
 import 'package:trim_spot_barber_side/utils/error_snackbars.dart';
 import 'package:trim_spot_barber_side/utils/loading_indicator.dart';
 import 'package:trim_spot_barber_side/utils/network_error_snackbar.dart';
-import 'package:trim_spot_barber_side/utils/page_transitions/no_transition_page_route.dart';
-import 'package:trim_spot_barber_side/utils/page_transitions/slide_transition.dart';
 import 'package:trim_spot_barber_side/utils/registration_page/container_validations.dart';
 import 'package:trim_spot_barber_side/utils/registration_page/form_key.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
@@ -46,29 +42,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return BlocListener<RegisterButtonBloc, RegisterButtonState>(
       listener: (context, state) {
-        if (state is RegistrationLoading) {
+        if (state is LoadingState) {
           loadingIndicator(context);
         }
         if (state is NetworkError) {
           ScaffoldMessenger.of(context)
               .showSnackBar(networkErrorSnackbar(context));
-          Navigator.pop(context);
+        
         }
         if (state is RegisrationFailure) {
-          registrationEmailController.clear();
           ScaffoldMessenger.of(context)
               .showSnackBar(errorSnackBar("${state.error}"));
           Navigator.pop(context);
         }
-        if (state is RegistrationSuccess) {
+        if (state is PhoneNumberAlreadyRegistered) {
+          registrationPhoneController.clear();
           Navigator.pop(context);
-          Navigator.of(context)
-              .push(NoTransitionPageRoute(child: BottomNavigationScreen()));
-        }
-        if (state is NavigateToOtpPage) {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(errorSnackBar("phone already registered"));
           Navigator.pop(context);
-          Navigator.of(context)
-              .push(SlideTransitionPageRoute(child: OtpVerificationScreen()));
         }
       },
       child: Scaffold(

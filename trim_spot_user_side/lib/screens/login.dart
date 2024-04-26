@@ -4,12 +4,14 @@ import 'package:trim_spot_user_side/blocs/google_sign_in_bloc/google_sign_in_blo
 
 import 'package:trim_spot_user_side/blocs/login_validation/login_validation_bloc.dart';
 import 'package:trim_spot_user_side/screens/bottom_navigation.dart';
+import 'package:trim_spot_user_side/screens/otp_verification.dart';
 import 'package:trim_spot_user_side/utils/colors.dart';
 import 'package:trim_spot_user_side/utils/error_snackbars.dart';
 import 'package:trim_spot_user_side/utils/login_screen/controllers.dart';
 import 'package:trim_spot_user_side/utils/login_screen/formkey.dart';
 import 'package:trim_spot_user_side/utils/mediaquery.dart';
 import 'package:trim_spot_user_side/utils/page%20transitions/fade_transition.dart';
+import 'package:trim_spot_user_side/utils/page%20transitions/slide_transition.dart';
 import 'package:trim_spot_user_side/widgets/login_page_widgets/background_image.dart';
 import 'package:trim_spot_user_side/widgets/login_page_widgets/google_signin.dart';
 import 'package:trim_spot_user_side/widgets/login_page_widgets/loading_indicator.dart';
@@ -49,6 +51,16 @@ class LoginScreen extends StatelessWidget {
               if (state is NetworkError) {
                 ScaffoldMessenger.of(context)
                     .showSnackBar(networkErrorSnackbar(context));
+              }
+              if (state is EmailNotVerified) {
+                  ScaffoldMessenger.of(context)
+                    .showSnackBar(errorSnackBar("please verify your email"));
+              }
+
+              if (state is NavigateToOtPage) {
+                    Navigator.pop(context);
+                    Navigator.of(context).push(SlideTransitionPageRoute(
+                    child: const OtpVerificationScreen(fromLogin: true,)));
               }
 
               if (state is AuthenticatingUser) {

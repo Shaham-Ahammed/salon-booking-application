@@ -7,3 +7,10 @@ final class LoginButtonPressed extends LoginValidationEvent {
  
 
 }
+final class VerifyEmailPressedFromLogin extends LoginValidationEvent {
+  final BuildContext context;
+
+  VerifyEmailPressedFromLogin(this.context);
+}
+
+final class ResendEmailButtonPressedFromLogin extends LoginValidationEvent {}

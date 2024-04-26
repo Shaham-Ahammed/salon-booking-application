@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:trim_spot_barber_side/data/firebase_references/shop_collection_reference.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
+import 'package:trim_spot_barber_side/utils/constant_variables/login_screen_constants.dart';
 import 'package:trim_spot_barber_side/utils/homepage/drawer/scaffold_key.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:trim_spot_barber_side/utils/logo.dart';
 import 'package:trim_spot_barber_side/utils/mediaquery.dart';
 
@@ -21,15 +23,44 @@ class AppBarHomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Transform.scale(
-                  scale: 1.25,
-                  child: GestureDetector(
-                      onTap: () {
-                        homeScaffoldKey.currentState?.openDrawer();
-                      },
-                      child: CircleAvatar(
-                        backgroundImage: AssetImage("assets/images/s2.jpg"),
-                      )),
-                ),
+                    scale: 1.25,
+                    child: GestureDetector(
+                        onTap: () {
+                          homeScaffoldKey.currentState?.openDrawer();
+                        },
+                        child: StreamBuilder<QuerySnapshot>(
+                          stream: ShopDetailsReference()
+                              .shopDetailsReference()
+                              .where("phone", isEqualTo: loginPhoneController.text)
+                              .snapshots(),
+                          builder:
+                              (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                           
+
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return CircularProgressIndicator(); // Show a loading indicator while waiting for data
+                            }
+
+                            if (snapshot.hasData &&
+                                snapshot.data!.docs.isNotEmpty) {
+                              // Assuming there's only one document that matches the query
+                              final doc = snapshot.data!.docs.first['profileImage'];
+                              // final profileImageUrl =
+                              //     doc.data()['profileImage'];
+
+                              return CircleAvatar(
+                                backgroundImage: NetworkImage(doc),
+                              );
+                            } else {
+                              // No data or no matching document
+                              return CircleAvatar(
+                                radius: 20,
+                                backgroundColor: Colors.amber,
+                              );
+                            }
+                          },
+                        ))),
                 AppLogo(
                   size: mediaqueryHeight(0.045, context),
                 ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:trim_spot_barber_side/screens/bottom_navigation.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trim_spot_barber_side/blocs/login_button_bloc/login_validation_bloc.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
-import 'package:trim_spot_barber_side/utils/page_transitions/no_transition_page_route.dart';
 import 'package:trim_spot_barber_side/utils/registration_page/cyan_container.dart';
 import 'package:trim_spot_barber_side/utils/font.dart';
 import 'package:trim_spot_barber_side/utils/mediaquery.dart';
@@ -18,8 +18,7 @@ class LoginButton extends StatelessWidget {
       borderRadius: BorderRadius.circular(90),
       child: InkWell(
         onTap: () {
-          Navigator.of(context)
-              .push(NoTransitionPageRoute(child: BottomNavigationScreen()));
+          context.read<LoginValidationBloc>().add(LoginbuttonPressed());
         },
         borderRadius: BorderRadius.circular(90),
         child: Container(

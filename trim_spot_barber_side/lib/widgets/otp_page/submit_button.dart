@@ -4,15 +4,13 @@ import 'package:trim_spot_barber_side/blocs/registration_blocs/register_button_b
 import 'package:trim_spot_barber_side/utils/mediaquery.dart';
 import 'package:trim_spot_barber_side/utils/submit_buttons.dart';
 
-submitButton(BuildContext context) {
+submitButtonOtpPage(BuildContext context, String verificationId) {
   return submitButtonCyan(context, function: () {
-    // Navigator.of(context).push(
-    //     NoTransitionPageRoute(child: RegistrationSuccessfulMessageScreen()));
-    context.read<RegisterButtonBloc>().add(VerifyEmailPressed(context: context));
+    context.read<RegisterButtonBloc>().add(SubmitOtpButtonPressed(context,
+        verificationId: verificationId));
     return null;
   },
-      heigh: mediaqueryHeight(0.044, context),
-      text: "continue",
-      fontSize: mediaqueryHeight(0.023, context),
-      width: mediaqueryWidth(0.4, context));
+      heigh: mediaqueryHeight(0.06, context),
+      text: "submit",
+      width: mediaqueryWidth(0.5, context));
 }

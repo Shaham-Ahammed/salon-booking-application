@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +13,8 @@ class LoginValidationBloc
     extends Bloc<LoginValidationEvent, LoginValidationState> {
   LoginValidationBloc() : super(LoginValidationInitial()) {
     on<LoginButtonPressed>(_loginButtonPressed);
+    on<ResendEmailButtonPressedFromLogin>(_resendEmailButtonPressed);
+    on<VerifyEmailPressedFromLogin>(_verifyEmailPressed);
   }
   _loginButtonPressed(
       LoginButtonPressed event, Emitter<LoginValidationState> emit) async {
@@ -28,14 +32,38 @@ class LoginValidationBloc
       final User? user =
           await FirebaseAuthService().signInWithEmailAndPassword();
       if (user != null) {
-        emit(LoginSuccess());
+        if (user.emailVerified) {
+          emit(LoginSuccess());
+        } else {
+          emit(EmailNotVerified());
+
+          user.sendEmailVerification();
+          emit(NavigateToOtPage(user));
+        }
+
         return;
       } else {
         emit(IncorrectDetails());
       }
-     
     } else {
       return;
     }
+  }
+
+  _verifyEmailPressed(
+      VerifyEmailPressedFromLogin event, Emitter<LoginValidationState> emit) {
+    final user = (state as NavigateToOtPage).user;
+    emit(LoadingStateLogin());
+    if (user.emailVerified) {
+      emit(LoginSuccess());
+      print("success");
+    } else {
+      emit(EmailVerificationFailedFromOtpPage());
+    }
+  }
+
+  _resendEmailButtonPressed(
+      ResendEmailButtonPressedFromLogin event, Emitter<LoginValidationState> emit) {
+    (state as NavigateToOtPage).user.sendEmailVerification();
   }
 }

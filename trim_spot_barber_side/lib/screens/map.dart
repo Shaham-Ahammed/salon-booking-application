@@ -8,7 +8,7 @@ import 'package:trim_spot_barber_side/utils/colors.dart';
 import 'package:trim_spot_barber_side/utils/font.dart';
 import 'package:trim_spot_barber_side/utils/mediaquery.dart';
 
-double? add;
+
 
 class GoogleMapScreen extends StatefulWidget {
   const GoogleMapScreen({

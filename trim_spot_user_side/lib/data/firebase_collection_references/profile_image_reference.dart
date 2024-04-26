@@ -1,10 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_user_side/blocs/profile_image_bloc/profile_image_bloc.dart';
 
-final CollectionReference userCollections =
-    FirebaseFirestore.instance.collection('user_information');
+
 
 firebase_storage.Reference userStorageReference(context) {
   firebase_storage.Reference userStorage = firebase_storage

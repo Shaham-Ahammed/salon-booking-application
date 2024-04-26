@@ -15,19 +15,27 @@ final class NavigateToOtpPage extends RegisterButtonState {
   NavigateToOtpPage({required super.buttonPressed});
 }
 
-final class RegistrationSuccess extends RegisterButtonState {
-  RegistrationSuccess({required super.buttonPressed});
-}
+
 
 final class RegisrationFailure extends RegisterButtonState {
   final String error;
   RegisrationFailure(this.error, {required super.buttonPressed});
 }
 
-final class RegistrationLoading extends RegisterButtonState {
-  RegistrationLoading({required super.buttonPressed});
-}
+
 
 final class NetworkError extends RegisterButtonState{
   NetworkError({required super.buttonPressed});
+}
+
+final class PhoneNumberAlreadyRegistered extends RegisterButtonState{
+  PhoneNumberAlreadyRegistered({required super.buttonPressed});
+}
+
+final class LoadingState extends RegisterButtonState{
+  LoadingState({required super.buttonPressed});
+}
+
+final class NavigateToHomePage extends RegisterButtonState{
+  NavigateToHomePage({required super.buttonPressed});
 }

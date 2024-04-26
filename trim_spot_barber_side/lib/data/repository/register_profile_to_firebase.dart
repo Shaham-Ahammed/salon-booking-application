@@ -1,17 +1,16 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/registration_blocs/holiday_bloc/holiday_bloc_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/registration_blocs/location_bloc/location_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/registration_blocs/working_hours/working_hours_bloc.dart';
 import 'package:trim_spot_barber_side/data/data_provider/adding_image_to_firebase.dart';
+import 'package:trim_spot_barber_side/data/firebase_references/shop_collection_reference.dart';
 import 'package:trim_spot_barber_side/models/registration_model.dart';
 import 'package:trim_spot_barber_side/utils/registration_page/service_convertion.dart';
 import 'package:trim_spot_barber_side/utils/registration_page/textediting_controllers.dart';
 
 class RegisterProfileToFirebase {
   addDatasToFirebase(context) async {
-   
     final profileImageUrl = await AddImageToFirebaseStorage()
         .addProfileImageToFirebaseStorage(context);
     final shopImageUrl =
@@ -20,7 +19,8 @@ class RegisterProfileToFirebase {
         .licenseImageToFirebaseStorage(context);
 
     final CollectionReference collection =
-        FirebaseFirestore.instance.collection('shop_registration');
+        ShopDetailsReference().shopDetailsReference();
+
     final data = RegistraitonModel(
             name: registrationNameController.text.trim(),
             closingTime:

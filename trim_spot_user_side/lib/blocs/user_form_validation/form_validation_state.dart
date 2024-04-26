@@ -5,22 +5,20 @@ sealed class FormValidationState {}
 
 final class FormValidationInitial extends FormValidationState {}
 
-final class NavigateToOtpPage extends FormValidationState {
- final String verificationId;
+final class NavigateToEmailVerficationPage extends FormValidationState {}
 
-  NavigateToOtpPage({required this.verificationId});
-}
+final class LoadingState extends FormValidationState {}
 
-final class AddingToDataToFirebase extends FormValidationState {}
+final class LoadingStateOtpScreen extends FormValidationState {}
 
 final class NetworkError extends FormValidationState {}
 
-final class DataAddingError extends FormValidationState {}
-
 final class UserNameExists extends FormValidationState {}
 
-final class NavigateToHomePage extends FormValidationState{}
+final class NavigateToHomePage extends FormValidationState {}
 
-final class PhoneNumberAlreadyRegistered extends FormValidationState{}
+final class RegisrationFailure extends FormValidationState {
+ final  String exception;
 
-final class SomethingWentWrongWithOtpValidation extends FormValidationState{}
+  RegisrationFailure( this.exception);
+}

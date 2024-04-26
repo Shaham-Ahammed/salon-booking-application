@@ -3,41 +3,28 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/registration_blocs/register_button_bloc/register_button_bloc.dart';
 import 'package:trim_spot_barber_side/screens/bottom_navigation.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
-import 'package:trim_spot_barber_side/utils/error_snackbars.dart';
-import 'package:trim_spot_barber_side/utils/loading_indicator.dart';
 import 'package:trim_spot_barber_side/utils/mediaquery.dart';
-import 'package:trim_spot_barber_side/utils/network_error_snackbar.dart';
-import 'package:trim_spot_barber_side/utils/page_transitions/no_transition_page_route.dart';
+import 'package:trim_spot_barber_side/utils/page_transitions/fade_transition.dart';
 import 'package:trim_spot_barber_side/widgets/login_widgets/background_image.dart';
-import 'package:trim_spot_barber_side/widgets/otp_page/heading_texts.dart';
-import 'package:trim_spot_barber_side/widgets/otp_page/resend_email_button.dart';
+
+import 'package:trim_spot_barber_side/widgets/otp_page/headings_and_texts.dart';
+import 'package:trim_spot_barber_side/widgets/otp_page/otp_box.dart';
+
 import 'package:trim_spot_barber_side/widgets/otp_page/submit_button.dart';
 import 'package:trim_spot_barber_side/widgets/signup_widgets/screen_padding.dart';
 
 class OtpVerificationScreen extends StatelessWidget {
-  const OtpVerificationScreen({super.key});
+  final String verificationId;
+  const OtpVerificationScreen({super.key, required this.verificationId});
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<RegisterButtonBloc, RegisterButtonState>(
       listener: (context, state) {
-        if (state is RegistrationLoading) {
-          loadingIndicator(context);
-        }
-        if (state is NetworkError) {
-          ScaffoldMessenger.of(context)
-              .showSnackBar(networkErrorSnackbar(context));
-          Navigator.pop(context);
-        }
-        if (state is RegisrationFailure) {
-          ScaffoldMessenger.of(context).showSnackBar(
-              errorSnackBar("${state.error}"));
-          Navigator.pop(context);
-        }
-        if (state is RegistrationSuccess) {
+        if (state is NavigateToHomePage) {
           Navigator.pop(context);
           Navigator.of(context)
-              .push(NoTransitionPageRoute(child: BottomNavigationScreen()));
+              .push(FadeTransitionPageRoute(child: BottomNavigationScreen()));
         }
       },
       child: Scaffold(
@@ -53,20 +40,20 @@ class OtpVerificationScreen extends StatelessWidget {
                 padding: screenPadding(context),
                 child: Column(
                   children: [
-                    pageTitle(context),
+                    otpVerficationHeading(context),
                     SizedBox(
                       height: mediaqueryHeight(0.26, context),
                     ),
-                    emailSendedText(context),
+                    sixDigitCodeHeading(context),
+                    captionText(),
                     SizedBox(
-                      height: mediaqueryHeight(0.029, context),
+                      height: mediaqueryHeight(0.02, context),
                     ),
-                    submitButton(context),
+                    const OtpBoxe(),
                     SizedBox(
-                      height: mediaqueryHeight(0.19, context),
+                      height: mediaqueryHeight(0.3, context),
                     ),
-                    resendEmailText(context),
-                    ResendEmailButton()
+                    submitButtonOtpPage(context, verificationId)
                   ],
                 ),
               ),

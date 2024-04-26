@@ -3,11 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/on_boarding_bloc/onboardind_bloc_bloc.dart';
 import 'package:trim_spot_barber_side/screens/login.dart';
-import 'package:trim_spot_barber_side/screens/otp_verification.dart';
 import 'package:trim_spot_barber_side/screens/signup.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
 import 'package:trim_spot_barber_side/utils/page_transitions/fade_transition.dart';
-import 'package:trim_spot_barber_side/utils/page_transitions/no_transition_page_route.dart';
 import 'package:trim_spot_barber_side/widgets/login_or_signup_widgets/background_image.dart';
 import 'package:trim_spot_barber_side/widgets/login_or_signup_widgets/login_signup_buttons.dart';
 
@@ -41,9 +39,9 @@ class LoginOrSignup extends StatelessWidget {
                   textColor: blackColor,
                   containerColor: cyanColor,
                   borderColor: cyanColor,
-                  function: () =>Navigator.of(context).push(NoTransitionPageRoute(child: OtpVerificationScreen()))
-                    //  context.read<OnboardindBloc>().add(LoginButtonPressed()
-                     ),
+                  function: () =>
+                      context.read<OnboardindBloc>().add(LoginButtonPressed()
+               ) ),
               loginPageButtons(
                   context: context,
                   left: 0.53,

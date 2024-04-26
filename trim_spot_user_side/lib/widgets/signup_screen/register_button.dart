@@ -15,8 +15,6 @@ class RegisterButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  
-
     return Material(
         color: cyanColor,
         borderRadius: BorderRadius.circular(90),
@@ -26,8 +24,8 @@ class RegisterButton extends StatelessWidget {
             context
                 .read<FormValidationBloc>()
                 .add(SubmitButtonPressed(context));
-          
-          
+            // Navigator.of(context)
+            //     .push(NoTransitionPageRoute(child: OtpVerificationScreen()));
           },
           borderRadius: BorderRadius.circular(90),
           child: Container(

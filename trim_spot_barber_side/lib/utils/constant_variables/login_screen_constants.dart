@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
-final TextEditingController loginEmailController = TextEditingController();
+final TextEditingController loginPhoneController = TextEditingController();
 
 final TextEditingController loginPasswordController = TextEditingController();

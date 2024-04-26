@@ -8,6 +8,20 @@ final class SubmitButtonPressed extends FormValidationEvent {
   SubmitButtonPressed(this.context);
 }
 
+final class VerifyEmailPressed extends FormValidationEvent {
+  final BuildContext context;
+
+  VerifyEmailPressed(this.context);
+}
+
+final class ResendEmailButtonPressed extends FormValidationEvent {}
+
+final class AuthenticateUserDetails extends FormValidationEvent {
+  final BuildContext context;
+
+  AuthenticateUserDetails(this.context);
+}
+
 final class OtpValidation extends FormValidationEvent {
   final BuildContext context;
 

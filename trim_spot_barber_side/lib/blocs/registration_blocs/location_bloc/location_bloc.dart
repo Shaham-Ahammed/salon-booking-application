@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart' as loc;
@@ -19,6 +19,7 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
   }
   _locationPickerPressed(
       LocationPickerPressed event, Emitter<LocationState> emit) async {
+    FocusManager.instance.primaryFocus?.unfocus();
     final checkPermission = await Permission.location.request();
     if (checkPermission.isGranted) {
       emit(NavigateToMap(address: (state.address), latLng: state.latLng));
