@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:trim_spot_user_side/screens/booking_success.dart';
 import 'package:trim_spot_user_side/utils/colors.dart';
 import 'package:trim_spot_user_side/utils/home/scaffold_key.dart';
@@ -13,11 +12,6 @@ import 'package:trim_spot_user_side/widgets/home_widgets/headings.dart';
 import 'package:trim_spot_user_side/widgets/home_widgets/nearbysalon_listtile.dart';
 import 'package:trim_spot_user_side/widgets/home_widgets/search_box.dart';
 import 'package:trim_spot_user_side/widgets/home_widgets/viewmore_button.dart';
-import 'package:trim_spot_user_side/widgets/drawer_home/close_button.dart';
-import 'package:trim_spot_user_side/widgets/drawer_home/divider.dart';
-import 'package:trim_spot_user_side/widgets/drawer_home/listtile_items.dart';
-import 'package:trim_spot_user_side/widgets/drawer_home/profile_image.dart';
-import 'package:trim_spot_user_side/widgets/drawer_home/user_details.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -29,7 +23,7 @@ class HomeScreen extends StatelessWidget {
         drawer: Drawer(
           backgroundColor: blackColor,
           width: mediaqueryWidth(0.85, context),
-          child: DrawerItems(),
+          child: const DrawerItems(),
         ),
         backgroundColor: blackColor,
         body: SafeArea(
@@ -44,7 +38,7 @@ class HomeScreen extends StatelessWidget {
                     height: mediaqueryHeight(0.03, context),
                   ),
                   GestureDetector(
-                    onTap: () => Navigator.of(context).push(NoTransitionPageRoute(child: BookingFailureMessageScreen())),
+                    onTap: () => Navigator.of(context).push(NoTransitionPageRoute(child: const BookingFailureMessageScreen())),
                     child: const SearchBox()),
                   SizedBox(
                     height: mediaqueryHeight(0.02, context),

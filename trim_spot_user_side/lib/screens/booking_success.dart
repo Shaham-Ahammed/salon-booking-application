@@ -2,12 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:trim_spot_user_side/utils/colors.dart';
-import 'package:trim_spot_user_side/utils/font.dart';
 import 'package:trim_spot_user_side/utils/mediaquery.dart';
 import 'package:trim_spot_user_side/widgets/booking_failure/lottie_animation.dart';
 
 import 'package:trim_spot_user_side/widgets/booking_failure/texts.dart';
-import 'package:trim_spot_user_side/widgets/booking_success/texts.dart';
 
 class BookingFailureMessageScreen extends StatefulWidget {
   const BookingFailureMessageScreen({super.key});
