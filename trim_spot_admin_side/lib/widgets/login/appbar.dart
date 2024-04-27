@@ -12,8 +12,13 @@ class AppBarLogin extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: appBarColor,
-      child: Center(
-        child: AppLogo(size: mediaqueryHeight(0.04, context)),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          IconButton(onPressed:()=> Navigator.pop(context), icon:  const Icon(Icons.arrow_back_ios)),
+          AppLogo(size: mediaqueryHeight(0.04, context)),
+          const Icon(Icons.gif_rounded,color: appBarColor,)
+        ],
       ),
     );
   }

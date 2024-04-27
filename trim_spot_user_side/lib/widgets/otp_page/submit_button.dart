@@ -10,7 +10,7 @@ submitButton(BuildContext context, bool fromLogin) {
   return submitButtonCyan(context, function: () {
     fromLogin
         ? context.read<LoginValidationBloc>().add(VerifyEmailPressedFromLogin(context))
-        : context.read<FormValidationBloc>().add(SubmitButtonPressed(context));
+        : context.read<FormValidationBloc>().add(VerifyEmailPressed(context));
     return null;
   },
       heigh: mediaqueryHeight(0.044, context),
