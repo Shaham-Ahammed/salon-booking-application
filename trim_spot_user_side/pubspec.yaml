@@ -97,7 +97,8 @@ flutter:
     - assets/icons/menu_icon.svg
     - assets/images/shop_image.jpg
     - assets/animations/swipe_to_pay_animation.json
-    
+    - assets/animations/failed_animation.json
+    - assets/animations/booking_succes_lottie.json
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

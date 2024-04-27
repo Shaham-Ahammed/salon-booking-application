@@ -7,7 +7,6 @@ import 'package:trim_spot_user_side/utils/colors.dart';
 import 'package:trim_spot_user_side/utils/mediaquery.dart';
 import 'package:trim_spot_user_side/utils/reviews_and_ratings/modal_list.dart';
 import 'package:trim_spot_user_side/utils/service_booking/animation_controller.dart';
-
 import 'package:trim_spot_user_side/widgets/service_booking_widgets/bookmark_lottie.dart';
 import 'package:trim_spot_user_side/widgets/service_booking_widgets/clear_selection.dart';
 import 'package:trim_spot_user_side/widgets/service_booking_widgets/date_selection.dart';
