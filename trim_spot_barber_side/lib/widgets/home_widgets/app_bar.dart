@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trim_spot_barber_side/data/firebase_references/shop_collection_reference.dart';
+import 'package:trim_spot_barber_side/models/document_model.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
 import 'package:trim_spot_barber_side/utils/constant_variables/login_screen_constants.dart';
 import 'package:trim_spot_barber_side/utils/homepage/drawer/scaffold_key.dart';
@@ -31,29 +32,26 @@ class AppBarHomeScreen extends StatelessWidget {
                         child: StreamBuilder<QuerySnapshot>(
                           stream: ShopDetailsReference()
                               .shopDetailsReference()
-                              .where("phone", isEqualTo: loginPhoneController.text)
+                              .where("phone",
+                                  isEqualTo: loginPhoneController.text)
                               .snapshots(),
                           builder:
-                              (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                           
-
+                              (context,  snapshot) {
                             if (snapshot.connectionState ==
                                 ConnectionState.waiting) {
-                              return CircularProgressIndicator(); // Show a loading indicator while waiting for data
+                              return CircularProgressIndicator();
                             }
 
                             if (snapshot.hasData &&
                                 snapshot.data!.docs.isNotEmpty) {
-                              // Assuming there's only one document that matches the query
-                              final doc = snapshot.data!.docs.first['profileImage'];
-                              // final profileImageUrl =
-                              //     doc.data()['profileImage'];
+                              final doc =
+                                  snapshot.data!.docs.first[DocumentModel.name];
 
                               return CircleAvatar(
                                 backgroundImage: NetworkImage(doc),
                               );
                             } else {
-                              // No data or no matching document
+                            
                               return CircleAvatar(
                                 radius: 20,
                                 backgroundColor: Colors.amber,

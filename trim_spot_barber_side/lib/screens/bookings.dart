@@ -14,6 +14,7 @@ class BookingsScreen extends StatefulWidget {
 
 class _BookingsScreenState extends State<BookingsScreen>
     with SingleTickerProviderStateMixin {
+      
   @override
   void initState() {
     super.initState();
