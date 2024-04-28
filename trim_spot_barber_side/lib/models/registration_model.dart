@@ -19,7 +19,7 @@ class RegistraitonModel {
   String password;
   bool isApproved;
   bool isRejected;
-  Map<String,Map<int,String>> reviewsAndRatings;
+  Map<String,Map<String,String>> reviewsAndRatings;
 
   RegistraitonModel(
       {required this.name,

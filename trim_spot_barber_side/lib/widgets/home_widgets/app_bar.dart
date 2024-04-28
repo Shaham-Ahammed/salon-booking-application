@@ -44,7 +44,7 @@ class AppBarHomeScreen extends StatelessWidget {
                             if (snapshot.hasData &&
                                 snapshot.data!.docs.isNotEmpty) {
                               final doc =
-                                  snapshot.data!.docs.first[DocumentModel.name];
+                                  snapshot.data!.docs.first[SalonDocumentModel.name];
 
                               return CircleAvatar(
                                 backgroundImage: NetworkImage(doc),

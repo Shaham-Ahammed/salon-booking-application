@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:trim_spot_user_side/blocs/location_permission_bloc/location_permission_bloc.dart';
 import 'package:trim_spot_user_side/blocs/profile_image_bloc/profile_image_bloc.dart';
 import 'package:trim_spot_user_side/utils/colors.dart';
 import 'package:trim_spot_user_side/utils/font.dart';
@@ -71,7 +72,7 @@ class NameAndLocation extends StatelessWidget {
                 context,
               ),
             ),
-            myFont(" Calicut",
+            myFont(context.watch<LocationPermissionBloc>().state.currentLocation,
                 fontFamily: balooChettan,
                 fontSize: mediaqueryHeight(0.018, context),
                 fontWeight: FontWeight.normal,

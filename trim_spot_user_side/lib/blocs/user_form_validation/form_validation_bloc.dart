@@ -8,6 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_user_side/blocs/profile_image_bloc/profile_image_bloc.dart';
 import 'package:trim_spot_user_side/data/firebase_auth_implementation/firebase_auth_services.dart';
 import 'package:trim_spot_user_side/data/repository/user_registration.dart';
+import 'package:trim_spot_user_side/screens/bottom_navigation.dart';
+import 'package:trim_spot_user_side/utils/page%20transitions/no_transition_page_route.dart';
 import 'package:trim_spot_user_side/utils/register_page/controllers.dart';
 import 'package:trim_spot_user_side/utils/register_page/formkey.dart';
 import 'package:trim_spot_user_side/utils/register_page/valuenotifier.dart';
@@ -84,8 +86,13 @@ class FormValidationBloc
       FirebaseAuth.instance.currentUser?.reload();
       final user = FirebaseAuth.instance.currentUser;
       if (user!.emailVerified) {
+        Navigator.pop(event.context);
+        Navigator.of(event.context).push(
+            NoTransitionPageRoute(child: const BottomNavigationBarScreen()));
         emit(NavigateToHomePage());
         print("success");
+      } else {
+        emit(RegisrationFailure("email not verified"));
       }
     } catch (e) {
       emit(RegisrationFailure("please try again"));

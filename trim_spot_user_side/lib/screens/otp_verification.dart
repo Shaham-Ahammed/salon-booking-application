@@ -27,9 +27,7 @@ class OtpVerificationScreen extends StatelessWidget {
         BlocListener<FormValidationBloc, FormValidationState>(
           listener: (context, state) {
             if (state is NavigateToHomePage) {
-              Navigator.pop(context);
-              Navigator.of(context).push(NoTransitionPageRoute(
-                  child: const BottomNavigationBarScreen()));
+           
               loginSuccessSnackBar(context).show(context);
             }
 

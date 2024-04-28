@@ -14,7 +14,7 @@ class UserModel {
 
   Map<String, dynamic> toMap() {
     return {
-      "imaePath": imagePath,
+      "imagePath": imagePath,
       "username": username,
       "email": email,
       "phone": phone,

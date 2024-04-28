@@ -65,7 +65,8 @@ class RegisterButtonBloc
         await PhoneNumberAuthentication()
             .otpverificationAndDataAddingToFirebase(
                 event.verificationId, event.context);
-        emit(RegistrationSuccessSnackBar(buttonPressed: state.buttonPressed));
+      
+     
         emit(NavigateToRegisterSuccessPage(buttonPressed: state.buttonPressed));
       } catch (e) {
         emit(RegisrationFailure("error in verification",

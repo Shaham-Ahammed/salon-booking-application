@@ -6,6 +6,7 @@ import 'package:trim_spot_user_side/blocs/bloc_observer.dart';
 import 'package:trim_spot_user_side/blocs/bookmark_animation_bloc/book_mark_animation_bloc.dart';
 import 'package:trim_spot_user_side/blocs/bottom_nav_bloc/bottom_navigation_bloc.dart';
 import 'package:trim_spot_user_side/blocs/google_sign_in_bloc/google_sign_in_bloc.dart';
+import 'package:trim_spot_user_side/blocs/location_permission_bloc/location_permission_bloc.dart';
 import 'package:trim_spot_user_side/blocs/login_validation/login_validation_bloc.dart';
 import 'package:trim_spot_user_side/blocs/nearby_salons_bloc/nearby_salons_bloc.dart';
 import 'package:trim_spot_user_side/blocs/profile_blocs/email_bloc/profile_email_bloc.dart';
@@ -29,6 +30,7 @@ void main(List<String> args) async {
   Bloc.observer = AppBlocObserver();
   runApp(MultiBlocProvider(
     providers: [
+        BlocProvider<LocationPermissionBloc>(create: (context) => LocationPermissionBloc()),
        BlocProvider<BookMarkAnimationBloc>(create: (context) => BookMarkAnimationBloc()),
       BlocProvider<ProfileEmailBloc>(create: (context) => ProfileEmailBloc()),
       BlocProvider<ProfileNameBloc>(create: (context) => ProfileNameBloc()),

@@ -38,10 +38,7 @@ final class LoadingState extends RegisterButtonState{
 
 
 
-final class RegistrationSuccessSnackBar extends RegisterButtonState{
-  RegistrationSuccessSnackBar({required super.buttonPressed});
 
-}
 
 final class NavigateToRegisterSuccessPage extends RegisterButtonState{
   NavigateToRegisterSuccessPage({required super.buttonPressed});

@@ -23,13 +23,14 @@ class OtpVerificationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<RegisterButtonBloc, RegisterButtonState>(
       listener: (context, state) {
-        if (state is RegistrationSuccessSnackBar) {
-          registrationSuccessSnackBar(context).show(context);
-        }
+        
         if (state is NavigateToRegisterSuccessPage) {
           Navigator.pop(context);
-          Navigator.of(context).push(FadeTransitionPageRoute(
-              child: RegistrationSuccessfulMessageScreen()));
+          Navigator.of(context).push(
+            FadeTransitionPageRoute(
+                child: RegistrationSuccessfulMessageScreen()),
+          );
+          registrationSuccessSnackBar(context).show(context);
         }
       },
       child: Scaffold(
