@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_barber_side/blocs/registration_blocs/register_button_bloc/register_button_bloc.dart';
 import 'package:trim_spot_barber_side/screens/bottom_navigation.dart';
+import 'package:trim_spot_barber_side/screens/registration_successful.dart';
 import 'package:trim_spot_barber_side/utils/colors.dart';
 import 'package:trim_spot_barber_side/utils/mediaquery.dart';
 import 'package:trim_spot_barber_side/utils/page_transitions/fade_transition.dart';
@@ -11,6 +12,7 @@ import 'package:trim_spot_barber_side/widgets/otp_page/headings_and_texts.dart';
 import 'package:trim_spot_barber_side/widgets/otp_page/otp_box.dart';
 
 import 'package:trim_spot_barber_side/widgets/otp_page/submit_button.dart';
+import 'package:trim_spot_barber_side/widgets/otp_page/success_snackbar.dart';
 import 'package:trim_spot_barber_side/widgets/signup_widgets/screen_padding.dart';
 
 class OtpVerificationScreen extends StatelessWidget {
@@ -21,10 +23,13 @@ class OtpVerificationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<RegisterButtonBloc, RegisterButtonState>(
       listener: (context, state) {
-        if (state is NavigateToHomePage) {
+        if (state is RegistrationSuccessSnackBar) {
+          registrationSuccessSnackBar(context).show(context);
+        }
+        if (state is NavigateToRegisterSuccessPage) {
           Navigator.pop(context);
-          Navigator.of(context)
-              .push(FadeTransitionPageRoute(child: BottomNavigationScreen()));
+          Navigator.of(context).push(FadeTransitionPageRoute(
+              child: RegistrationSuccessfulMessageScreen()));
         }
       },
       child: Scaffold(

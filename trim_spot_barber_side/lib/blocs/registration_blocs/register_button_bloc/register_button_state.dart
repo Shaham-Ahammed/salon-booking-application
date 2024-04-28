@@ -36,6 +36,13 @@ final class LoadingState extends RegisterButtonState{
   LoadingState({required super.buttonPressed});
 }
 
-final class NavigateToHomePage extends RegisterButtonState{
-  NavigateToHomePage({required super.buttonPressed});
+
+
+final class RegistrationSuccessSnackBar extends RegisterButtonState{
+  RegistrationSuccessSnackBar({required super.buttonPressed});
+
+}
+
+final class NavigateToRegisterSuccessPage extends RegisterButtonState{
+  NavigateToRegisterSuccessPage({required super.buttonPressed});
 }

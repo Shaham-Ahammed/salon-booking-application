@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RegistraitonModel {
@@ -6,7 +5,7 @@ class RegistraitonModel {
   String email;
   String phone;
   String shopName;
-   GeoPoint shopLocationLatLng;
+  GeoPoint shopLocationLatLng;
   String shopLocationName;
   String shopLicenseImage;
   String profileImage;
@@ -19,26 +18,30 @@ class RegistraitonModel {
   List<String> holidays;
   String password;
   bool isApproved;
+  bool isRejected;
+  Map<String,Map<int,String>> reviewsAndRatings;
 
-  RegistraitonModel({
-    required this.name,
-    required this.email,
-    required this.phone,
-    required this.shopName,
-    required this.shopLocationLatLng,
-    required this.shopLocationName,
-    required this.shopLicenseImage,
-    required this.profileImage,
-    required this.shopImage,
-    required this.services,
-    required this.openingTime,
-    required this.parsedOpeningTime,
-    required this.closingTime,
-    required this.parsedClosingTime,
-    required this.holidays,
-    required this.password,
-    required this.isApproved
-  });
+  RegistraitonModel(
+      {required this.name,
+      required this.email,
+      required this.phone,
+      required this.shopName,
+      required this.shopLocationLatLng,
+      required this.shopLocationName,
+      required this.shopLicenseImage,
+      required this.profileImage,
+      required this.shopImage,
+      required this.services,
+      required this.openingTime,
+      required this.parsedOpeningTime,
+      required this.closingTime,
+      required this.parsedClosingTime,
+      required this.holidays,
+      required this.password,
+      required this.isApproved,
+      required this.isRejected,
+      required this.reviewsAndRatings,
+      });
 
   Map<String, dynamic> toMap() {
     return {
@@ -46,7 +49,7 @@ class RegistraitonModel {
       "email": email,
       "phone": phone,
       "shopName": shopName,
-     "locationLatLng": shopLocationLatLng,
+      "locationLatLng": shopLocationLatLng,
       "locationName": shopLocationName,
       "licenseImage": shopLicenseImage,
       "profileImage": profileImage,
@@ -58,7 +61,10 @@ class RegistraitonModel {
       "parsedClosingTime": parsedClosingTime,
       "holidays": holidays,
       "password": password,
-      "isApproved":isApproved
+      "isApproved": isApproved,
+      "isRejected": isRejected,
+      "reviewsAndRatings":reviewsAndRatings
+
     };
   }
 }
