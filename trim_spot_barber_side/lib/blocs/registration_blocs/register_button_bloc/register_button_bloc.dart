@@ -1,20 +1,13 @@
 // ignore_for_file: invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_barber_side/data/firebae_authentication/phone_number_validation.dart';
-import 'package:trim_spot_barber_side/data/repository/register_profile_to_firebase.dart';
-import 'package:trim_spot_barber_side/screens/otp_verification.dart';
-import 'package:trim_spot_barber_side/utils/error_snackbars.dart';
 import 'package:trim_spot_barber_side/utils/otp_page/formkey.dart';
-import 'package:trim_spot_barber_side/utils/otp_page/textedition_controller.dart';
-import 'package:trim_spot_barber_side/utils/page_transitions/fade_transition.dart';
 
 import 'package:trim_spot_barber_side/utils/registration_page/form_key.dart';
 import 'package:trim_spot_barber_side/utils/registration_page/container_validations.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:trim_spot_barber_side/utils/registration_page/textediting_controllers.dart';
 part 'register_button_event.dart';
 part 'register_button_state.dart';
 

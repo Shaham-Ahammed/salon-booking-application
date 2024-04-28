@@ -4,15 +4,15 @@ part of 'location_permission_bloc.dart';
 sealed class LocationPermissionState {
   final String currentLocation;
  final Position? currentPosition;
-  LocationPermissionState({required this.currentLocation,required this.currentPosition});
+  const LocationPermissionState({required this.currentLocation,required this.currentPosition});
 }
 
 final class LocationPermissionInitial extends LocationPermissionState {
-  LocationPermissionInitial({required super.currentLocation, required super.currentPosition});
+  const LocationPermissionInitial({required super.currentLocation, required super.currentPosition});
   
 }
 
 final class LocationServiceNotEnabled extends LocationPermissionState {
-  LocationServiceNotEnabled({required super.currentLocation, required super.currentPosition});
+  const LocationServiceNotEnabled({required super.currentLocation, required super.currentPosition});
  
 }

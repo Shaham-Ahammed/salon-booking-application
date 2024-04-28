@@ -9,7 +9,7 @@ part 'location_permission_state.dart';
 class LocationPermissionBloc
     extends Bloc<LocationPermissionEvent, LocationPermissionState> {
   LocationPermissionBloc()
-      : super(LocationPermissionInitial(
+      : super(const LocationPermissionInitial(
             currentLocation: '', currentPosition: null)) {
     on<GetLocationPermission>(_getLocationPermission);
     on<FetchUserLocation>(_fetchUserLocation);
@@ -20,7 +20,7 @@ class LocationPermissionBloc
     LocationPermission permission;
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      emit(LocationServiceNotEnabled(
+      emit(const LocationServiceNotEnabled(
           currentLocation: '', currentPosition: null));
       return;
     }
@@ -28,12 +28,12 @@ class LocationPermissionBloc
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        emit(LocationServiceNotEnabled(
+        emit(const LocationServiceNotEnabled(
             currentLocation: '', currentPosition: null));
         return;
       }
       if (permission == LocationPermission.deniedForever) {
-        emit(LocationServiceNotEnabled(
+        emit(const LocationServiceNotEnabled(
             currentLocation: '', currentPosition: null));
         return;
       }

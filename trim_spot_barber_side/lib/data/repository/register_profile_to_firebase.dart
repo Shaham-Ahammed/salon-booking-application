@@ -53,8 +53,8 @@ class RegisterProfileToFirebase {
         services: serviceToMapConversion(context),
         isRejected: false,
         reviewsAndRatings: {
-          "review1": {"3": "wow"},
-          "review2": {"5": "excellent"}
+          "review1": {"wow": 3},
+          "review2": {"excellend": 5}
         }).toMap();
     try {
       await collection.add(data);
