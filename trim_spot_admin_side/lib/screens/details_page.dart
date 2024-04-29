@@ -56,11 +56,12 @@ class RegistrationDetailsScreen extends StatelessWidget {
                 height: mediaqueryHeight(0.03, context),
               ),
               switch (shopState) {
-                VerificationState.pending => const ApproveAndRejectButtons(),
-                VerificationState.rejected => const Center(
-                    child: ApproveButton(),
+                VerificationState.pending =>
+                  ApproveAndRejectButtons(shop: shop),
+                VerificationState.rejected => Center(
+                    child: ApproveButton(shop: shop),
                   ),
-                VerificationState.approved => const RemoveButton(),
+                VerificationState.approved => RemoveButton(shop: shop)
               }
             ],
           ),
@@ -68,10 +69,4 @@ class RegistrationDetailsScreen extends StatelessWidget {
       )),
     );
   }
-
- 
 }
-
-
-
-

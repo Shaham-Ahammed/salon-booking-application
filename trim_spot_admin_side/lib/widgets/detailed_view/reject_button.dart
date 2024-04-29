@@ -1,12 +1,18 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trim_spot_admin_side/blocs/buttons_bloc/decision_making_buttons_bloc.dart';
+import 'package:trim_spot_admin_side/data/data_provider/collection_reference.dart';
+import 'package:trim_spot_admin_side/data/repository/document_model.dart';
 
 import 'package:trim_spot_admin_side/utils/colors.dart';
 import 'package:trim_spot_admin_side/utils/font.dart';
 import 'package:trim_spot_admin_side/utils/mediaquery.dart';
 
 class RejectButton extends StatelessWidget {
+  final QueryDocumentSnapshot<Object?> shop;
   const RejectButton({
-    super.key,
+    super.key, required this.shop,
   });
 
   @override
@@ -17,7 +23,11 @@ class RejectButton extends StatelessWidget {
       child: InkWell(
         hoverColor: Colors.red.shade400,
         borderRadius: BorderRadius.circular(90),
-        onTap: () {},
+          onTap: ()  {
+       context
+              .read<DecisionMakingButtonsBloc>()
+              .add(RejectButtonPressed(shop.id, context));
+        },
         child: Container(
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(90)),
             height: mediaqueryHeight(0.07, context),
