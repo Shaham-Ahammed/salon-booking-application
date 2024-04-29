@@ -11,7 +11,7 @@ class AddUserDetailsToFirebase {
           .addProfileImageToFirebaseStorage(context);
       final data = UserDetailsData().userData(profileImageUrl);
 
-      userCollections.add(data);
+     CollectionReferences().userCollectionReference().add(data);
     } catch (e) {
       print("error");
     }

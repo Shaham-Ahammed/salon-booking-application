@@ -1,8 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trim_spot_user_side/blocs/service_booking_blocs/date_selection_bloc/date_selection_bloc.dart';
 import 'package:trim_spot_user_side/blocs/service_booking_blocs/service_selected_bloc/service_selected_bloc.dart';
 import 'package:trim_spot_user_side/blocs/slot_selection_bloc/slot_selection_bloc.dart';
+import 'package:trim_spot_user_side/data/repository/document_model.dart';
 import 'package:trim_spot_user_side/utils/colors.dart';
 import 'package:trim_spot_user_side/utils/mediaquery.dart';
 import 'package:trim_spot_user_side/utils/reviews_and_ratings/modal_list.dart';
@@ -26,7 +28,8 @@ import 'package:trim_spot_user_side/widgets/service_booking_widgets/view_more_ra
 import 'package:trim_spot_user_side/widgets/service_booking_widgets/working_hours.dart';
 
 class ServiceBookingScreen extends StatefulWidget {
-  const ServiceBookingScreen({super.key});
+  final QueryDocumentSnapshot<Object?> shop;
+  const ServiceBookingScreen({super.key, required this.shop});
 
   @override
   State<ServiceBookingScreen> createState() => _ServiceBookingScreenState();
@@ -64,13 +67,13 @@ class _ServiceBookingScreenState extends State<ServiceBookingScreen>
                   width: mediaqueryWidth(1, context),
                   height: mediaqueryHeight(0.3, context),
                 ),
-                const Positioned(child: ShopImageDisplay()),
+                 Positioned(child: ShopImageDisplay(widget.shop)),
                 const BackButton(),
                 const BookmarkAnimationLottie()
               ],
             ),
-            shopName(context),
-            const ShopLocation(),
+            shopName(context,widget.shop),
+             ShopLocation(widget.shop),
             SizedBox(
               height: mediaqueryHeight(0.02, context),
             ),
@@ -94,15 +97,15 @@ class _ServiceBookingScreenState extends State<ServiceBookingScreen>
                                       children: [
                                         serviceBookingScreenHeadings(
                                             context, "WORKING HOURS"),
-                                        workingHourContainerField(context),
+                                        workingHourContainerField(context,widget.shop),
                                         SizedBox(
                                           height:
                                               mediaqueryHeight(0.02, context),
                                         ),
                                         serviceBookingScreenHeadings(
                                             context, "USER REVIEWS"),
-                                        const UserReviews(),
-                                        if (reviewList.length > 2)
+                                         UserReviews(widget.shop),
+                                        if (widget.shop[SalonDocumentModel.reviewsAndRatings].length > 2)
                                           const ViewMoreRatingsButton(),
                                         SizedBox(
                                           height:
